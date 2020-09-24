@@ -21,7 +21,7 @@ module.exports = {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -98,9 +98,9 @@ module.exports = {
 
   // Use this configuration option to add custom reporters to Jest
   reporters: [
-    ["jest-nyan-reporter", {
-      "suppressErrorReporter": false
-    }]
+    ['jest-nyan-reporter', {
+      suppressErrorReporter: false,
+    }],
   ],
 
   // Automatically reset mock state between every test
