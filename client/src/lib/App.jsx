@@ -1,41 +1,35 @@
 import React from 'react';
-import SearchBar from './components/SearchBar.jsx';
+import { Container, Row, Col, Button, Jumbotron } from 'react-bootstrap';
+import Question from '../components/Question.jsx';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => (
   <div>
-    <h1 id="test">Questions and Answers</h1>
-    <input
-        type="text"
-        placeholder="Have a question? Search for answers..."
-        value={search}
-        onChange={handleSearch}
-      />
-       <button>
-         {:mag:}
-       </button>
+    <Row>
+      <Col xs={0} sm={2} />
+      <Col xs={12} sm={8} className="test"></Col>
+      <Col xs={0} sm={2} />
+    </Row>
+    <Container>
+    <h1 id="header">Questions and Answers</h1>
+      <Jumbotron>
+        <h1>Hello, world!</h1>
+        <p>
+          This is a simple hero unit, a simple jumbotron-style component for calling
+          extra attention to featured content or information.
+        </p>
+        <p>
+          <Button variant="primary">Learn more</Button>
+        </p>
+      </Jumbotron>
+      <Question/>
+    </Container>
+
+    <div id ="searchbar"></div>
+    <div id="qabox"></div>
+    <div id="more-answers"></div>
+    <div id="addq"></div>
   </div>
 );
 
 export default App;
-
-// class App extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//     };
-//   }
-
-//   componentDidMount() {}
-
-//   render() {
-//     return (
-//       <div>
-//         <h1 id="test">Qusetions and Answers</h1>
-{ /* <SearchBar
- onChangeText={updateQuery}
- value={query}
- placeholder="Type Here..."/> */ }
-//       </div>
-//     );
-//   }
-// }

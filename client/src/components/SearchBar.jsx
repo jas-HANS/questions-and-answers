@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Container from 'react-bootstrap/Container';
 
 function SearchBar() {
   // initialize 3 states using useState:
@@ -32,9 +33,9 @@ function SearchBar() {
         value={search}
         onChange={handleSearch}
       />
-       <button>
+       {/* <button>
          {:mag:}
-       </button>
+       </button> */}
     </div>
   );
 }
