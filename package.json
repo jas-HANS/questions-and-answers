@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/callback-kids/related-items.git"
+    "url": "git+https://github.com/callback-kids/questions-answers.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/callback-kids/related-items/issues"
+    "url": "https://github.com/callback-kids/questions-answers/issues"
   },
-  "homepage": "https://github.com/callback-kids/related-items#readme",
+  "homepage": "https://github.com/callback-kids/questions-answers#readme",
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
     "axios": "^0.20.0",
