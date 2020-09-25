@@ -1,20 +1,54 @@
 import React from 'react';
+import axios from 'axios';
 import { Container, Row, Col, Button, Jumbotron } from 'react-bootstrap';
 import Question from '../components/Question.jsx';
-import axios from 'axios';
-// import { getQs, getAs } from './routes.js';
+// import { getProductQs, getOneQsAs } from './routes.js';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      qList: []
+      qList: [],
+      allAsForOneQ: [],
     };
+    this.getProductQs = this.getProductQs.bind(this);
+    this.getOneQsAs = this.getOneQsAs.bind(this);
+  }
+  componentDidMount() {
+    this.getProductQs();
+    this.getOneQsAs();
+  };
+
+  getProductQs() {
+    let id = 5;
+    axios.get(`http://52.26.193.201:3000/qa/${id}`)
+      .then(res => {
+        console.log("Get prod Qs:", res.data.results);
+        this.setState({
+          qList: res.data.results,
+          oneQ: res.data.results.body
+        });
+        console.log(this.state.qList)
+      })
+      .catch(err => console.error(err))
   }
 
+   getOneQsAs() {
+    let id = 5;
+    axios.get(`http://52.26.193.201:3000/qa/${id}/answers`)
+    .then(res => {
+      console.log("Get one qs Answrs:", res.data.results);
+      this.setState({
+        allAsForOneQ: res.data
+      });
+    })
+    .catch(err => console.error(err))
+  };
+
   render() {
+    let { qList, allAsForOneQ } = this.state;
+    // console.log("in render", this.state.qList)
     return (
     <div>
       <Row>
@@ -25,7 +59,10 @@ class App extends React.Component {
       <Container>
       <h1 id="header">Questions and Answers</h1>
         <Jumbotron>
-          <Question/>
+          <Question
+          //  qList={qList}
+          //  allAsForOneQ={allAsForOneQ}
+          />
         </Jumbotron>
         <div>
           <Button variant="dark" size="sm">MORE ANSWERED QUESTIONS</Button>

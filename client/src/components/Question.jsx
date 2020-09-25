@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { Container, Accordion, Card, Button, Row, Col } from 'react-bootstrap';
 import HelpfulBtn from './HelpfulBtn.jsx';
 
-function Question(props) {
-  // Declare a new state variable, which we'll call "count"
-  // Use this for "helpful?" button
-  const [count, setCount] = useState(0);
+const Question = ({qList, allAsForOneQ}) => {
+  console.log("in Q:",)
 
   return (
     <div>
       <Row>
-        <Col>Q: This is a Question</Col>
+        <Col>Q: FakeQuestion</Col>
       </Row>
       <Row>
         <Col>A: This is one answer</Col>
