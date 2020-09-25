@@ -2,14 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import { Container, Row, Col, Button, Jumbotron } from 'react-bootstrap';
 import Question from '../components/Question.jsx';
-// import { getProductQs, getOneQsAs } from './routes.js';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      qList: [],
+      qList: {results: [{}]},
       allAsForOneQ: [],
     };
     this.getProductQs = this.getProductQs.bind(this);
@@ -24,12 +23,11 @@ class App extends React.Component {
     let id = 5;
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
       .then(res => {
-        console.log("Get prod Qs:", res.data.results);
+        // console.log("Get prod Qs:", res.data.results);
         this.setState({
-          qList: res.data.results,
+          qList: res.data,
           oneQ: res.data.results.body
-        });
-        console.log(this.state.qList)
+        }, () => console.log("second arg:", this.state.qList));
       })
       .catch(err => console.error(err))
   }
@@ -41,7 +39,7 @@ class App extends React.Component {
       console.log("Get one qs Answrs:", res.data.results);
       this.setState({
         allAsForOneQ: res.data
-      });
+      }, () => console.log("in getOneA:", this.state.allAsForOneQ));
     })
     .catch(err => console.error(err))
   };
@@ -60,8 +58,8 @@ class App extends React.Component {
       <h1 id="header">Questions and Answers</h1>
         <Jumbotron>
           <Question
-          //  qList={qList}
-          //  allAsForOneQ={allAsForOneQ}
+           qList={qList}
+           allAsForOneQ={allAsForOneQ}
           />
         </Jumbotron>
         <div>

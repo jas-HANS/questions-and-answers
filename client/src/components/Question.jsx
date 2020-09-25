@@ -3,12 +3,12 @@ import { Container, Accordion, Card, Button, Row, Col } from 'react-bootstrap';
 import HelpfulBtn from './HelpfulBtn.jsx';
 
 const Question = ({qList, allAsForOneQ}) => {
-  console.log("in Q:",)
+  console.log("in Q:", qList)
 
   return (
     <div>
       <Row>
-        <Col>Q: FakeQuestion</Col>
+        <Col>Q: {qList.results[0].question_body}</Col>
       </Row>
       <Row>
         <Col>A: This is one answer</Col>
