@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Container from 'react-bootstrap/Container';
+import { Button, Row, Col, Container } from 'react-bootstrap';
 
 const Helpful = (props) => {
   // Declare a new state variable, which we'll call "count"
@@ -21,23 +21,30 @@ const Helpful = (props) => {
 
   return (
     <div>
-      <span>
-        Helpful?
-      </span>
-      <button
-        type="button"
-        onClick={() => setCount(count + 1)}
-      >
-        Yes
-        {` (${count}) `}
-      </button>
-      <button
-        type="button"
-        // onClick={() => ()}
-      >
-        Add Answer
-        {` (${count}) `}
-      </button>
+      <Row>
+        <Col>
+         <span>
+          Helpful?
+         </span>
+        </Col>
+        <Col>
+         <Button
+          variant="dark"
+          size="sm"
+          onClick={() => setCount(count + 1)}
+         >
+          Yes{`(${count})`}
+         </Button>
+        </Col>
+        <Col>
+         <Button
+          variant="dark"
+          size="sm"
+         //  onClick={() => setCount(count + 1)}
+         >Add Answer
+         </Button>
+        </Col>
+      </Row>
     </div>
   );
 }
