@@ -1,0 +1,37 @@
+body {
+  background-color: #f1eee6;
+}
+
+body, p, a {
+  font-family: 'Crimson Text', serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+h1, h2 {
+  color: #658DC6;
+}
+
+h3, h4, h5 {
+  color: #0f4c81;
+}
+
+.jumbotron {
+  background-color: #0f4c81;
+  border: 1px solid #658dc6;
+}
+
+.jumbotron-h1 {
+  color: #f1eee6;
+}
+
+.jumbotron-p {
+  color: #B5C7D3;
+  font-size: 25px;
+}
+
+.answerDiv {
+  justify-content: flex-end;
+}

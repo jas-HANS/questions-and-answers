@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 // gets all Qs for one product
 // const getProductQs = (cb) => {
@@ -63,4 +63,4 @@ import axios from 'axios';
 //   .catch(err => cb(err, null))
 // }
 
-export default { getProductQs, getOneQsAs };
+// export default { getProductQs, getOneQsAs };

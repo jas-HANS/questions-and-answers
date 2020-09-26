@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Question from './Question';
 
-const QuestionList = (props) => {
-  mappedList = props.list.map(question => <Question
-    question={question}
-    key={id}/>);
+const QuestionList = ({qList}) => {
+  let mappedList = qList.map((quest, i) => <Question
+    question={quest}
+    key={i}/>);
 
     return (
-      <div>
+      <div className="questionList">
         {mappedList}
       </div>
     );
