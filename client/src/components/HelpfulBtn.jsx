@@ -17,12 +17,6 @@ const HelpfulBtn = (props) => {
       >
       Yes{`(${count}) `}
       </Alert.Link>
-      <Alert.Link
-        variant="dark"
-        size="sm"
-        //  onClick={() => setCount(count + 1)}
-      >Add Answer
-      </Alert.Link>
     </span>
   );
 };

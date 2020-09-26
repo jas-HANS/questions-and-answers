@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import Container from 'react-bootstrap/Container';
+import React, {useState} from 'react';
 
 const SearchBar = (props) => {
-  const [data, setData] = useState([]);
-  const [search, setSearch] = useState('');
-  // const [questions, setQuestions] = useState([]);
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
+  // const [data, setData] = useState([]);
+  // const [search, setSearch] = useState('');
+  // // const [questions, setQuestions] = useState([]);
+  // const handleSearch = (e) => {
+  //   setSearch(e.target.value);
+  // };
 
   // get the questions from the api
 
@@ -15,11 +14,6 @@ const SearchBar = (props) => {
   // useEffect(() => {
   //   getData();
   // }, []);
-
-  //   <SearchBar
-  //  onChangeText={updateQuery}
-  //  value={query}
-  //  placeholder="Type Here..."/>
 
   return (
     <div>
@@ -31,7 +25,7 @@ const SearchBar = (props) => {
       />
     </div>
   );
-}
+};
 
 export default SearchBar;
 

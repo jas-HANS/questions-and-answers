@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {Accordion, Card, Button, Row, Col} from 'react-bootstrap';
+import React from 'react';
+import {Accordion, Card, Button, Row, Col, Alert} from 'react-bootstrap';
 import AnswerList from './AnswerList.jsx';
 import HelpfulBtn from './HelpfulBtn.jsx';
 
@@ -9,14 +9,21 @@ const Question = ({question}) => {
       <Row>
         <Col>Q: {question.question_body}</Col>
         <Col md="auto">
-          {/* <HelpfulBtn/> */}
+          <HelpfulBtn/>
+          <Alert.Link
+            className="add-answer"
+            variant="dark"
+            size="sm"
+          //  onClick={() => setCount(count + 1)}
+          >Add Answer
+          </Alert.Link>
         </Col>
       </Row>
 
       <Row>
         <Col>
           <AnswerList
-          //array of answers of x Q
+          // array of answers of x Q
             answers={Object.values(question.answers)}
           />
         </Col>
@@ -45,6 +52,7 @@ const Question = ({question}) => {
           LOAD MORE ANSWERS
         </Accordion.Toggle>
       </Accordion>
+      <br></br>
     </div>
   );
 };

@@ -1,6 +1,7 @@
+/* eslint-disable max-len */
 import React from 'react';
 import HelpfulBtn from './HelpfulBtn.jsx';
-import {Col, Row, Container} from 'react-bootstrap';
+import {Alert, Col, Row, Container} from 'react-bootstrap';
 
 const AnswerList = ({answers}) => {
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -15,17 +16,24 @@ const AnswerList = ({answers}) => {
     const newDate = `${month} ${day}, ${year}`;
 
     return (
-      <Container className="answer-list">
+      <Container key={i} className="answer-list">
          A: {answer.body}
-        <Row className="answer-n-d">
+        <Row s={1} md={6} lg={6}className="answer-n-d">
           <Col>
             by: {answer.answerer_name}
           </Col>
-          <Col xs={8}>
+          <Col>
             {newDate}
           </Col>
-          <Col className="answer-helpfulbtn">
+          <Col id="report">
             <HelpfulBtn />
+            <Alert.Link
+              className="report"
+              variant="dark"
+              size="sm"
+              //  onClick={() => setCount(count + 1)}
+            >Report
+            </Alert.Link>
           </Col>
         </Row>
       </Container>

@@ -36,16 +36,35 @@ h3, h4, h5 {
   justify-content: flex-end;
   color: #f1eee6;
   font-family: 'Crimson Text', serif;
+  font-size: 18px;
 }
 
 .answer-n-d {
   display: flex;
   /* flex-direction: row; */
-  justify-content: flex-start
+  justify-content: flex-start;
+  font-size: 16px;
 }
 
-.answer-helpfulbtn {
+.helpful {
   display: flex;
   justify-content: flex-end;
-    flex-direction: row;
+  flex-direction: row;
+  font-size: 16px;
+}
+
+span {
+  color: #a1b7d7;
+  font-size: 16px;
+}
+
+.helpful-click:hover {
+  color: #f1eee6;
+}
+.add-answer:hover {
+  color: #f1eee6;
+  margin-right: 200px;
+}
+.report:hover {
+  color: #cb906e;
 }

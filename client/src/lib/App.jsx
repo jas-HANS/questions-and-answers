@@ -1,7 +1,9 @@
+/* eslint-disable require-jsdoc */
 import React from 'react';
 import axios from 'axios';
 import {Container, Button, Jumbotron} from 'react-bootstrap';
 import QuestionList from '../components/QuestionList.jsx';
+// import SearchBar from '../components/QuestionList.jsx';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
@@ -9,48 +11,57 @@ class App extends React.Component {
     super(props);
     this.state = {
       qList: [],
-      allAsForOneQ: [],
+      // allAsForOneQ: [],
     };
     this.getProductQs = this.getProductQs.bind(this);
-    this.getAllAsForOneQ = this.getAllAsForOneQ.bind(this);
+    // this.getAllAsForOneQ = this.getAllAsForOneQ.bind(this);
   }
   componentDidMount() {
     this.getProductQs();
   };
 
   getProductQs() {
-    let id = 5;
+    const id = 5;
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
-      .then(res => {
-        this.setState({
-          qList: res.data.results,
-        }, () => console.log("getProductQs qList:", this.state.qList));
-      })
-      .catch(err => console.error(err))
+        .then((res) => {
+          this.setState({
+            qList: res.data.results,
+          }, () => console.log('getProductQs qList:', this.state.qList));
+        })
+        .catch((err) => console.error(err));
   }
 
-  getAllAsForOneQ() {
-    let id = 35556;
-    axios.get(`http://52.26.193.201:3000/qa/${id}/answers`)
-    .then(res => {
-      this.setState({
-        allAsForOneQ: res.data,
-      }, () => console.log("in getOneA:", this.state.allAsForOneQ));
-    })
-    .catch(err => console.error(err))
-  };
-  //helpful? selectively target the answer that was rated.
+  // getAllAsForOneQ() {
+  //   const id = 35556;
+  //   axios.get(`http://52.26.193.201:3000/qa/${id}/answers`)
+  //       .then((res) => {
+  //         this.setState({
+  //           allAsForOneQ: res.data,
+  //         });
+  //       })
+  //       .catch((err) => console.error(err));
+  // };
+  // helpful? selectively target the answer that was rated.
 
   render() {
-    let { qList, allAsForOneQ } = this.state;
+    const {qList} = this.state;
     return (
       <div id="body">
-            <Container>
-        <h1 id="header">Questions and Answers</h1>
+        <Container>
+          <h1 id="header">Questions and Answers</h1>
           <Jumbotron className="jumbotron">
+            <div>
+              <input
+                type="text"
+                placeholder="Have a question? Search for answers..."
+                value={''}
+                onChange={''}
+              />
+            </div>
+            <br></br>
             <QuestionList
               qList={qList}
-              allAsForOneQ={allAsForOneQ}
+              // allAsForOneQ={allAsForOneQ}
             />
           </Jumbotron>
           <div>
