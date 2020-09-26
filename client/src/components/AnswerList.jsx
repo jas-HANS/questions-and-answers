@@ -5,20 +5,18 @@ import {Col, Row, Container} from 'react-bootstrap';
 const AnswerList = ({answers}) => {
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-
   const mappedList = answers.map((answer, i) => {
-    let newDate;
     const d = new Date(answer.date);
     const year = d.getUTCFullYear();
     const monthId = d.getUTCMonth();
     let month = months[monthId];
     const day = d.getUTCDate();
     month = month.slice(0, 3);
-    newDate = `${month} ${day}, ${year}`;
+    const newDate = `${month} ${day}, ${year}`;
 
     return (
-     <Container className="answer-list">
-        A: {answer.body}
+      <Container className="answer-list">
+         A: {answer.body}
         <Row className="answer-n-d">
           <Col>
             by: {answer.answerer_name}

@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Container, Row, Col, Button, Jumbotron } from 'react-bootstrap';
+import {Container, Button, Jumbotron} from 'react-bootstrap';
 import QuestionList from '../components/QuestionList.jsx';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -44,23 +44,23 @@ class App extends React.Component {
   render() {
     let { qList, allAsForOneQ } = this.state;
     return (
-    <div id="body">
-      <Container>
-      <h1 id="header">Questions and Answers</h1>
-        <Jumbotron className="jumbotron">
-          <QuestionList
-           qList={qList}
-           allAsForOneQ={allAsForOneQ}
-          />
-        </Jumbotron>
-        <div>
-          <Button variant="dark" size="sm">MORE ANSWERED QUESTIONS</Button>
-          <Button variant="dark" size="sm">ADD A QUESTION</Button>
-        </div>
-      </Container>
-    </div>
+      <div id="body">
+            <Container>
+        <h1 id="header">Questions and Answers</h1>
+          <Jumbotron className="jumbotron">
+            <QuestionList
+              qList={qList}
+              allAsForOneQ={allAsForOneQ}
+            />
+          </Jumbotron>
+          <div>
+            <Button variant="dark" size="sm">MORE ANSWERED QUESTIONS</Button>
+            <Button variant="dark" size="sm">ADD A QUESTION</Button>
+          </div>
+        </Container>
+      </div>
     );
-  }
-  }
+  };
+};
 
 export default App;

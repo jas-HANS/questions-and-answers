@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Container, Accordion, Card, Button, Row, Col } from 'react-bootstrap';
+import {Accordion, Card, Button, Row, Col} from 'react-bootstrap';
 import AnswerList from './AnswerList.jsx';
 import HelpfulBtn from './HelpfulBtn.jsx';
 
 const Question = ({question}) => {
-
   return (
     <div className="question">
       <Row>
@@ -16,10 +15,10 @@ const Question = ({question}) => {
 
       <Row>
         <Col>
-        <AnswerList
+          <AnswerList
           //array of answers of x Q
-          answers={Object.values(question.answers)}
-        />
+            answers={Object.values(question.answers)}
+          />
         </Col>
       </Row>
 

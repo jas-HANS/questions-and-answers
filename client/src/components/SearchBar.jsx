@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 
 const SearchBar = (props) => {
-
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
   // const [questions, setQuestions] = useState([]);
