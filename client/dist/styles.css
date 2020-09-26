@@ -11,7 +11,7 @@ h1, h2, h3, h4, h5 {
 }
 
 h1, h2 {
-  color: #658DC6;
+  color: #658dc6;
 }
 
 h3, h4, h5 {
@@ -32,6 +32,19 @@ h3, h4, h5 {
   font-size: 25px;
 }
 
-.answerDiv {
+.question {
   justify-content: flex-end;
+  color: #f1eee6;
+  font-family: 'Crimson Text', serif;
+}
+
+.answer-n-d {
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: flex-start
+}
+
+.answer-helpfulbtn {
+  display: flex;
+  justify-content: flex-end
 }

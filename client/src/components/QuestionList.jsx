@@ -6,11 +6,11 @@ const QuestionList = ({qList}) => {
     question={quest}
     key={i}/>);
 
-    return (
-      <div className="questionList">
-        {mappedList}
-      </div>
-    );
-}
+  return (
+    <div className="question-list">
+      {mappedList}
+    </div>
+  );
+};
 
 export default QuestionList;
