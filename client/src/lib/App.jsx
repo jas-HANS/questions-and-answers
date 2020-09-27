@@ -49,6 +49,7 @@ class App extends React.Component {
     return (
       <div id="body">
         <Container>
+          <br></br>
           <h1 id="header">Questions and Answers</h1>
           <Jumbotron className="jumbotron">
             <div>

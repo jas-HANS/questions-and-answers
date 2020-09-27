@@ -25,13 +25,13 @@ const AnswerList = ({answers}) => {
         <Row className="comment-data">by:
           <Col>{`${answer.answerer_name} ${'  '} ${newDate}`}</Col>
           <Col md="auto" id="answer-btn">
-            <HelpfulBtn id="answer-btn"/>
+            <HelpfulBtn id="answer-btn-1"/>
             <Alert.Link
               className="report"
               variant="dark"
               size="sm"
               onClick={() => setReport(!report)}
-            >{report && 'Report'}{!report && 'Reported'}
+            >{report && ' Report'}{!report && ' Reported'}
             </Alert.Link>
           </Col>
         </Row>
