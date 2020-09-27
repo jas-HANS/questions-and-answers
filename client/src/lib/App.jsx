@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable require-jsdoc */
 import React from 'react';
 import axios from 'axios';
@@ -64,8 +65,8 @@ class App extends React.Component {
             />
           </Jumbotron>
           <div>
-            <Button variant="dark" size="sm">MORE ANSWERED QUESTIONS</Button>
-            <Button variant="dark" size="sm">ADD A QUESTION</Button>
+            <Button variant="secondary" size="sm">MORE ANSWERED QUESTIONS</Button>
+            <Button variant="secondary" size="sm">ADD A QUESTION</Button>
           </div>
         </Container>
       </div>

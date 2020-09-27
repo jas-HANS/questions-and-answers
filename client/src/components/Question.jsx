@@ -6,10 +6,10 @@ import HelpfulBtn from './HelpfulBtn.jsx';
 const Question = ({question}) => {
   return (
     <div>
-      <Row className="question">
-        <Col>Q: {question.question_body}</Col>
-        <Col md="auto">
-          <HelpfulBtn/>
+      <Row className="question">Q:
+        <Col>{question.question_body}</Col>
+        <Col md="auto" id="question-data">
+          <HelpfulBtn id="question-btn"/>
           <Alert.Link
             className="add-answer"
             variant="dark"

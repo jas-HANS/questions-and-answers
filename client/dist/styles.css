@@ -13,11 +13,6 @@ h1, h2, h3, h4, h5 {
 h1, h2 {
   color: #0f4c81;
   display: flex;
-  justify-content: center;
-}
-
-h3, h4, h5 {
-  color: #658dc6;;
 }
 
 .jumbotron {
@@ -25,10 +20,6 @@ h3, h4, h5 {
   /* border: 1px solid #658dc6; */
   /* height: 75vh; */
   border-radius: 12px;
-}
-
-.jumbotron-h1 {
-  color: #f1eee6;
 }
 
 .jumbotron-p {
@@ -60,40 +51,56 @@ h3, h4, h5 {
   color: #373838;
   font-weight: 540;
   padding: 1%;
-  margin-left: 6%;
+  margin-left: 4%;
 }
-
-.answer-n-d {
+#answer-btn {
   display: flex;
-  /* flex-direction: row; */
-  justify-content: flex-start;
-  font-size: 14px;
-  color: #658dc6;
-}
-
-.helpful {
-  display: flex;
+  border-radius: 8px;
   justify-content: flex-end;
-  flex-direction: row;
-  font-size: 16px;
-  /* color:#aec0da; */
+  font-family: 'Crimson Text', serif;
+  padding-right: 2%;
+  margin-right: 2%;
 }
 
-span {
-  color:  #7199d0;
+/* #question-data {
+  color: #B5C7D3;
+  font-size: 14px;
+} */
+/* #question-btn {
+  color: #B5C7D3;
+  font-size: 14px;
+}
+#question-btn:hover {
+  color: #f1eee6;
   font-size: 15px;
+} */
+.helpful-click {
+  color: #B5C7D3;
 }
-
 .helpful-click:hover {
   color: #f1eee6;
 }
 .add-answer {
+  color: #B5C7D3;
   padding-right: 10px;
+  font-size: 14px;
 }
 .add-answer:hover {
   color: #f1eee6;
+  font-size: 14px;
 }
+/* .comment-data {
+  color: #525151;
+} */
 
+span {
+  color:  #B5C7D3;
+  font-size: 14px;
+}
+/* .helpful-click:hover {
+  color: #f1eee6;
+} */
 .report {
   color: #c25252;
+  font-size: 14px;
 }

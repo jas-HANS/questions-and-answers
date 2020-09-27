@@ -18,34 +18,28 @@ const AnswerList = ({answers}) => {
     const [report, setReport] = useState(true);
 
     return (
-      <Container key={i} className="answer-list">
-        <Row> A: {answer.body}</Row>
-        <Row s={1} md={4} lg={6}className="answer-n-d">
-          <Col>
-            by: {answer.answerer_name}
-          </Col>
-          <Col>
-            {newDate}
-          </Col>
-          <Col id="report">
-            <HelpfulBtn />
-          </Col>
-          <Col>
+      <div key={i} className="answer-list">
+        <Row>A:
+          <Col>{answer.body}</Col>
+        </Row>
+        <Row className="comment-data">by:
+          <Col>{`${answer.answerer_name} ${'  '} ${newDate}`}</Col>
+          <Col md="auto" id="answer-btn">
+            <HelpfulBtn id="answer-btn"/>
             <Alert.Link
               className="report"
               variant="dark"
               size="sm"
               onClick={() => setReport(!report)}
-            >
-              {report && 'Report'}
-              {!report && 'Reported'}
+            >{report && 'Report'}{!report && 'Reported'}
             </Alert.Link>
           </Col>
         </Row>
-      </Container>
-
+      </div>
     );
   });
+
+  const [load, setLoad] = useState(true);
 
   return (
     <div>
@@ -63,8 +57,10 @@ const AnswerList = ({answers}) => {
         <Accordion.Toggle
           as={Button}
           variant="link"
-          eventKey="0">
-          LOAD MORE ANSWERS
+          eventKey="0"
+          onClick={() => setLoad(!load)}
+        >
+          {load && 'LOAD MORE ANSWERS'}{!load && 'COLLAPSE ANSWERS'}
         </Accordion.Toggle>
       </Accordion> : mappedList}
     </div>
