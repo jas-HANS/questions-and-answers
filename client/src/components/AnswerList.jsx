@@ -19,7 +19,7 @@ const AnswerList = ({answers}) => {
 
     return (
       <Container key={i} className="answer-list">
-         A: {answer.body}
+        <Row> A: {answer.body}</Row>
         <Row s={1} md={4} lg={6}className="answer-n-d">
           <Col>
             by: {answer.answerer_name}
@@ -29,14 +29,16 @@ const AnswerList = ({answers}) => {
           </Col>
           <Col id="report">
             <HelpfulBtn />
+          </Col>
+          <Col>
             <Alert.Link
               className="report"
               variant="dark"
               size="sm"
               onClick={() => setReport(!report)}
-            ><Col>{report && 'Report'}
-                {!report && 'Reported'}
-              </Col>
+            >
+              {report && 'Report'}
+              {!report && 'Reported'}
             </Alert.Link>
           </Col>
         </Row>

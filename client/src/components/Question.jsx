@@ -5,8 +5,8 @@ import HelpfulBtn from './HelpfulBtn.jsx';
 
 const Question = ({question}) => {
   return (
-    <div className="question">
-      <Row>
+    <div>
+      <Row className="question">
         <Col>Q: {question.question_body}</Col>
         <Col md="auto">
           <HelpfulBtn/>
@@ -19,7 +19,6 @@ const Question = ({question}) => {
           </Alert.Link>
         </Col>
       </Row>
-      <br></br>
 
       <Row>
         <Col>
