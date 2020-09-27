@@ -21,6 +21,7 @@ h3, h4, h5 {
 .jumbotron {
   background-color: #0f4c81;
   border: 1px solid #658dc6;
+  height: 80vh;
 }
 
 .jumbotron-h1 {
@@ -30,6 +31,11 @@ h3, h4, h5 {
 .jumbotron-p {
   color: #B5C7D3;
   font-size: 25px;
+}
+
+.question-list {
+  height: 55vh;
+  overflow-y: scroll;
 }
 
 .question {
@@ -43,7 +49,8 @@ h3, h4, h5 {
   display: flex;
   /* flex-direction: row; */
   justify-content: flex-start;
-  font-size: 16px;
+  font-size: 15px;
+  color: #a1b7d7;
 }
 
 .helpful {
@@ -51,6 +58,7 @@ h3, h4, h5 {
   justify-content: flex-end;
   flex-direction: row;
   font-size: 16px;
+  color: #a1b7d7;
 }
 
 span {

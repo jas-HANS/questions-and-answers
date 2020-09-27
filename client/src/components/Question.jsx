@@ -19,6 +19,7 @@ const Question = ({question}) => {
           </Alert.Link>
         </Col>
       </Row>
+      <br></br>
 
       <Row>
         <Col>
