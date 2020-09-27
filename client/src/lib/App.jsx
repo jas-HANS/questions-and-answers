@@ -21,7 +21,7 @@ class App extends React.Component {
   };
 
   getProductQs() {
-    const id = 5;
+    const id = Math.floor(Math.random() * 1000);
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
         .then((res) => {
           this.setState({
@@ -52,10 +52,9 @@ class App extends React.Component {
           <Jumbotron className="jumbotron">
             <div>
               <input
+                className="search"
                 type="text"
                 placeholder="Have a question? Search for answers..."
-                value={''}
-                onChange={''}
               />
             </div>
             <br></br>

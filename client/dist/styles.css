@@ -36,7 +36,7 @@ h3, h4, h5 {
   justify-content: flex-end;
   color: #f1eee6;
   font-family: 'Crimson Text', serif;
-  font-size: 18px;
+  font-size: 19px;
 }
 
 .answer-n-d {
@@ -61,10 +61,13 @@ span {
 .helpful-click:hover {
   color: #f1eee6;
 }
+.add-answer {
+  padding-right: 10px;
+}
 .add-answer:hover {
   color: #f1eee6;
-  margin-right: 200px;
 }
-.report:hover {
-  color: #cb906e;
+
+.report {
+  color: #c25252;
 }

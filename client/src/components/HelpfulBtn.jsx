@@ -1,10 +1,8 @@
-
 import React, {useState} from 'react';
 import {Alert} from 'react-bootstrap';
 
-const HelpfulBtn = (props) => {
+const HelpfulBtn = () => {
   // Declare a new state variable, called "count"
-
   const [count, setCount] = useState(0);
 
   return (
@@ -22,3 +20,4 @@ const HelpfulBtn = (props) => {
 };
 
 export default HelpfulBtn;
+// props.question.answers.helpfulness

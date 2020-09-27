@@ -1,11 +1,10 @@
 // import axios from 'axios';
 
 // gets all Qs for one product
-// const getProductQs = (cb) => {
-//   let id = 5;
+// const getProductQs = (cb, id = Math.floor(Math.random() * 1000)) => {
 //   axios.get(`http://52.26.193.201:3000/qa/${id}`)
-//   .then(data => cb(null, data))
-//   .catch(err => cb(err, null))
+//       .then((data) => cb(null, data))
+//       .catch((err) => cb(err, null));
 // };
 
 // returns all answers for one question
@@ -63,4 +62,4 @@
 //   .catch(err => cb(err, null))
 // }
 
-// export default { getProductQs, getOneQsAs };
+export {getProductQs};

@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, {useState} from 'react';
 import HelpfulBtn from './HelpfulBtn.jsx';
-import {Alert, Col, Row, Container} from 'react-bootstrap';
+import {Accordion, Alert, Button, Card, Col, Row, Container} from 'react-bootstrap';
 
 const AnswerList = ({answers}) => {
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -15,10 +15,12 @@ const AnswerList = ({answers}) => {
     month = month.slice(0, 3);
     const newDate = `${month} ${day}, ${year}`;
 
+    const [report, setReport] = useState(true);
+
     return (
       <Container key={i} className="answer-list">
          A: {answer.body}
-        <Row s={1} md={6} lg={6}className="answer-n-d">
+        <Row s={1} md={4} lg={6}className="answer-n-d">
           <Col>
             by: {answer.answerer_name}
           </Col>
@@ -31,8 +33,10 @@ const AnswerList = ({answers}) => {
               className="report"
               variant="dark"
               size="sm"
-              //  onClick={() => setCount(count + 1)}
-            >Report
+              onClick={() => setReport(!report)}
+            ><Col>{report && 'Report'}
+                {!report && 'Reported'}
+              </Col>
             </Alert.Link>
           </Col>
         </Row>
@@ -43,7 +47,24 @@ const AnswerList = ({answers}) => {
 
   return (
     <div>
-      {mappedList}
+      {mappedList.slice(0, 2)}
+      {mappedList.length > 2 ?
+      <Accordion>
+        <Accordion.Collapse
+          eventKey="0">
+          <Card.Body>
+            <Row>
+              {mappedList.slice(2)}
+            </Row>
+          </Card.Body>
+        </Accordion.Collapse>
+        <Accordion.Toggle
+          as={Button}
+          variant="link"
+          eventKey="0">
+          LOAD MORE ANSWERS
+        </Accordion.Toggle>
+      </Accordion> : mappedList}
     </div>
   );
 };
