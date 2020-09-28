@@ -4,11 +4,14 @@ import {Accordion, Button} from 'react-bootstrap';
 import Question from './Question';
 
 // eslint-disable-next-line react/prop-types
-const QuestionList = ({qList}) => {
+const QuestionList = ({qList, isHelpfulQ, isHelpfulA}) => {
   // eslint-disable-next-line react/prop-types
   const mappedList = qList.map((quest, i) => <Question
     question={quest}
-    key={i}/>);
+    key={i}
+    isHelpfulQ={isHelpfulQ}
+    isHelpfulA={isHelpfulA}
+  />);
 
   const [load, setLoad] = useState(true);
 
@@ -34,11 +37,11 @@ const QuestionList = ({qList}) => {
           </Accordion.Toggle>
         </Accordion>}
         {mappedList.length < 1 &&
-        <Button variant="secondary" size="sm">ADD A QUESTION</Button>}
+        <Button id="addq-btn-solo" variant="secondary" size="lg">ADD A QUESTION</Button>}
       </div>
       <div>
         {mappedList.length > 0 &&
-      <><br></br><Button variant="secondary" size="sm">ADD A QUESTION</Button>
+      <><br></br><Button id="addq-btn"variant="secondary" size="sm">ADD A QUESTION</Button>
       </>}
       </div>
     </div>
