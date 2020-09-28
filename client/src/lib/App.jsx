@@ -4,7 +4,7 @@ import React from 'react';
 import axios from 'axios';
 import {Container, Button, Jumbotron} from 'react-bootstrap';
 import QuestionList from '../components/QuestionList.jsx';
-// import SearchBar from '../components/QuestionList.jsx';
+// import {getProductQs, addOneQ, addOneA} from './routes.js';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
@@ -12,10 +12,10 @@ class App extends React.Component {
     super(props);
     this.state = {
       qList: [],
-      // allAsForOneQ: [],
     };
     this.getProductQs = this.getProductQs.bind(this);
-    // this.getAllAsForOneQ = this.getAllAsForOneQ.bind(this);
+    this.isHelpfulQ = this.isHelpfulQ.bind(this);
+    this.isHelpfulA = this.isHelpfulA.bind(this);
   }
   componentDidMount() {
     this.getProductQs();
@@ -23,6 +23,7 @@ class App extends React.Component {
 
   getProductQs() {
     const id = Math.floor(Math.random() * 1000);
+    // const id = 6;
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
         .then((res) => {
           this.setState({
@@ -32,17 +33,19 @@ class App extends React.Component {
         .catch((err) => console.error(err));
   }
 
-  // getAllAsForOneQ() {
-  //   const id = 35556;
-  //   axios.get(`http://52.26.193.201:3000/qa/${id}/answers`)
-  //       .then((res) => {
-  //         this.setState({
-  //           allAsForOneQ: res.data,
-  //         });
-  //       })
-  //       .catch((err) => console.error(err));
-  // };
-  // helpful? selectively target the answer that was rated.
+  isHelpfulQ(questID) {
+    // put req
+    console.log('questionID:', questID);
+  }
+
+  isHelpfulA(answerID) {
+    console.log('answerID:', answerID);
+  }
+
+  reportAnswer(answerID) {
+    // to individual ans (isHA)
+    console.log('reportANSW:', answerID);
+  }
 
   render() {
     const {qList} = this.state;
@@ -53,15 +56,12 @@ class App extends React.Component {
           <h1 id="header">Questions and Answers</h1>
           <Jumbotron className="jumbotron">
             <div>
-              <input
-                className="search"
-                type="text"
-                placeholder="Have a question? Search for answers..."
-              />
             </div>
             <br></br>
             <QuestionList
               qList={qList}
+              isHelpfulQ={this.isHelpfulQ}
+              isHelpfulA={this.isHelpfulA}
             />
           </Jumbotron>
         </Container>
