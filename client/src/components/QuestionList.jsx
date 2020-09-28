@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React from 'react';
-import {Accordion, Button, Card, Row} from 'react-bootstrap';
+import {Accordion, Button} from 'react-bootstrap';
 import Question from './Question';
 
 // eslint-disable-next-line react/prop-types
@@ -14,7 +14,7 @@ const QuestionList = ({qList}) => {
     <div>
       <div className="question-list">
         {mappedList.slice(0, 4)}
-        {mappedList.length > 4 ?
+        {mappedList.length > 4 &&
         <Accordion>
           <Accordion.Collapse
             eventKey="0">
@@ -28,7 +28,7 @@ const QuestionList = ({qList}) => {
             eventKey="0">
             LOAD MORE QUESTIONS
           </Accordion.Toggle>
-        </Accordion> : mappedList}
+        </Accordion>}
         {mappedList.length < 1 &&
         <Button variant="secondary" size="sm">ADD A QUESTION</Button>}
       </div>

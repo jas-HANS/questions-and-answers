@@ -12,7 +12,7 @@ const AnswerList = ({answers}) => {
   return (
     <div className="answer-list">
       {mappedList.slice(0, 2)}
-      {mappedList.length > 2 ?
+      {mappedList.length > 2 &&
         <Accordion>
           <Accordion.Collapse
             eventKey="0">
@@ -28,7 +28,7 @@ const AnswerList = ({answers}) => {
           >
             {load && 'LOAD MORE ANSWERS'}{!load && 'COLLAPSE ANSWERS'}
           </Accordion.Toggle>
-        </Accordion> : mappedList}
+        </Accordion>}
     </div>
   );
 

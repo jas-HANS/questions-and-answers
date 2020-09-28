@@ -30,7 +30,7 @@ const Answer = ({answer}) => {
             variant="dark"
             size="sm"
             onClick={() => setReport(!report)}
-          >{report && ' Report'}{!report && ' Reported'}
+          >{report && '  Report'}{!report && '  Reported'}
           </Alert.Link>
         </Col>
       </Row>
