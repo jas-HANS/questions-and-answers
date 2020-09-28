@@ -66,8 +66,8 @@ class App extends React.Component {
             />
           </Jumbotron>
           <div>
-            <Button variant="secondary" size="sm">MORE ANSWERED QUESTIONS</Button>
-            <Button variant="secondary" size="sm">ADD A QUESTION</Button>
+            {/* <Button variant="secondary" size="sm">MORE ANSWERED QUESTIONS</Button> */}
+            {/* <Button variant="secondary" size="sm">ADD A QUESTION</Button> */}
           </div>
         </Container>
       </div>

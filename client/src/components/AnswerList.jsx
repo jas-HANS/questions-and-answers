@@ -49,9 +49,7 @@ const AnswerList = ({answers}) => {
         <Accordion.Collapse
           eventKey="0">
           <Card.Body>
-            <Row>
-              {mappedList.slice(2)}
-            </Row>
+            {mappedList.slice(2)}
           </Card.Body>
         </Accordion.Collapse>
         <Accordion.Toggle

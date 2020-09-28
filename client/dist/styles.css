@@ -24,12 +24,6 @@ h1, h2 {
   align-content: center;
 }
 
-.jumbotron-p {
-  color: #B5C7D3;
-  font-size: 25px;
-  border-radius: 12px;
-}
-
 .question-list {
   height: 55vh;
   overflow: scroll;
@@ -47,13 +41,14 @@ h1, h2 {
   padding: 1%;
   margin: 1%;
 }
+
 .answer-list {
   background-color: #f1eee6;
   border-radius: 8px;
   color: #373838;
   font-weight: 540;
   padding: 1%;
-  margin-left: 4%;
+  margin-left: 3%;
 }
 #answer-btn {
   display: flex;
@@ -91,9 +86,7 @@ span {
   color:  #B5C7D3;
   font-size: 14px;
 }
-/* .helpful-click:hover {
-  color: #f1eee6;
-} */
+
 .report {
   color: #a02f2f;
   font-size: 14px;
