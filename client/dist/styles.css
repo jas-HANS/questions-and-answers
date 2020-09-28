@@ -58,24 +58,24 @@ h1, h2 {
   padding-right: 2%;
   margin-right: 2%;
 }
-#answer-btn-1 {
-  color: #0f4c81;
-}
+
 
 .helpful-click {
   color: #B5C7D3;
+  font-size: 15px;
 }
 .helpful-click:hover {
   color: #f1eee6;
+  font-size: 15px;
 }
 .add-answer {
   color: #B5C7D3;
   padding-right: 10px;
-  font-size: 14px;
+  font-size: 15px;
 }
 .add-answer:hover {
   color: #f1eee6;
-  font-size: 14px;
+  font-size: 15px;
 }
 .comment-data {
   color: #6c6c6c;
@@ -84,7 +84,7 @@ h1, h2 {
 
 span {
   color:  #B5C7D3;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .report {

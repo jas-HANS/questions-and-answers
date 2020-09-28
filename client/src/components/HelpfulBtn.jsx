@@ -1,9 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Alert} from 'react-bootstrap';
 
-const HelpfulBtn = () => {
+const HelpfulBtn = (props) => {
   // Declare a new state variable, called "count"
   const [count, setCount] = useState(0);
+
+  // useEffect(() => {
+  //   setCount(`{question.answers.${num}.helpfulness}`);
+  // }, ['']);
 
   return (
     <span>Helpful? {' '}

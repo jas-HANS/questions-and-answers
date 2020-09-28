@@ -18,9 +18,9 @@ const QuestionList = ({qList}) => {
         <Accordion>
           <Accordion.Collapse
             eventKey="0">
-            <Card.Body>
+            <div>
               {mappedList.slice(4)}
-            </Card.Body>
+            </div>
           </Accordion.Collapse>
           <Accordion.Toggle
             as={Button}

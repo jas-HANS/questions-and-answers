@@ -23,7 +23,7 @@ const Question = ({question}) => {
       <Row>
         <Col>
           <AnswerList
-          // array of answers of x Q
+          // array of answers
             answers={Object.values(question.answers)}
           />
         </Col>

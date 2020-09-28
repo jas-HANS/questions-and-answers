@@ -62,13 +62,8 @@ class App extends React.Component {
             <br></br>
             <QuestionList
               qList={qList}
-              // allAsForOneQ={allAsForOneQ}
             />
           </Jumbotron>
-          <div>
-            {/* <Button variant="secondary" size="sm">MORE ANSWERED QUESTIONS</Button> */}
-            {/* <Button variant="secondary" size="sm">ADD A QUESTION</Button> */}
-          </div>
         </Container>
       </div>
     );
