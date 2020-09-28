@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, {useState} from 'react';
 import {Accordion, Button} from 'react-bootstrap';
 import Question from './Question';
 
@@ -9,6 +9,8 @@ const QuestionList = ({qList}) => {
   const mappedList = qList.map((quest, i) => <Question
     question={quest}
     key={i}/>);
+
+  const [load, setLoad] = useState(true);
 
   return (
     <div>
@@ -25,8 +27,10 @@ const QuestionList = ({qList}) => {
           <Accordion.Toggle
             as={Button}
             variant="link"
-            eventKey="0">
-            LOAD MORE QUESTIONS
+            eventKey="0"
+            onClick={() => setLoad(!load)}
+          >
+            {load && 'LOAD MORE QUESTIONS'}{!load && 'COLLAPSE QUESTIONS'}
           </Accordion.Toggle>
         </Accordion>}
         {mappedList.length < 1 &&
