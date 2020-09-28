@@ -1,12 +1,16 @@
+/* eslint-disable max-len */
 import React, {useState, useEffect} from 'react';
 import {Alert} from 'react-bootstrap';
+// import {qIsHelpful} from './routes.js';
 
-const HelpfulBtn = (props) => {
-  // Declare a new state variable, called "count"
-  const [count, setCount] = useState(0);
+const HelpfulBtn = ({clickFunc, id, currentCount}) => {
+  // increase count to sort by helpfulness
+  const [count, setCount] = useState(currentCount);
+  // toggle clickability. clicked? change state
+  // const [clicked, setClicked] = useState(true);
 
   // useEffect(() => {
-  //   setCount(`{question.answers.${num}.helpfulness}`);
+  //   setCount();
   // }, ['']);
 
   return (
@@ -15,9 +19,13 @@ const HelpfulBtn = (props) => {
         className="helpful-click"
         variant="dark"
         size="sm"
-        onClick={() => setCount(count + 1)}
+        onClick={(e) => {
+          e.preventDefault();
+          setCount(count + 1);
+          clickFunc(id);
+        }}
       >
-      Yes{`(${count}) `}
+    Yes{`(${count}) `}
       </Alert.Link>
     </span>
   );

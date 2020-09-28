@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
-import React, {useState} from 'react';
-import {Row, Col, Alert} from 'react-bootstrap';
+import React, {useState, useRef} from 'react';
+import {Row, Col} from 'react-bootstrap';
 import HelpfulBtn from './HelpfulBtn.jsx';
 
-const Answer = ({answer}) => {
+const Answer = ({answer, isHelpfulA}) => {
   // eslint-disable-next-line max-len
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const d = new Date(answer.date);
@@ -16,6 +16,8 @@ const Answer = ({answer}) => {
   const newDate = `${month} ${day}, ${year}`;
   const [report, setReport] = useState(true);
 
+  // const [active, setActive] = useState(true);
+  // useeffect for reported
 
   return (
     <div>
@@ -24,17 +26,23 @@ const Answer = ({answer}) => {
       </Row>
       <Row className="comment-data">by:
         {answer.answerer_name === 'Seller' ?
-        <Col id="seller"> {`${answer.answerer_name.toUpperCase()} ${'  '} ${newDate}`}</Col> : <Col>{`${answer.answerer_name} ${'  '} ${newDate}`}</Col>
+        <Col id="seller">
+          {`${answer.answerer_name.toUpperCase()} ${'  '} ${newDate}`}</Col> : <Col>{`${answer.answerer_name} ${'  '} ${newDate}`}
+          </Col>
         }
         <Col md="auto" id="answer-btn">
-          <HelpfulBtn id="answer-btn-1"/>
-          <Alert.Link
+          <HelpfulBtn
+            id={answer.id}
+            clickFunc={isHelpfulA}
+            currentCount={answer.helpfulness}
+          />
+          <div
             className="report"
             variant="dark"
             size="sm"
             onClick={() => setReport(!report)}
           >{report && '  Report'}{!report && '  Reported'}
-          </Alert.Link>
+          </div>
         </Col>
       </Row>
     </div>
