@@ -37,14 +37,6 @@ const qIsHelpful = (cb) => {
 //       .catch((err) => cb(err, null));
 // };
 
-// returns all answers for one question
-// const getOneQsAs = (cb) => {
-//   let id = 5;
-//   axios.get(`http://52.26.193.201:3000/qa/${id}/answers`)
-//   .then(data => cb(null, data))
-//   .catch(err => cb(err, null))
-// };
-
 // // mark an answer as helpful
 // const aIsHelful = (cb) => {
 //   axios.put(`http://52.26.193.201:3000/qa/answer/${id}/helpful`)

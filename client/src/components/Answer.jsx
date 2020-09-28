@@ -15,7 +15,6 @@ const Answer = ({answer, isHelpfulA}) => {
   month = month.slice(0, 3);
   const newDate = `${month} ${day}, ${year}`;
   const [report, setReport] = useState(true);
-
   // const [active, setActive] = useState(true);
   // useeffect for reported
 

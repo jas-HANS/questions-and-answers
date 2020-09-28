@@ -8,7 +8,6 @@ const HelpfulBtn = ({clickFunc, id, currentCount}) => {
   const [count, setCount] = useState(currentCount);
   // toggle clickability. clicked? change state
   // const [clicked, setClicked] = useState(true);
-
   // useEffect(() => {
   //   setCount();
   // }, ['']);

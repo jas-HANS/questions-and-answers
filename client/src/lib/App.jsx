@@ -43,7 +43,7 @@ class App extends React.Component {
   }
 
   reportAnswer(answerID) {
-    // to individual ans (isHA)
+    // to individual answ (isHelpfulA)
     console.log('reportANSW:', answerID);
   }
 

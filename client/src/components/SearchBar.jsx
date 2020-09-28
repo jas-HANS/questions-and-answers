@@ -8,8 +8,6 @@ const SearchBar = (props) => {
   //   setSearch(e.target.value);
   // };
 
-  // get the questions from the api
-
   // useEffect to call the get questions function when the component mounts.
   // useEffect(() => {
   //   getData();
@@ -36,9 +34,3 @@ export default SearchBar;
 //   //   return () => {};
 //   // });
 
-//   return (
-//     <li style={{ color: isOnline ? 'green' : 'black' }}>
-//       {props.friend.name}
-//     </li>
-//   );
-// }

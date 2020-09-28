@@ -9,7 +9,7 @@ const AnswerList = ({answers, isHelpfulA}) => {
     key={i}
     isHelpfulA={isHelpfulA}/>);
   // <Answer/>.indexOf('seller') ? <Answer/>[0]
-  // if answer === Seller, it is index
+  // if answer === Seller, assign it to [0]
   // mappedList.indexOf('seller') > -1 && [0]
 
   const [load, setLoad] = useState(true);

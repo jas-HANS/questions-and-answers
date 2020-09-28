@@ -17,7 +17,7 @@ const Question = ({question, isHelpfulA, isHelpfulQ}) => {
             className="add-answer"
             variant="dark"
             size="sm"
-          //  onClick={() => setCount(count + 1)}
+          //  onClick={()=>setCount(count + 1)}
           >Add Answer
           </Alert.Link>
         </Col>
