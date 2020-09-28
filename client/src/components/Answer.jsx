@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, {useState} from 'react';
 import {Row, Col, Alert} from 'react-bootstrap';
 import HelpfulBtn from './HelpfulBtn.jsx';
@@ -22,7 +23,9 @@ const Answer = ({answer}) => {
         <Col>{answer.body}</Col>
       </Row>
       <Row className="comment-data">by:
-        <Col>{`${answer.answerer_name} ${'  '} ${newDate}`}</Col>
+        {answer.answerer_name === 'Seller' ?
+        <Col id="seller"> {`${answer.answerer_name.toUpperCase()} ${'  '} ${newDate}`}</Col> : <Col>{`${answer.answerer_name} ${'  '} ${newDate}`}</Col>
+        }
         <Col md="auto" id="answer-btn">
           <HelpfulBtn id="answer-btn-1"/>
           <Alert.Link
