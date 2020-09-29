@@ -1,35 +1,77 @@
+/* eslint-disable require-jsdoc */
 import React from 'react';
-import { Container, Row, Col, Button, Jumbotron } from 'react-bootstrap';
-import Question from '../components/Question.jsx';
+import axios from 'axios';
+import {Container, Button, Jumbotron} from 'react-bootstrap';
+import QuestionList from '../components/QuestionList.jsx';
+// import SearchBar from '../components/QuestionList.jsx';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App = () => (
-  <div>
-    <Row>
-      <Col xs={0} sm={2} />
-      <Col xs={12} sm={8} className="test"></Col>
-      <Col xs={0} sm={2} />
-    </Row>
-    <Container>
-    <h1 id="header">Questions and Answers</h1>
-      <Jumbotron>
-        <h1>Hello, world!</h1>
-        <p>
-          This is a simple hero unit, a simple jumbotron-style component for calling
-          extra attention to featured content or information.
-        </p>
-        <p>
-          <Button variant="primary">Learn more</Button>
-        </p>
-      </Jumbotron>
-      <Question/>
-    </Container>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      qList: [],
+      // allAsForOneQ: [],
+    };
+    this.getProductQs = this.getProductQs.bind(this);
+    // this.getAllAsForOneQ = this.getAllAsForOneQ.bind(this);
+  }
+  componentDidMount() {
+    this.getProductQs();
+  };
 
-    <div id ="searchbar"></div>
-    <div id="qabox"></div>
-    <div id="more-answers"></div>
-    <div id="addq"></div>
-  </div>
-);
+  getProductQs() {
+    const id = 5;
+    axios.get(`http://52.26.193.201:3000/qa/${id}`)
+        .then((res) => {
+          this.setState({
+            qList: res.data.results,
+          }, () => console.log('getProductQs qList:', this.state.qList));
+        })
+        .catch((err) => console.error(err));
+  }
+
+  // getAllAsForOneQ() {
+  //   const id = 35556;
+  //   axios.get(`http://52.26.193.201:3000/qa/${id}/answers`)
+  //       .then((res) => {
+  //         this.setState({
+  //           allAsForOneQ: res.data,
+  //         });
+  //       })
+  //       .catch((err) => console.error(err));
+  // };
+  // helpful? selectively target the answer that was rated.
+
+  render() {
+    const {qList} = this.state;
+    return (
+      <div id="body">
+        <Container>
+          <h1 id="header">Questions and Answers</h1>
+          <Jumbotron className="jumbotron">
+            <div>
+              <input
+                type="text"
+                placeholder="Have a question? Search for answers..."
+                value={''}
+                onChange={''}
+              />
+            </div>
+            <br></br>
+            <QuestionList
+              qList={qList}
+              // allAsForOneQ={allAsForOneQ}
+            />
+          </Jumbotron>
+          <div>
+            <Button variant="dark" size="sm">MORE ANSWERED QUESTIONS</Button>
+            <Button variant="dark" size="sm">ADD A QUESTION</Button>
+          </div>
+        </Container>
+      </div>
+    );
+  };
+};
 
 export default App;
