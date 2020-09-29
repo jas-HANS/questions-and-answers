@@ -4,7 +4,6 @@ import {Alert} from 'react-bootstrap';
 // import {qIsHelpful} from './routes.js';
 
 const HelpfulBtn = ({clickFunc, id, currentCount}) => {
-  // increase count & sort by helpfulness
   const [count, setCount] = useState(currentCount);
   const [disabled, setDisabled] = useState(false);
 
@@ -13,6 +12,11 @@ const HelpfulBtn = ({clickFunc, id, currentCount}) => {
     setDisabled(!disabled);
   };
 
+  // const handleXtraClick = () => {
+  //   setCount(count - 1);
+  //   setDisabled(!disabled);
+  // };
+
   return (
     <span>Helpful? {' '}
       <Alert.Link
@@ -20,7 +24,9 @@ const HelpfulBtn = ({clickFunc, id, currentCount}) => {
         disabled={disabled}
         onClick={(e) => {
           e.preventDefault();
-          clickFunc(id); handleClick();
+          clickFunc(id);
+          handleClick();
+          // handleXtraClick();
         }}
       >Yes{`(${count}) `}
       </Alert.Link>

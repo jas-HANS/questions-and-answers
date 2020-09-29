@@ -4,6 +4,7 @@ import React from 'react';
 import axios from 'axios';
 import {Container, Button, Jumbotron} from 'react-bootstrap';
 import QuestionList from '../components/QuestionList.jsx';
+import SearchBar from '../components/SearchBar.jsx';
 // import {getProductQs, addOneQ, addOneA} from './routes.js';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -22,8 +23,8 @@ class App extends React.Component {
   };
 
   getProductQs() {
-    // const id = Math.floor(Math.random() * 1000);
-    const id = 4;
+    const id = Math.floor(Math.random() * 1000);
+    // const id = 6;
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
         .then((res) => {
           this.setState({
@@ -54,7 +55,7 @@ class App extends React.Component {
   }
 
   reportAnswer(answerID) {
-    // to individual answ (isHelpfulA)
+    // pass to individual answer (isHelpfulA)
     console.log('reportANSW:', answerID);
   }
 
@@ -64,8 +65,11 @@ class App extends React.Component {
       <div id="body">
         <Container>
           <br></br>
-          <h1 id="header">Questions and Answers</h1>
-          <Jumbotron className="jumbotron">
+
+          <div className="jumbotron">
+            <h1 id="header">Questions and Answers</h1>
+            <br></br>
+            <SearchBar />
             <div>
             </div>
             <br></br>
@@ -74,7 +78,7 @@ class App extends React.Component {
               isHelpfulQ={this.isHelpfulQ}
               isHelpfulA={this.isHelpfulA}
             />
-          </Jumbotron>
+          </div>
         </Container>
       </div>
     );

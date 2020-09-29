@@ -26,7 +26,7 @@ const Answer = ({answer, isHelpfulA}) => {
   };
 
   return (
-    <div>
+    <div className="one-answer">
       <Row>A:
         <Col>{answer.body}</Col>
       </Row>
