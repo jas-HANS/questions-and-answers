@@ -23,7 +23,7 @@ class App extends React.Component {
 
   getProductQs() {
     // const id = Math.floor(Math.random() * 1000);
-    const id = 6;
+    const id = 5;
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
         .then((res) => {
           this.setState({

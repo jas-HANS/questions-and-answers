@@ -6,39 +6,26 @@ import {Alert} from 'react-bootstrap';
 const HelpfulBtn = ({clickFunc, id, currentCount}) => {
   // increase count to sort by helpfulness
   const [count, setCount] = useState(currentCount);
-  // toggle clickability. clicked? change state
-  // const [clicked, setClicked] = useState(true);
-  // useEffect(() => {
-  //   setCount();
-  // }, ['']);
-  const btnRef = useRef();
+  const [disabled, setDisabled] = useState(false);
 
-  const onBtnClick = (e) => {
-    if (btnRef.current) {
-      btnRef.current.setAttribute('disabled', 'disabled');
-      setCount(false);
-    }
+  const handleClick = () => {
+    setCount(count + 1);
+    setDisabled(!disabled);
   };
 
   return (
     <span>Helpful? {' '}
       <Alert.Link
         className="helpful-click"
-        // variant="dark"
-        // size="sm"
+        disabled={disabled}
         onClick={(e) => {
           e.preventDefault();
-          setCount(count + 1);
-          clickFunc(id);
-          {onBtnClick;};
+          clickFunc(id); handleClick();
         }}
-        ref={btnRef}
-      >
-    Yes{`(${count}) `}
+      >Yes{`(${count}) `}
       </Alert.Link>
     </span>
   );
 };
 
 export default HelpfulBtn;
-// props.question.answers.helpfulness

@@ -47,7 +47,8 @@ const Answer = ({answer, isHelpfulA}) => {
             className="report"
             variant="dark"
             size="sm"
-            ref={btnRef} onClick={onBtnClick}
+            ref={btnRef}
+            onClick={onBtnClick}
           >{report && '  Report'}{!report && '  Reported'}
           </div>
         </Col>
