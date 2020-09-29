@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, {useState, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {Row, Col} from 'react-bootstrap';
 import HelpfulBtn from './HelpfulBtn.jsx';
 
@@ -15,8 +15,16 @@ const Answer = ({answer, isHelpfulA}) => {
   month = month.slice(0, 3);
   const newDate = `${month} ${day}, ${year}`;
   const [report, setReport] = useState(true);
-  // const [active, setActive] = useState(true);
   // useeffect for reported
+  // const [active, setActive] = useEffect(true);
+  let btnRef = useRef();
+
+  const onBtnClick = (e) => {
+    if (btnRef.current) {
+      btnRef.current.setAttribute('disabled', 'disabled');
+      setReport(false);
+    }
+  };
 
   return (
     <div>
@@ -25,11 +33,11 @@ const Answer = ({answer, isHelpfulA}) => {
       </Row>
       <Row className="comment-data">by:
         {answer.answerer_name === 'Seller' ?
-        <Col id="seller">
+        <Col className="seller">
           {`${answer.answerer_name.toUpperCase()} ${'  '} ${newDate}`}</Col> : <Col>{`${answer.answerer_name} ${'  '} ${newDate}`}
           </Col>
         }
-        <Col md="auto" id="answer-btn">
+        <Col md="auto" className="answer-btn">
           <HelpfulBtn
             id={answer.id}
             clickFunc={isHelpfulA}
@@ -39,7 +47,7 @@ const Answer = ({answer, isHelpfulA}) => {
             className="report"
             variant="dark"
             size="sm"
-            onClick={() => setReport(!report)}
+            ref={btnRef} onClick={onBtnClick}
           >{report && '  Report'}{!report && '  Reported'}
           </div>
         </Col>
