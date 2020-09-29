@@ -22,8 +22,8 @@ class App extends React.Component {
   };
 
   getProductQs() {
-    // const id = Math.floor(Math.random() * 1000);
-    const id = 5;
+    const id = Math.floor(Math.random() * 1000);
+    // const id = 5;
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
         .then((res) => {
           this.setState({
@@ -34,7 +34,6 @@ class App extends React.Component {
   }
 
   isHelpfulQ(questID) {
-    // put req
     axios.put(`http://52.26.193.201:3000/qa/question/${questID}/helpful`)
         .then((res) => {
           this.setState({

@@ -1,10 +1,10 @@
 /* eslint-disable max-len */
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState} from 'react';
 import {Alert} from 'react-bootstrap';
 // import {qIsHelpful} from './routes.js';
 
 const HelpfulBtn = ({clickFunc, id, currentCount}) => {
-  // increase count to sort by helpfulness
+  // increase count & sort by helpfulness
   const [count, setCount] = useState(currentCount);
   const [disabled, setDisabled] = useState(false);
 
