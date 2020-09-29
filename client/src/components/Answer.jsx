@@ -17,7 +17,7 @@ const Answer = ({answer, isHelpfulA}) => {
   const [report, setReport] = useState(true);
   // useeffect for reported
   // const [active, setActive] = useEffect(true);
-  let btnRef = useRef();
+  const btnRef = useRef();
 
   const onBtnClick = (e) => {
     if (btnRef.current) {
