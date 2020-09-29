@@ -6,7 +6,7 @@ body {
 h1, h2 {
   color: #0f4c81;
   display: flex;
-  margin-left: 4.5%;
+  margin-left: 2%;
   font-family: 'Kumbh Sans', sans-serif;
 }
 
@@ -35,13 +35,24 @@ h1, h2 {
   margin: 1%;
 }
 
+.one-answer {
+  margin-top: 1px;
+}
+
 .answer-list {
   background-color: #f1eee6;
   border-radius: 8px;
   color: #373838;
   font-weight: 540;
+  font-size: 16px;
   padding: 1%;
   margin-left: 3%;
+}
+
+.accordion-toggle {
+  margin-left: 1%;
+  margin-top: 2%;
+  cursor: pointer;
 }
 
 #addq-btn {
@@ -75,19 +86,17 @@ h1, h2 {
 }
 .answer-btn {
   display: flex;
-  border-radius: 8px;
+  border-radius: 5px;
   justify-content: flex-end;
   font-family: 'Crimson Text', serif;
   padding-right: 1%;
   margin-right: 2%;
-  background-color:#676565;
+  background-color: #6c6c6c;
 }
 
 span {
   color:  #B5C7D3;
   font-size: 15px;
-  /* border-style: 5px;
-  margin-bottom: 2%; */
 }
 
 .report {
