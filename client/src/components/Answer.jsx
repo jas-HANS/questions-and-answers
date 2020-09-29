@@ -14,9 +14,8 @@ const Answer = ({answer, isHelpfulA}) => {
   const day = d.getUTCDate();
   month = month.slice(0, 3);
   const newDate = `${month} ${day}, ${year}`;
+
   const [report, setReport] = useState(true);
-  // useeffect for reported
-  // const [active, setActive] = useEffect(true);
   const btnRef = useRef();
 
   const onBtnClick = (e) => {

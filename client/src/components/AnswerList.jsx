@@ -4,18 +4,21 @@ import Answer from './Answer.jsx';
 import {Accordion, Button} from 'react-bootstrap';
 
 const AnswerList = ({answers, isHelpfulA}) => {
-  const mappedList = answers.map((answer, i) => <Answer
+  const sortedList = answers.sort((a, b) => b.helpfulness - a.helpfulness);
+  const mappedList = sortedList.map((answer, i) => <Answer
     answer={answer}
     key={i}
     isHelpfulA={isHelpfulA}/>);
-  // <Answer/>.indexOf('seller') ? <Answer/>[0]
-  // if answer === Seller, assign it to [0]
+
+  // if answer.answerer_name === 'SELLER', assign it to mappedList[0]
+  // mappedList.indexOf('seller') ? mappedList[0] =
   // mappedList.indexOf('seller') > -1 && [0]
 
   const [load, setLoad] = useState(true);
 
   return (
     <div className="answer-list">
+      {console.log('mappedlist:', mappedList)}
       {mappedList.slice(0, 2)}
       {mappedList.length > 2 &&
         <Accordion>
