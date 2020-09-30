@@ -26,7 +26,6 @@ const AnswerList = ({answers, isHelpfulA}) => {
 
   return (
     <div className="answer-list">
-      {/* {console.log('mappedlist', mappedList[0].props)} */}
       {mappedList.slice(0, 2)}
       {mappedList.length > 2 &&
         <Accordion>
@@ -51,4 +50,3 @@ const AnswerList = ({answers, isHelpfulA}) => {
 };
 
 export default AnswerList;
-// answer component? take in props.answer
