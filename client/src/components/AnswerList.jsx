@@ -4,12 +4,18 @@ import Answer from './Answer.jsx';
 import {Accordion, Button, Card} from 'react-bootstrap';
 
 const AnswerList = ({answers, isHelpfulA}) => {
-  const sortedList = answers.sort((a, b) => b.helpfulness - a.helpfulness);
-  // const isSeller = answers.filter((e) => {return e.answerer_name});
-  // console.log('isseller', isSeller);
-  // if answer.answerer_name === 'SELLER', assign it to mappedList[0]
-  // mappedList.indexOf('seller') ? mappedList[0] =
-  // mappedList.indexOf('seller') > -1 && [0]
+  // const isSeller = answers.filter((person) => person.answerer_name === 'SELLER' || person.answerer_name === 'Seller');
+  // .map((filteredPerson) => (
+  //   {filteredPerson}
+  // ));
+  // console.log('seller:', isSeller);
+
+  const sortedList = answers.sort((a, b) => {
+    if (b.answerer_name === 'SELLER' || b.answerer_name === 'Seller') {
+      return 1;
+    }
+    return b.helpfulness - a.helpfulness;
+  });
 
   const mappedList = sortedList.map((answer, i) => <Answer
     answer={answer}
@@ -20,8 +26,7 @@ const AnswerList = ({answers, isHelpfulA}) => {
 
   return (
     <div className="answer-list">
-      {/* {isSeller.length && mappedList[0] === isSeller} */}
-      {console.log('ml', mappedList)}
+      {console.log('mappedlist', mappedList[0].props)}
       {mappedList.slice(0, 2)}
       {mappedList.length > 2 &&
         <Accordion>
