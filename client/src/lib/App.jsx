@@ -13,6 +13,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       qList: [],
+      searchInput: '',
     };
     this.getProductQs = this.getProductQs.bind(this);
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
@@ -23,8 +24,8 @@ class App extends React.Component {
   };
 
   getProductQs() {
-    const id = Math.floor(Math.random() * 1000);
-    // const id = 6;
+    // const id = Math.floor(Math.random() * 1000);
+    const id = 6;
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
         .then((res) => {
           this.setState({
@@ -37,8 +38,7 @@ class App extends React.Component {
   isHelpfulQ(questID) {
     axios.put(`http://52.26.193.201:3000/qa/question/${questID}/helpful`)
         .then((res) => {
-          this.setState({
-          });
+          this.setState({});
         })
         .catch((err) => console.error(err));
     console.log('questionID:', questID);
@@ -47,8 +47,7 @@ class App extends React.Component {
   isHelpfulA(answerID) {
     axios.put(`http://52.26.193.201:3000/qa/answer/${answerID}/helpful`)
         .then((res) => {
-          this.setState({
-          });
+          this.setState({});
         })
         .catch((err) => console.error(err));
     console.log('answerID:', answerID);
@@ -60,7 +59,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {qList} = this.state;
+    const {qList, searchInput} = this.state;
     return (
       <div id="body">
         <Container>
@@ -69,7 +68,8 @@ class App extends React.Component {
           <div className="jumbotron">
             <h1 id="header">Questions and Answers</h1>
             <br></br>
-            <SearchBar />
+            <SearchBar
+              searchInput={searchInput}/>
             <div>
             </div>
             <br></br>
