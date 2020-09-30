@@ -5,19 +5,18 @@ import axios from 'axios';
 import {Container, Button, Jumbotron} from 'react-bootstrap';
 import QuestionList from '../components/QuestionList.jsx';
 import SearchBar from '../components/SearchBar.jsx';
-// import {getProductQs, addOneQ, addOneA} from './routes.js';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       qList: [],
-      searchInput: '',
+      // searchInput: '',
     };
     this.getProductQs = this.getProductQs.bind(this);
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
+    // this.searchHandler = this.searchHandler.bind(this);
   }
   componentDidMount() {
     this.getProductQs();
@@ -58,6 +57,15 @@ class App extends React.Component {
     console.log('reportANSW:', answerID);
   }
 
+  // TBD: app or use hooks for searchbar
+  // searchHandler(e) {
+  //   this.setState({searchInput: e.target.value.toLowerCase()});
+  // // also set the state to searchInput === list item?
+  // }
+  // let questionSearcher = (question)=>question.question_body.toLowerCase().includes(this.state.searchInput.toLowerCase());
+  // let filteredList = this.state.qList.filter(questionSearcher);
+  // this.setState({qList: filteredList}
+
   render() {
     const {qList, searchInput} = this.state;
     return (
@@ -69,7 +77,9 @@ class App extends React.Component {
             <h1 id="header">Questions and Answers</h1>
             <br></br>
             <SearchBar
-              searchInput={searchInput}/>
+              // searchInput={searchInput}
+              // handleSearchChange={this.handleSearchChange}
+              qList={qList}/>
             <div>
             </div>
             <br></br>

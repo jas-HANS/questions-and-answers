@@ -1,20 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Form, Row, Col, Container} from 'react-bootstrap';
-import AnswerList from './AnswerList.jsx';
+// import Question from './Question';
+import QuestionList from './QuestionList';
 
-//   // const [] = useState(null);
-// useEffect(() => {
-//   function handleStatusChange(status) {}
-//   return () => {};
-// });
+// search the list of questions, in hopes of finding your answer
+const SearchBar = ({qList}) => {
+  console.log('qList:', qList);
 
-const SearchBar = (props) => {
   const [search, setSearch] = useState('');
-
-  // const filteredItems = items.filter((item) =>
-  //   item.body.toLowerCase().includes(search));
-
-  // const itemsToDisplay = filterText ? filteredItems : items;
+  // const [searchResults, setSearchResults] = useState([]);
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value.toLowerCase());
+  };
+  // useEffect(() => {
+  //   const results = qList.filter((q) =>
+  //     q.question_body.toLowerCase().includes(search),
+  //   );
+  //   setSearchResults(results);
+  // }, [search]);
+  const results = !search ? qList : qList.filter((q) =>
+    q.question_body.toLowerCase().includes(search.toLowerCase()),
+  );
 
   return (
     <Container>
@@ -24,23 +30,19 @@ const SearchBar = (props) => {
           placeholder="Have a question? Search for answers..."
           rows="2"
           value={search}
-          onChange={(e) => setSearch(e.target.value.toLowerCase())}
+          onChange={handleSearchChange}
         />
-        {/* {!filteredItems.length && (
+        {/* {!searchResults.length && (
           <div>There are no answers that match your criteria</div>
         )} */}
-        {/* {itemsToDisplay.map((item) => (
-          // map over individual answers?
+        {results.map((item) => (
+          // map over individual answer/question?
           <div key={item.title}>
-            <Row>A:
-              <Col>{answer.body}</Col>
-            </Row>
-            <Row className="comment-data">by:
-              <Col>{`${answer.answerer_name} ${'  '} ${newDate}`}
-              </Col>
+            <Row>Q:
+              <Col>{item.question_body}</Col>
             </Row>
           </div>
-        ))} */}
+        ))}
       </Form.Group>
     </Container>
   );
