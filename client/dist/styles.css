@@ -1,70 +1,111 @@
 body {
   background-color: #f1eee6;
-}
-
-body, p, a {
   font-family: 'Crimson Text', serif;
-}
-
-h1, h2, h3, h4, h5 {
-  font-family: 'Kumbh Sans', sans-serif;
 }
 
 h1, h2 {
-  color: #658dc6;
-}
-
-h3, h4, h5 {
   color: #0f4c81;
+  display: flex;
+  margin-left: 2%;
+  font-family: 'Kumbh Sans', sans-serif;
 }
 
 .jumbotron {
-  background-color: #0f4c81;
-  border: 1px solid #658dc6;
+  background-color: #f1eee6;
+  /* border: 1px solid #658dc6; */
+  height: 60vh;
+  border-radius: 12px;
 }
 
-.jumbotron-h1 {
-  color: #f1eee6;
-}
-
-.jumbotron-p {
-  color: #B5C7D3;
-  font-size: 25px;
+.question-list {
+  height: 55vh;
+  overflow: scroll;
+  border-radius: 12px;
 }
 
 .question {
+  display: flex;
+  border-radius: 8px;
   justify-content: flex-end;
+  background-color: #373838;
   color: #f1eee6;
   font-family: 'Crimson Text', serif;
   font-size: 18px;
+  padding: 1%;
+  margin: 1%;
 }
 
-.answer-n-d {
-  display: flex;
-  /* flex-direction: row; */
-  justify-content: flex-start;
+.one-answer {
+  margin-top: 1px;
+}
+
+.answer-list {
+  background-color: #f1eee6;
+  border-radius: 8px;
+  color: #373838;
+  font-weight: 540;
   font-size: 16px;
+  padding: 1%;
+  margin-left: 3%;
 }
 
-.helpful {
+.accordion-toggle {
+  margin-left: 1%;
+  margin-top: 2%;
+  cursor: pointer;
+}
+
+#addq-btn {
+  margin-left: 2%;
+}
+#addq-btn-solo{
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.helpful-click {
+  color: #B5C7D3;
+  font-size: 15px;
+}
+.helpful-click:hover {
+  color: #f1eee6;
+  font-size: 15px;
+}
+.add-answer {
+  color: #B5C7D3;
+  padding-right: 10px;
+  font-size: 15px;
+}
+.add-answer:hover, .report:hover {
+  color: #f1eee6;
+  font-size: 15px;
+}
+.comment-data {
+  color: #6c6c6c;
+  font-size: 13px;
+}
+.answer-btn {
   display: flex;
+  border-radius: 5px;
   justify-content: flex-end;
-  flex-direction: row;
-  font-size: 16px;
+  font-family: 'Crimson Text', serif;
+  padding-right: 1%;
+  margin-right: 2%;
+  background-color: #6c6c6c;
 }
 
 span {
-  color: #a1b7d7;
-  font-size: 16px;
+  color:  #B5C7D3;
+  font-size: 15px;
 }
 
-.helpful-click:hover {
-  color: #f1eee6;
+.report {
+  color: #d54b4b;
+  font-size: 15px;
+  margin-left: 2px;
+  cursor: pointer;
 }
-.add-answer:hover {
-  color: #f1eee6;
-  margin-right: 200px;
-}
-.report:hover {
-  color: #cb906e;
+
+.seller {
+  font-weight: bolder;
 }

@@ -1,53 +1,54 @@
 /* eslint-disable max-len */
-import React from 'react';
-import HelpfulBtn from './HelpfulBtn.jsx';
-import {Alert, Col, Row, Container} from 'react-bootstrap';
+import React, {useState} from 'react';
+import Answer from './Answer.jsx';
+import {Accordion, Button, Card} from 'react-bootstrap';
 
-const AnswerList = ({answers}) => {
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const AnswerList = ({answers, isHelpfulA}) => {
+  // const isSeller = answers.filter((person) => person.answerer_name === 'SELLER' || person.answerer_name === 'Seller');
+  // .map((filteredPerson) => (
+  //   {filteredPerson}
+  // ));
+  // console.log('seller:', isSeller);
 
-  const mappedList = answers.map((answer, i) => {
-    const d = new Date(answer.date);
-    const year = d.getUTCFullYear();
-    const monthId = d.getUTCMonth();
-    let month = months[monthId];
-    const day = d.getUTCDate();
-    month = month.slice(0, 3);
-    const newDate = `${month} ${day}, ${year}`;
-
-    return (
-      <Container key={i} className="answer-list">
-         A: {answer.body}
-        <Row s={1} md={6} lg={6}className="answer-n-d">
-          <Col>
-            by: {answer.answerer_name}
-          </Col>
-          <Col>
-            {newDate}
-          </Col>
-          <Col id="report">
-            <HelpfulBtn />
-            <Alert.Link
-              className="report"
-              variant="dark"
-              size="sm"
-              //  onClick={() => setCount(count + 1)}
-            >Report
-            </Alert.Link>
-          </Col>
-        </Row>
-      </Container>
-
-    );
+  const sortedList = answers.sort((a, b) => {
+    if (b.answerer_name === 'SELLER' || b.answerer_name === 'Seller') {
+      return 1;
+    }
+    return b.helpfulness - a.helpfulness;
   });
 
+  const mappedList = sortedList.map((answer, i) => <Answer
+    answer={answer}
+    key={i}
+    isHelpfulA={isHelpfulA}/>);
+
+  const [load, setLoad] = useState(true);
+
   return (
-    <div>
-      {mappedList}
+    <div className="answer-list">
+      {console.log('mappedlist', mappedList[0].props)}
+      {mappedList.slice(0, 2)}
+      {mappedList.length > 2 &&
+        <Accordion>
+          <Accordion.Collapse
+            eventKey="0">
+            <div>
+              {mappedList.slice(2)}
+            </div>
+          </Accordion.Collapse>
+          <Accordion.Toggle
+            className="accordion-toggle"
+            as={Card.Header}
+            variant="link"
+            eventKey="0"
+            onClick={() => setLoad(!load)}
+          >
+            {load && 'LOAD MORE ANSWERS'}{!load && 'COLLAPSE ANSWERS'}
+          </Accordion.Toggle>
+        </Accordion>}
     </div>
   );
 };
 
 export default AnswerList;
-
 // answer component? take in props.answer

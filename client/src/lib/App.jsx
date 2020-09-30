@@ -1,9 +1,11 @@
+/* eslint-disable max-len */
 /* eslint-disable require-jsdoc */
 import React from 'react';
 import axios from 'axios';
 import {Container, Button, Jumbotron} from 'react-bootstrap';
 import QuestionList from '../components/QuestionList.jsx';
-// import SearchBar from '../components/QuestionList.jsx';
+import SearchBar from '../components/SearchBar.jsx';
+// import {getProductQs, addOneQ, addOneA} from './routes.js';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
@@ -11,17 +13,18 @@ class App extends React.Component {
     super(props);
     this.state = {
       qList: [],
-      // allAsForOneQ: [],
     };
     this.getProductQs = this.getProductQs.bind(this);
-    // this.getAllAsForOneQ = this.getAllAsForOneQ.bind(this);
+    this.isHelpfulQ = this.isHelpfulQ.bind(this);
+    this.isHelpfulA = this.isHelpfulA.bind(this);
   }
   componentDidMount() {
     this.getProductQs();
   };
 
   getProductQs() {
-    const id = 5;
+    const id = Math.floor(Math.random() * 1000);
+    // const id = 6;
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
         .then((res) => {
           this.setState({
@@ -31,42 +34,50 @@ class App extends React.Component {
         .catch((err) => console.error(err));
   }
 
-  // getAllAsForOneQ() {
-  //   const id = 35556;
-  //   axios.get(`http://52.26.193.201:3000/qa/${id}/answers`)
-  //       .then((res) => {
-  //         this.setState({
-  //           allAsForOneQ: res.data,
-  //         });
-  //       })
-  //       .catch((err) => console.error(err));
-  // };
-  // helpful? selectively target the answer that was rated.
+  isHelpfulQ(questID) {
+    axios.put(`http://52.26.193.201:3000/qa/question/${questID}/helpful`)
+        .then((res) => {
+          this.setState({
+          });
+        })
+        .catch((err) => console.error(err));
+    console.log('questionID:', questID);
+  }
+
+  isHelpfulA(answerID) {
+    axios.put(`http://52.26.193.201:3000/qa/answer/${answerID}/helpful`)
+        .then((res) => {
+          this.setState({
+          });
+        })
+        .catch((err) => console.error(err));
+    console.log('answerID:', answerID);
+  }
+
+  reportAnswer(answerID) {
+    // pass to individual answer (isHelpfulA)
+    console.log('reportANSW:', answerID);
+  }
 
   render() {
     const {qList} = this.state;
     return (
       <div id="body">
         <Container>
-          <h1 id="header">Questions and Answers</h1>
-          <Jumbotron className="jumbotron">
+          <br></br>
+
+          <div className="jumbotron">
+            <h1 id="header">Questions and Answers</h1>
+            <br></br>
+            <SearchBar />
             <div>
-              <input
-                type="text"
-                placeholder="Have a question? Search for answers..."
-                value={''}
-                onChange={''}
-              />
             </div>
             <br></br>
             <QuestionList
               qList={qList}
-              // allAsForOneQ={allAsForOneQ}
+              isHelpfulQ={this.isHelpfulQ}
+              isHelpfulA={this.isHelpfulA}
             />
-          </Jumbotron>
-          <div>
-            <Button variant="dark" size="sm">MORE ANSWERED QUESTIONS</Button>
-            <Button variant="dark" size="sm">ADD A QUESTION</Button>
           </div>
         </Container>
       </div>
