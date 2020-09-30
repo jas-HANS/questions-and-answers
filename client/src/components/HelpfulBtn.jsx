@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import React, {useState} from 'react';
 import {Alert} from 'react-bootstrap';
-// import {qIsHelpful} from './routes.js';
 
 const HelpfulBtn = ({clickFunc, id, currentCount}) => {
   const [count, setCount] = useState(currentCount);
