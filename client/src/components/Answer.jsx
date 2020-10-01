@@ -2,7 +2,7 @@
 import React, {useState, useRef} from 'react';
 import {Row, Col, Figure, Modal} from 'react-bootstrap';
 import HelpfulBtn from './HelpfulBtn.jsx';
-// import AnswerPhoto from './AnswerPhoto.jsx';
+import AnswerPhoto from './AnswerPhoto.jsx';
 
 const Answer = ({answer, isHelpfulA}) => {
   // eslint-disable-next-line max-len
@@ -25,44 +25,6 @@ const Answer = ({answer, isHelpfulA}) => {
       setReport(false);
     }
   };
-
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-
-  const [clicked, setClick] = useState('');
-  const handleShow = (url) => {
-    setClick(url);
-    setShow(true);
-  };
-
-  const mappedPhotos = answer.photos.length ? answer.photos.map((photo, i) =>
-    <div key={i}>
-      <Figure>
-        <Figure.Image
-          width={100}
-          height={100}
-          style={{padding: '4px', borderRadius: '8px', cursor: 'pointer'}}
-          alt="user img of product"
-          src={photo}
-          onClick={() => handleShow(photo)}
-        />
-        <Modal
-          show={show}
-          onHide={handleClose}
-          src={clicked}
-          style={{marginBottom: '0px', backgroundColor: 'transparent'}}
-        >
-          <Figure.Image
-            width={500}
-            height={400}
-            style={{padding: '4px', borderRadius: '8px', cursor: 'pointer'}}
-            alt="user img of product"
-            src={clicked}
-            onClick={() => handleClose()}
-          />
-        </Modal>
-      </Figure>
-    </div> ) : '';
 
   return (
     <div className="one-answer">
@@ -93,8 +55,9 @@ const Answer = ({answer, isHelpfulA}) => {
         </Col>
       </Row>
       <Row>
-        {mappedPhotos}
-        {/* <AnswerPhoto/> */}
+        <AnswerPhoto
+          answer={answer}
+        />
       </Row>
     </div>
   );

@@ -1,9 +1,17 @@
 import React, {useState} from 'react';
-import {Figure} from 'react-bootstrap';
+import {Figure, Modal, Row} from 'react-bootstrap';
 
-const AnswerPhoto = ({answers}) => {
-  // eslint-disable-next-line max-len
-  const mappedPhotos = answers.answer.photos.length ? answer.photos.map((photo, i) =>
+const AnswerPhoto = ({answer}) => {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+
+  const [clicked, setClick] = useState('');
+  const handleShow = (url) => {
+    setClick(url);
+    setShow(true);
+  };
+
+  const mappedPhotos = answer.photos.length ? answer.photos.map((photo, i) =>
     <div key={i}>
       <Figure>
         <Figure.Image
@@ -12,15 +20,31 @@ const AnswerPhoto = ({answers}) => {
           style={{padding: '4px', borderRadius: '8px', cursor: 'pointer'}}
           alt="user img of product"
           src={photo}
+          onClick={() => handleShow(photo)}
         />
+        <Modal
+          centered
+          show={show}
+          onHide={handleClose}
+          src={clicked}
+        >
+          <Figure.Image
+            width={500}
+            height={400}
+            // eslint-disable-next-line max-len
+            style={{padding: '4px', borderRadius: '8px', cursor: 'pointer', marginBottom: '0px', border: '10px solid blue !important'}}
+            alt="user img of product"
+            src={clicked}
+            onClick={() => handleClose()}
+          />
+        </Modal>
       </Figure>
-      <br></br>
     </div> ) : '';
 
   return (
-    <div>
+    <Row>
       {mappedPhotos}
-    </div>
+    </Row>
   );
 };
 
