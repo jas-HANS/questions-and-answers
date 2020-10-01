@@ -31,11 +31,13 @@ const Answer = ({answer, isHelpfulA}) => {
         <Figure.Image
           width={100}
           height={100}
+          style={{padding: '4px', borderRadius: '8px', cursor: 'pointer'}}
           alt="user img of product"
           src={photo}
         />
       </Figure>
-    </div>) : '';
+      <br></br>
+    </div> ) : '';
 
   return (
     <div className="one-answer">
@@ -66,7 +68,7 @@ const Answer = ({answer, isHelpfulA}) => {
         </Col>
       </Row>
       <Row>
-        {mappedPhotos}
+        {mappedPhotos }
       </Row>
     </div>
   );

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, {useState} from 'react';
-import {Accordion, Button} from 'react-bootstrap';
+import {Accordion, Button, Card} from 'react-bootstrap';
 import Question from './Question';
 
 // eslint-disable-next-line react/prop-types
@@ -27,7 +27,8 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA}) => {
             </div>
           </Accordion.Collapse>
           <Accordion.Toggle
-            as={Button}
+            as={Card.Header}
+            style={{margin: '10px'}}
             variant="link"
             eventKey="0"
             onClick={() => setLoad(!load)}
@@ -35,6 +36,7 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA}) => {
             {load && 'LOAD MORE QUESTIONS'}{!load && 'COLLAPSE QUESTIONS'}
           </Accordion.Toggle>
         </Accordion>}
+
         {mappedList.length < 1 &&
         <Button id="addq-btn-solo" variant="secondary" size="lg">ADD A QUESTION</Button>}
       </div>
@@ -44,7 +46,6 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA}) => {
       </>}
       </div>
     </div>
-
   );
 };
 
