@@ -11,20 +11,20 @@ class App extends React.Component {
     super(props);
     this.state = {
       qList: [],
-      // searchInput: '',
+      searchInput: '',
     };
     this.getProductQs = this.getProductQs.bind(this);
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
-    // this.searchHandler = this.searchHandler.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
   componentDidMount() {
     this.getProductQs();
   };
 
   getProductQs() {
-    // const id = Math.floor(Math.random() * 1000);
-    const id = 6;
+    const id = Math.floor(Math.random() * 1000);
+    // const id = 6;
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
         .then((res) => {
           this.setState({
@@ -57,34 +57,30 @@ class App extends React.Component {
     console.log('reportANSW:', answerID);
   }
 
-  // TBD: app or use hooks for searchbar
-  // searchHandler(e) {
-  //   this.setState({searchInput: e.target.value.toLowerCase()});
-  // // also set the state to searchInput === list item?
-  // }
-  // let questionSearcher = (question)=>question.question_body.toLowerCase().includes(this.state.searchInput.toLowerCase());
-  // let filteredList = this.state.qList.filter(questionSearcher);
-  // this.setState({qList: filteredList}
+  handleSearchChange(e) {
+    this.setState({searchInput: e.target.value});
+  }
 
   render() {
     const {qList, searchInput} = this.state;
+    const filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
     return (
       <div id="body">
         <Container>
           <br></br>
-
           <div className="jumbotron">
             <h1 id="header">Questions and Answers</h1>
             <br></br>
             <SearchBar
-              // searchInput={searchInput}
-              // handleSearchChange={this.handleSearchChange}
-              qList={qList}/>
+              qList={qList}
+              searchInput={searchInput}
+              handleSearchChange={this.handleSearchChange}
+            />
             <div>
             </div>
             <br></br>
             <QuestionList
-              qList={qList}
+              qList={filteredQuestions}
               isHelpfulQ={this.isHelpfulQ}
               isHelpfulA={this.isHelpfulA}
             />
