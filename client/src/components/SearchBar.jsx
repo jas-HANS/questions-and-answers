@@ -9,7 +9,7 @@ const SearchBar = ({searchInput, handleSearchChange}) => {
         <Form.Control
           as="textarea"
           placeholder="Have a question? Search for answers..."
-          rows="2"
+          rows="1"
           value={searchInput}
           onChange={handleSearchChange}
         />
