@@ -25,6 +25,18 @@ const Answer = ({answer, isHelpfulA}) => {
     }
   };
 
+  const mappedPhotos = answer.photos.length ? answer.photos.map((photo, i) =>
+    <div key={i}>
+      <Figure>
+        <Figure.Image
+          width={100}
+          height={100}
+          alt="user img of product"
+          src={photo}
+        />
+      </Figure>
+    </div>) : '';
+
   return (
     <div className="one-answer">
       <Row>A:
@@ -54,14 +66,7 @@ const Answer = ({answer, isHelpfulA}) => {
         </Col>
       </Row>
       <Row>
-        <Figure>
-          <Figure.Image
-            width={100}
-            height={100}
-            alt="user img of product"
-            src={answer.photos}
-          />
-        </Figure>
+        {mappedPhotos}
       </Row>
     </div>
   );
