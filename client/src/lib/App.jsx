@@ -2,6 +2,7 @@
 /* eslint-disable require-jsdoc */
 import React from 'react';
 import axios from 'axios';
+import query from './routes';
 import {Container} from 'react-bootstrap';
 import QuestionList from '../components/QuestionList.jsx';
 import SearchBar from '../components/SearchBar.jsx';
@@ -13,7 +14,6 @@ class App extends React.Component {
       qList: [],
       searchInput: '',
     };
-    this.getProductQs = this.getProductQs.bind(this);
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
@@ -23,15 +23,15 @@ class App extends React.Component {
   };
 
   getProductQs() {
-    // const id = 6;
-    const id = Math.floor(Math.random() * 1000);
-    axios.get(`http://52.26.193.201:3000/qa/${id}`)
-        .then((res) => {
-          this.setState({
-            qList: res.data.results,
-          }, () => console.log('getProductQs qList:', this.state.qList));
-        })
-        .catch((err) => console.error(err));
+    const id = 2;
+    // const id = Math.floor(Math.random() * 1000);
+    query.reqProductQs(id, (err, data) => {
+      if (err) {
+        throw err;
+      } else {
+        this.setState({qList: data.data.results});
+      }
+    });
   }
 
   isHelpfulQ(questID) {
@@ -41,6 +41,13 @@ class App extends React.Component {
         })
         .catch((err) => console.error(err));
     console.log('questionID:', questID);
+    // query.reqIsHelpfulQ(question, (err, data) => {
+    //   if (err) {
+    //     throw err;
+    //   } else {
+    //     this.setState({});
+    //   }
+    // });
   }
 
   isHelpfulA(answerID) {
@@ -50,6 +57,13 @@ class App extends React.Component {
         })
         .catch((err) => console.error(err));
     console.log('answerID:', answerID);
+    // query.reqIsHelpfulQ(question, (err, data) => {
+    //   if (err) {
+    //     throw err;
+    //   } else {
+    //     this.setState({});
+    //   }
+    // });
   }
 
   reportAnswer(answerID) {
