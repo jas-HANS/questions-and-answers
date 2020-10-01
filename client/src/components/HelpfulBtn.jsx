@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, {useState} from 'react';
 import {Alert} from 'react-bootstrap';
 
@@ -11,6 +10,8 @@ const HelpfulBtn = ({clickFunc, id, currentCount}) => {
     setDisabled(!disabled);
   };
 
+  // STRETCH GOAL, one click votes helpful,
+  // additional click removes helpful
   // const handleXtraClick = () => {
   //   setCount(count - 1);
   //   setDisabled(!disabled);
