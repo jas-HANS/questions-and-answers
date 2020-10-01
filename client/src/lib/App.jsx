@@ -58,7 +58,7 @@ class App extends React.Component {
   }
 
   handleSearchChange(e) {
-    this.setState({searchInput: e.target.value});
+    this.setState({searchInput: e.target.value.toLowerCase()});
   }
 
   render() {
