@@ -5,7 +5,6 @@ import Question from './Question';
 
 // eslint-disable-next-line react/prop-types
 const QuestionList = ({qList, isHelpfulQ, isHelpfulA}) => {
-  // console.log('qList in q:', qList);
   const mappedList = qList.map((quest, i) => <Question
     question={quest}
     key={i}
