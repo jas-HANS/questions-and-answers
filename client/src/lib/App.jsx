@@ -2,7 +2,7 @@
 /* eslint-disable require-jsdoc */
 import React from 'react';
 import axios from 'axios';
-import {Container, Button, Jumbotron} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 import QuestionList from '../components/QuestionList.jsx';
 import SearchBar from '../components/SearchBar.jsx';
 
@@ -23,8 +23,8 @@ class App extends React.Component {
   };
 
   getProductQs() {
-    const id = Math.floor(Math.random() * 1000);
     // const id = 6;
+    const id = Math.floor(Math.random() * 1000);
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
         .then((res) => {
           this.setState({
@@ -42,7 +42,6 @@ class App extends React.Component {
         .catch((err) => console.error(err));
     console.log('questionID:', questID);
   }
-
 
   isHelpfulA(answerID) {
     axios.put(`http://52.26.193.201:3000/qa/answer/${answerID}/helpful`)
@@ -64,7 +63,11 @@ class App extends React.Component {
 
   render() {
     const {qList, searchInput} = this.state;
-    const filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
+    // const filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
+    let filteredQuestions = qList;
+    if (searchInput.length >= 3) {
+      filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
+    }
     return (
       <div id="body">
         <Container>
@@ -73,7 +76,6 @@ class App extends React.Component {
             <h1 id="header">Questions and Answers</h1>
             <br></br>
             <SearchBar
-              qList={qList}
               searchInput={searchInput}
               handleSearchChange={this.handleSearchChange}
             />
