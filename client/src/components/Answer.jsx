@@ -54,8 +54,10 @@ const Answer = ({answer, isHelpfulA}) => {
           </div>
         </Col>
       </Row>
-      <Row>
+      <Row
+      >
         <AnswerPhoto
+          style={{marginRight: '20px'}}
           answer={answer}
         />
       </Row>

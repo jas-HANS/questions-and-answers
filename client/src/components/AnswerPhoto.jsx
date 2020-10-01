@@ -29,8 +29,8 @@ const AnswerPhoto = ({answer}) => {
           src={clicked}
         >
           <Figure.Image
-            width={500}
-            height={400}
+            // width={500}
+            // height={400}
             // eslint-disable-next-line max-len
             style={{padding: '4px', borderRadius: '8px', cursor: 'pointer', marginBottom: '0px', border: '10px solid blue !important'}}
             alt="user img of product"
@@ -42,7 +42,7 @@ const AnswerPhoto = ({answer}) => {
     </div> ) : '';
 
   return (
-    <Row>
+    <Row style={{padding: '12px'}}>
       {mappedPhotos}
     </Row>
   );
