@@ -10,6 +10,7 @@ const Question = ({question, isHelpfulA, isHelpfulQ}) => {
         <Col>{question.question_body}</Col>
         <Col md="auto">
           <HelpfulBtn
+            className="q-btn"
             id={question.question_id}
             currentCount={question.question_helpfulness}
             clickFunc={isHelpfulQ}/>
@@ -17,7 +18,7 @@ const Question = ({question, isHelpfulA, isHelpfulQ}) => {
             className="add-answer"
             variant="dark"
             size="sm"
-          //  onClick={()=>setCount(count + 1)}
+          //  onClick={()=>setAnswer()}
           >Add Answer
           </Alert.Link>
         </Col>

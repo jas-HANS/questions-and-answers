@@ -2,29 +2,29 @@
 /* eslint-disable require-jsdoc */
 import React from 'react';
 import axios from 'axios';
-import {Container, Button, Jumbotron} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 import QuestionList from '../components/QuestionList.jsx';
 import SearchBar from '../components/SearchBar.jsx';
-// import {getProductQs, addOneQ, addOneA} from './routes.js';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       qList: [],
+      searchInput: '',
     };
     this.getProductQs = this.getProductQs.bind(this);
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
   componentDidMount() {
     this.getProductQs();
   };
 
   getProductQs() {
-    const id = Math.floor(Math.random() * 1000);
     // const id = 6;
+    const id = Math.floor(Math.random() * 1000);
     axios.get(`http://52.26.193.201:3000/qa/${id}`)
         .then((res) => {
           this.setState({
@@ -37,8 +37,7 @@ class App extends React.Component {
   isHelpfulQ(questID) {
     axios.put(`http://52.26.193.201:3000/qa/question/${questID}/helpful`)
         .then((res) => {
-          this.setState({
-          });
+          this.setState({});
         })
         .catch((err) => console.error(err));
     console.log('questionID:', questID);
@@ -47,8 +46,7 @@ class App extends React.Component {
   isHelpfulA(answerID) {
     axios.put(`http://52.26.193.201:3000/qa/answer/${answerID}/helpful`)
         .then((res) => {
-          this.setState({
-          });
+          this.setState({});
         })
         .catch((err) => console.error(err));
     console.log('answerID:', answerID);
@@ -59,22 +57,33 @@ class App extends React.Component {
     console.log('reportANSW:', answerID);
   }
 
+  handleSearchChange(e) {
+    this.setState({searchInput: e.target.value.toLowerCase()});
+  }
+
   render() {
-    const {qList} = this.state;
+    const {qList, searchInput} = this.state;
+    // const filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
+    let filteredQuestions = qList;
+    if (searchInput.length >= 3) {
+      filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
+    }
     return (
       <div id="body">
         <Container>
           <br></br>
-
           <div className="jumbotron">
             <h1 id="header">Questions and Answers</h1>
             <br></br>
-            <SearchBar />
+            <SearchBar
+              searchInput={searchInput}
+              handleSearchChange={this.handleSearchChange}
+            />
             <div>
             </div>
             <br></br>
             <QuestionList
-              qList={qList}
+              qList={filteredQuestions}
               isHelpfulQ={this.isHelpfulQ}
               isHelpfulA={this.isHelpfulA}
             />

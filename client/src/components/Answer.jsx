@@ -38,6 +38,7 @@ const Answer = ({answer, isHelpfulA}) => {
         }
         <Col md="auto" className="answer-btn">
           <HelpfulBtn
+            className="a-btn"
             id={answer.id}
             clickFunc={isHelpfulA}
             currentCount={answer.helpfulness}
