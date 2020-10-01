@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, {useState, useEffect, useRef} from 'react';
-import {Row, Col} from 'react-bootstrap';
+import {Row, Col, Figure} from 'react-bootstrap';
 import HelpfulBtn from './HelpfulBtn.jsx';
 
 const Answer = ({answer, isHelpfulA}) => {
@@ -52,6 +52,16 @@ const Answer = ({answer, isHelpfulA}) => {
           >{report && '  Report'}{!report && '  Reported'}
           </div>
         </Col>
+      </Row>
+      <Row>
+        <Figure>
+          <Figure.Image
+            width={100}
+            height={100}
+            alt="user img of product"
+            src={answer.photos}
+          />
+        </Figure>
       </Row>
     </div>
   );
