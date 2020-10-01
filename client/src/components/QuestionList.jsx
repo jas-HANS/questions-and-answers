@@ -2,6 +2,7 @@
 import React, {useState} from 'react';
 import {Accordion, Button, Card} from 'react-bootstrap';
 import Question from './Question';
+import SubmitQuestion from './SubmitQuestion';
 
 // eslint-disable-next-line react/prop-types
 const QuestionList = ({qList, isHelpfulQ, isHelpfulA}) => {
@@ -13,6 +14,11 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA}) => {
   />);
 
   const [load, setLoad] = useState(true);
+
+  const [isModal, setModal] = useState(false);
+  const handleClick = () => {
+    setModal(!isModal);
+  };
 
   return (
     <div>
@@ -42,8 +48,14 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA}) => {
       </div>
       <div>
         {mappedList.length > 0 &&
-      <><br></br><Button id="addq-btn"variant="secondary" size="sm">ADD A QUESTION</Button>
+      <><br></br><Button id="addq-btn"variant="secondary" size="sm"
+        onClick={(e) => {
+          e.preventDefault();
+          handleClick();
+        }}
+      >ADD A QUESTION</Button>
       </>}
+        <SubmitQuestion/>
       </div>
     </div>
   );
