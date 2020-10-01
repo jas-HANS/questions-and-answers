@@ -43,6 +43,7 @@ class App extends React.Component {
     console.log('questionID:', questID);
   }
 
+
   isHelpfulA(answerID) {
     axios.put(`http://52.26.193.201:3000/qa/answer/${answerID}/helpful`)
         .then((res) => {

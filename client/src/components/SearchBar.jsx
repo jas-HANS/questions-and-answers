@@ -1,6 +1,7 @@
 import React from 'react';
 import {Form, Container} from 'react-bootstrap';
 
+
 const SearchBar = ({searchInput, handleSearchChange}) => {
   return (
     <Container>
