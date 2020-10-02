@@ -33,9 +33,9 @@ const Answer = ({answer, isHelpfulA}) => {
         <Col>{answer.body}</Col>
       </Row>
       <Row className="comment-data">by:
-        {answer.answerer_name === 'Seller' ?
-        <Col className="seller">
-          {`${answer.answerer_name.toUpperCase()} ${'  '} ${newDate}`}</Col> : <Col>{`${answer.answerer_name} ${'  '} ${newDate}`}
+        {answer.answerer_name === 'Seller' || answer.answerer_name === 'seller'?
+        <Col className="seller" style={{paddingTop: '4px'}}>
+          {`${answer.answerer_name.toUpperCase()} ${' | '} ${newDate}`}</Col> : <Col>{`${answer.answerer_name} ${' | '} ${newDate}`}
           </Col>
         }
         <Col md="auto" className="answer-btn">
@@ -47,8 +47,6 @@ const Answer = ({answer, isHelpfulA}) => {
           />
           <div
             className="report"
-            variant="dark"
-            size="sm"
             ref={btnRef}
             onClick={onBtnClick}
           >{report && '  ' + 'Report'}{!report && '  ' + 'Reported'}
