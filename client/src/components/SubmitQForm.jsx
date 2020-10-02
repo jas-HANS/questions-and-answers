@@ -1,34 +1,45 @@
 import React from 'react';
-import {Button, Form} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const SubmitQForm = () => {
   return (
-    <Form>
-      {/* max length of 1000 */}
-      <Form.Group controlId="exampleForm.ControlTextarea1">
-        <Form.Label>inquire here</Form.Label>
-        <Form.Control as="textarea" rows="3" />
+    <Form style={{borderRadius: '12px', marginBottom: '0px'}}>
+
+      <Form.Group controlId="form.ControlTextarea0">
+        <Form.Label></Form.Label>
+        <Form.Control
+          as="textarea" rows="3" maxLength="1000"
+          // value={}
+          // onChange={}
+        />
       </Form.Group>
 
-      {/* max length of 60 chars */}
-      <Form.Group>
-        <Form.Control type="text" placeholder="Example:jackson11!" />
+      <Form.Group controlId="form.ControlTextarea1">nickname?
+        <Form.Control
+          type="text" placeholder="Example:jackson11!" maxLength="60"
+          // value={}
+          // onChange={}
+        />
+        <Form.Text className="text-muted">
+        For privacy reasons, do not use your full name or email address.
+        </Form.Text>
       </Form.Group>
 
       <Form.Group controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
+        <Form.Control
+          type="email" maxLength="60"
+          placeholder="Why did you like the product or not?"
+          // value={}
+          // onChange={}
+        />
         <Form.Text className="text-muted">
-         For auth reasons, you will not be emailed.
+        For authentication reasons, you will not be emailed.
         </Form.Text>
       </Form.Group>
 
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
+      <Button variant="dark" type="submit">
        Submit
       </Button>
     </Form>
