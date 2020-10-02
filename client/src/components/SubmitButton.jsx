@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button} from 'react-bootstrap';
+import Button from 'react-bootstrap/Button'
 import SubmitQModal from './SubmitQModal.jsx';
 
 const SubmitButton = ({question}) => {
@@ -9,7 +9,7 @@ const SubmitButton = ({question}) => {
 
   return (
     <div>
-      <Button id="addq-btn"variant="secondary" size="sm"
+      <Button id="addq-btn"variant="secondary" size="md"
         onClick={handleShow}
       >ADD A QUESTION
       </Button>
