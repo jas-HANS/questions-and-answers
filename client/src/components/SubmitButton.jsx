@@ -7,7 +7,6 @@ const SubmitButton = ({question}) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   return (
     <div>
       <Button id="addq-btn"variant="secondary" size="sm"

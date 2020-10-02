@@ -23,8 +23,8 @@ class App extends React.Component {
   };
 
   getProductQs() {
-    const id = 2;
-    // const id = Math.floor(Math.random() * 1000);
+    // const id = 2;
+    const id = Math.floor(Math.random() * 100);
     query.reqProductQs(id, (err, data) => {
       if (err) {
         throw err;
