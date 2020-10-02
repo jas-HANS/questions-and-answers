@@ -3,7 +3,7 @@
 import React from 'react';
 import axios from 'axios';
 import query from './routes';
-import {Container} from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 import QuestionList from '../components/QuestionList.jsx';
 import SearchBar from '../components/SearchBar.jsx';
 

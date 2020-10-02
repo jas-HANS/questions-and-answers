@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import {Figure, Modal, Row} from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
+import Row from 'react-bootstrap/Row';
+import Figure from 'react-bootstrap/Figure';
 
 const AnswerPhoto = ({answer}) => {
   const [show, setShow] = useState(false);

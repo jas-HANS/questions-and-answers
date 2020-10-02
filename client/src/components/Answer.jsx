@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React, {useState, useRef} from 'react';
-import {Row, Col, Figure, Modal} from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import HelpfulBtn from './HelpfulBtn.jsx';
 import AnswerPhoto from './AnswerPhoto.jsx';
 
@@ -50,7 +51,7 @@ const Answer = ({answer, isHelpfulA}) => {
             size="sm"
             ref={btnRef}
             onClick={onBtnClick}
-          >{report && '  Report'}{!report && '  Reported'}
+          >{report && '  ' + 'Report'}{!report && '  ' + 'Reported'}
           </div>
         </Col>
       </Row>

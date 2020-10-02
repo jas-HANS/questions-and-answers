@@ -1,6 +1,7 @@
 /* eslint-disable max-len */
 import React, {useState} from 'react';
-import {Accordion, Button, Card} from 'react-bootstrap';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
 import Question from './Question';
 import SubmitButton from './SubmitButton.jsx';
 
@@ -39,12 +40,14 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA}) => {
         </Accordion>}
 
         {mappedList.length < 1 &&
-        <Button id="addq-btn-solo" variant="secondary" size="lg">ADD A QUESTION</Button>}
+        <SubmitButton className="addq-btn-solo"/>}
       </div>
       <div>
         {mappedList.length > 0 &&
       <><br></br>
-        <SubmitButton/>
+        <div>
+          <SubmitButton/>
+        </div>
       </>}
       </div>
     </div>

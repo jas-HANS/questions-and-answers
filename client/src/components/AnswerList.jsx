@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import React, {useState} from 'react';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
 import Answer from './Answer.jsx';
-import {Accordion, Card} from 'react-bootstrap';
 
 const AnswerList = ({answers, isHelpfulA}) => {
   // abstracts seller; may be helpful later?
