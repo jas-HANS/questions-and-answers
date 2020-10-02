@@ -12,7 +12,7 @@ const AnswerList = ({answers, isHelpfulA}) => {
   // ));
 
   const sortedList = answers.sort((a, b) => {
-    if (b.answerer_name === 'SELLER' || b.answerer_name === 'Seller') {
+    if (b.answerer_name === 'SELLER' || b.answerer_name === 'Seller' || b.answerer_name === 'seller' ) {
       return 1;
     }
     return b.helpfulness - a.helpfulness;
