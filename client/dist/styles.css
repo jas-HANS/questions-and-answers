@@ -2,8 +2,7 @@ body {
   background-color: #f1eee6;
   font-family: 'Crimson Text', serif;
 }
-
-h1, h2 {
+h1 {
   color: #0f4c81;
   display: flex;
   margin-left: 1%;
@@ -12,17 +11,14 @@ h1, h2 {
 
 .jumbotron {
   background-color: #f1eee6;
-  /* border: 1px solid #658dc6; */
   height: 60vh;
-  border-radius: 12px;
 }
 
 .question-list {
-  height: 55vh;
+  height: 44vh;
   overflow: scroll;
-  border-radius: 12px;
+  border-radius: 10px;
 }
-
 .question {
   display: flex;
   border-radius: 8px;
@@ -38,7 +34,6 @@ h1, h2 {
 .one-answer {
   margin-top: 1px;
 }
-
 .answer-list {
   background-color: #f1eee6;
   border-radius: 8px;
@@ -75,9 +70,10 @@ h1, h2 {
 #addq-btn {
   margin-left: 2%;
 }
-#addq-btn-solo{
+.addq-btn-solo{
   margin-top: 2%;
   margin-left: 2%;
+  size: 50px;
 }
 
 .add-answer {
@@ -116,7 +112,7 @@ span {
 .report {
   color: #980f0f;
   font-size: 15px;
-  margin-left: 2px;
+  margin-right: 10px;
   cursor: pointer;
 }
 .report:hover {
