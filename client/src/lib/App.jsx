@@ -6,6 +6,7 @@ import query from './routes';
 import Container from 'react-bootstrap/Container';
 import QuestionList from '../components/QuestionList.jsx';
 import SearchBar from '../components/SearchBar.jsx';
+// import SubmitButton from '../components/SubmitButton.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,18 +14,22 @@ class App extends React.Component {
     this.state = {
       qList: [],
       searchInput: '',
+      productName: '',
     };
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.productName = this.productName.bind(this);
   }
   componentDidMount() {
     this.getProductQs();
+    this.productName();
   };
 
   getProductQs() {
-    // const id = 2;
-    const id = Math.floor(Math.random() * 100);
+    const id = 6;
+    // const id = 12;
+    // const id = Math.floor(Math.random() * 1000);
     query.reqProductQs(id, (err, data) => {
       if (err) {
         throw err;
@@ -34,6 +39,15 @@ class App extends React.Component {
     });
   }
 
+  productName() {
+    const id = 6;
+    axios.get(`http://52.26.193.201:3000/products/${id}`)
+        .then((res) => {
+          this.setState({productName: res.data.name});
+        })
+        .catch((err) => console.error(err));
+  }
+
   isHelpfulQ(questID) {
     axios.put(`http://52.26.193.201:3000/qa/question/${questID}/helpful`)
         .then((res) => {
@@ -41,7 +55,7 @@ class App extends React.Component {
         })
         .catch((err) => console.error(err));
     console.log('questionID:', questID);
-    // query.reqIsHelpfulQ(question, (err, data) => {
+    // query.reqIsHelpfulQ(questID, (err, data) => {
     //   if (err) {
     //     throw err;
     //   } else {
@@ -57,7 +71,7 @@ class App extends React.Component {
         })
         .catch((err) => console.error(err));
     console.log('answerID:', answerID);
-    // query.reqIsHelpfulQ(question, (err, data) => {
+    // query.reqIsHelpfulA(answerID, (err, data) => {
     //   if (err) {
     //     throw err;
     //   } else {
@@ -76,8 +90,7 @@ class App extends React.Component {
   }
 
   render() {
-    const {qList, searchInput} = this.state;
-    // const filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
+    const {qList, searchInput, productName} = this.state;
     let filteredQuestions = qList;
     if (searchInput.length >= 3) {
       filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
@@ -100,7 +113,9 @@ class App extends React.Component {
               qList={filteredQuestions}
               isHelpfulQ={this.isHelpfulQ}
               isHelpfulA={this.isHelpfulA}
+              productName={productName}
             />
+            {/* <SubmitButton/> */}
           </div>
         </Container>
       </div>
