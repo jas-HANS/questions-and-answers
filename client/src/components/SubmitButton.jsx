@@ -6,7 +6,7 @@ import SubmitQForm from './SubmitQForm.jsx';
 // import QuestionList from './QuestionList.jsx';
 
 
-const SubmitButton = ({question, productName}) => {
+const SubmitButton = ({question, productName, getId}) => {
   // console.log(qList);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -21,7 +21,6 @@ const SubmitButton = ({question, productName}) => {
       </Button>
 
       <Modal
-        // productName={productName}
         centered
         question={question}
         show={show}
@@ -34,7 +33,8 @@ const SubmitButton = ({question, productName}) => {
 
         <Modal.Body>
         ...about the {productName}
-          <SubmitQForm/>
+          <SubmitQForm
+            getId={getId}/>
         </Modal.Body>
       </Modal>
     </div>

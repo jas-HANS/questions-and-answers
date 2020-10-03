@@ -7,7 +7,7 @@ import Question from './Question';
 import SubmitButton from './SubmitButton.jsx';
 
 // eslint-disable-next-line react/prop-types
-const QuestionList = ({qList, isHelpfulQ, isHelpfulA, getProductQs, productName}) => {
+const QuestionList = ({qList, isHelpfulQ, isHelpfulA, getProductQs, productName, getId}) => {
   const [load, setLoad] = useState(true);
   // const [productName, setProductName] = useState('');
 
@@ -18,6 +18,7 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, getProductQs, productName}
     isHelpfulQ={isHelpfulQ}
     isHelpfulA={isHelpfulA}
     productName={productName}
+    getId={getId}
   />);
 
   return (
@@ -53,6 +54,7 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, getProductQs, productName}
           <SubmitButton
             // qList={qList}
             productName= {productName}
+            getId={getId}
           />
         </div>
       </>}

@@ -3,8 +3,8 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const SubmitQForm = ({question}) => {
-  const [validated, setValidated] = useState(false);
+const SubmitQForm = ({getId}) => {
+  // const [validated, setValidated] = useState(false);
 
   const [state, setState] = useState({
     body: '',
@@ -12,22 +12,15 @@ const SubmitQForm = ({question}) => {
     email: '',
   });
 
-  const handleChange = (e) => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    const form = e.currentTarget;
-    if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    setValidated(true);
+  const handleSubmit = (getId, e) => {
+    // const form = e.currentTarget;
+    // if (form.checkValidity() === false) {
+    //   e.preventDefault();
+    //   e.stopPropagation();
+    // }
+    // setValidated(true);
     e.preventDefault();
-    axios.post('http://52.26.193.201:3000/qa/6', state)
+    axios.post(`http://52.26.193.201:3000/qa/${getId}`, state)
         .then((res) => {
           setState({
             body: state.body,
@@ -38,15 +31,23 @@ const SubmitQForm = ({question}) => {
         .catch((err) => console.error(err));
   };
 
+  const handleChange = (e) => {
+    setState({
+      ...state,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
     <Form style={{borderRadius: '12px', marginBottom: '0px'}}
       onSubmit={handleSubmit}
-      noValidate validated={validated}>
+      // noValidate validated={validated}
+    >
       <Form.Group controlId="form.TextAreaValidation">
         <Form.Label></Form.Label>
-        <Form.Control
-          name="body" as="textarea" rows="3" maxLength="1000"
-          required
+        <Form.Control required as="textarea" rows="3"
+          maxLength="1000"
+          name="body"
           value={state.body}
           onChange={handleChange}
         />
@@ -57,10 +58,9 @@ const SubmitQForm = ({question}) => {
 
 
       <Form.Group controlId="NicknameValidation">Nickname
-        <Form.Control type="text" name="nickname"
-          placeholder="Example:jackson11!"
+        <Form.Control required type="text" placeholder="Example:jackson11!"
           maxLength="60"
-          required
+          name="nickname"
           value={state.nickname}
           onChange={handleChange}
         />
@@ -69,16 +69,15 @@ const SubmitQForm = ({question}) => {
         </Form.Control.Feedback>
 
         <Form.Text className="text-muted">
-        For privacy reasons, do not use your full name or email address.
+          For privacy reasons, do not use your full name or email address.
         </Form.Text>
       </Form.Group>
 
       <Form.Group controlId="EmailValidation">
         Email address
-        <Form.Control
-          type="email" name="email" maxLength="60"
+        <Form.Control required type="email" maxLength="60"
           placeholder="Why did you like the product or not?"
-          required
+          name="email"
           value={state.email}
           onChange={handleChange}
         />
@@ -86,13 +85,11 @@ const SubmitQForm = ({question}) => {
           Please enter your email address..
         </Form.Control.Feedback>
         <Form.Text className="text-muted">
-        For authentication reasons, you will not be emailed.
+          For authentication reasons, you will not be emailed.
         </Form.Text>
       </Form.Group>
 
-      <Button variant="dark" type="submit"
-        onClick={handleSubmit}
-      >
+      <Button variant="dark" type="submit">
        Submit
       </Button>
     </Form>

@@ -5,7 +5,7 @@ import Alert from 'react-bootstrap/Alert';
 import AnswerList from './AnswerList.jsx';
 import HelpfulBtn from './HelpfulBtn.jsx';
 
-const Question = ({question, isHelpfulA, isHelpfulQ}) => {
+const Question = ({question, isHelpfulA, isHelpfulQ, getId}) => {
   return (
     <div>
       <Row className="question">Q:

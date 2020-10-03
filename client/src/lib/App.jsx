@@ -15,8 +15,9 @@ class App extends React.Component {
       qList: [],
       searchInput: '',
       productName: '',
-      id: Math.floor(Math.random() * 1000),
-      // const id: 6, 12;
+      // id: Math.floor(Math.random() * 1000),
+      getId: 56,
+      // id: 6, 12;
     };
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
@@ -29,8 +30,8 @@ class App extends React.Component {
   };
 
   getProductQs() {
-    const id = this.state.id;
-    query.reqProductQs(id, (err, data) => {
+    const getId = this.state.getId;
+    query.reqProductQs(getId, (err, data) => {
       if (err) {
         throw err;
       } else {
@@ -40,8 +41,8 @@ class App extends React.Component {
   }
 
   productName() {
-    const id = this.state.id;
-    axios.get(`http://52.26.193.201:3000/products/${id}`)
+    const getId = this.state.getId;
+    axios.get(`http://52.26.193.201:3000/products/${getId}`)
         .then((res) => {
           this.setState({productName: res.data.name});
         })
@@ -90,17 +91,17 @@ class App extends React.Component {
   }
 
   render() {
-    const {qList, searchInput, productName} = this.state;
+    const {qList, searchInput, productName, getId} = this.state;
     let filteredQuestions = qList;
     if (searchInput.length >= 3) {
       filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
     }
     return (
-      <div id="body">
+      <div>
         <Container>
           <br></br>
           <div className="jumbotron">
-            <h1 id="header">Questions and Answers</h1>
+            <h1>Questions and Answers</h1>
             <br></br>
             <SearchBar
               searchInput={searchInput}
@@ -114,6 +115,7 @@ class App extends React.Component {
               isHelpfulQ={this.isHelpfulQ}
               isHelpfulA={this.isHelpfulA}
               productName={productName}
+              getId={getId}
             />
             {/* <SubmitButton/> */}
           </div>
