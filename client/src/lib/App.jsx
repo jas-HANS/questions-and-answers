@@ -15,6 +15,8 @@ class App extends React.Component {
       qList: [],
       searchInput: '',
       productName: '',
+      id: Math.floor(Math.random() * 1000),
+      // const id: 6, 12;
     };
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
@@ -27,9 +29,7 @@ class App extends React.Component {
   };
 
   getProductQs() {
-    const id = 6;
-    // const id = 12;
-    // const id = Math.floor(Math.random() * 1000);
+    const id = this.state.id;
     query.reqProductQs(id, (err, data) => {
       if (err) {
         throw err;
@@ -40,7 +40,7 @@ class App extends React.Component {
   }
 
   productName() {
-    const id = 6;
+    const id = this.state.id;
     axios.get(`http://52.26.193.201:3000/products/${id}`)
         .then((res) => {
           this.setState({productName: res.data.name});
