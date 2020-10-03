@@ -9,7 +9,6 @@ const Answer = ({answer, isHelpfulA}) => {
   // eslint-disable-next-line max-len
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const d = new Date(answer.date);
-  console.log(answer.date);
   const year = d.getUTCFullYear();
   const monthId = d.getUTCMonth();
   let month = months[monthId];
