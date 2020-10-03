@@ -1,13 +1,11 @@
+/* eslint-disable max-len */
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-// import SubmitQModal from './SubmitQModal.jsx';
 import SubmitQForm from './SubmitQForm.jsx';
-// import QuestionList from './QuestionList.jsx';
 
-
-const SubmitButton = ({question, productName, getId}) => {
-  // console.log(qList);
+const SubmitButton = ({question, productName, getId, getProductQs
+}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,13 +14,11 @@ const SubmitButton = ({question, productName, getId}) => {
     <div>
       <Button id="addq-btn"variant="secondary" size="md"
         onClick={handleShow}
-        question={question}
       >ADD A QUESTION
       </Button>
 
       <Modal
         centered
-        question={question}
         show={show}
         onHide={handleClose}>
         <Modal.Header closeButton>
@@ -34,7 +30,9 @@ const SubmitButton = ({question, productName, getId}) => {
         <Modal.Body>
         ...about the {productName}
           <SubmitQForm
-            getId={getId}/>
+            getId={getId}
+            getProductQs={getProductQs}
+          />
         </Modal.Body>
       </Modal>
     </div>

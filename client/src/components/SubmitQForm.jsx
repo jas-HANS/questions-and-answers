@@ -1,46 +1,54 @@
-import React, {useState, useEffect} from 'react';
+// useEffect(() => {
+//   setTimeout(() => {
+//     setqForm([{body: '', nickname: '', email: ''}]);
+//     console.log(state);
+//   }, 1000);
+// }, []);
+
+import React, {useState} from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const SubmitQForm = ({getId}) => {
+const SubmitQForm = ({question, getProductQs, getId}) => {
   // const [validated, setValidated] = useState(false);
-
-  const [state, setState] = useState({
+  const [state, setqForm] = useState({
     body: '',
-    nickname: '',
+    name: '',
     email: '',
   });
 
-  const handleSubmit = (getId, e) => {
-    // const form = e.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   e.preventDefault();
-    //   e.stopPropagation();
-    // }
-    // setValidated(true);
-    e.preventDefault();
-    axios.post(`http://52.26.193.201:3000/qa/${getId}`, state)
-        .then((res) => {
-          setState({
-            body: state.body,
-            nickname: state.nickname,
-            email: state.email,
-          });
-        })
-        .catch((err) => console.error(err));
-  };
-
   const handleChange = (e) => {
-    setState({
+    setqForm({
       ...state,
       [e.target.name]: e.target.value,
     });
   };
 
+  const handleSubmitQ = (e) => {
+    e.preventDefault();
+    axios.post(`http://52.26.193.201:3000/qa/${getId}`, {...state})
+        .then((res) => {
+          console.log(res);
+          getProductQs();
+        })
+        .catch((err) => console.error(err));
+  };
+
+  // const handleSubmit = (event) => {
+  //   const form = event.currentTarget;
+  //   if (form.checkValidity() === false) {
+  //     event.preventDefault();
+  //     event.stopPropagation();
+  //   }
+  //   setValidated(true);
+  //   // conditionally do this: handleSubmitQ();
+  // };
+
   return (
     <Form style={{borderRadius: '12px', marginBottom: '0px'}}
-      onSubmit={handleSubmit}
+      // onSubmit={handleSubmitQ}
+      onSubmit={(e)=> handleSubmitQ(e)}
       // noValidate validated={validated}
     >
       <Form.Group controlId="form.TextAreaValidation">
@@ -49,7 +57,7 @@ const SubmitQForm = ({getId}) => {
           maxLength="1000"
           name="body"
           value={state.body}
-          onChange={handleChange}
+          onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter your question before submitting.
@@ -60,16 +68,16 @@ const SubmitQForm = ({getId}) => {
       <Form.Group controlId="NicknameValidation">Nickname
         <Form.Control required type="text" placeholder="Example:jackson11!"
           maxLength="60"
-          name="nickname"
-          value={state.nickname}
-          onChange={handleChange}
+          name="name"
+          value={state.name}
+          onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter a nickname..
         </Form.Control.Feedback>
 
         <Form.Text className="text-muted">
-          For privacy reasons, do not use your full name or email address.
+        For privacy reasons, do not use your full name or email address.
         </Form.Text>
       </Form.Group>
 
@@ -79,7 +87,7 @@ const SubmitQForm = ({getId}) => {
           placeholder="Why did you like the product or not?"
           name="email"
           value={state.email}
-          onChange={handleChange}
+          onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter your email address..
@@ -88,7 +96,6 @@ const SubmitQForm = ({getId}) => {
           For authentication reasons, you will not be emailed.
         </Form.Text>
       </Form.Group>
-
       <Button variant="dark" type="submit">
        Submit
       </Button>

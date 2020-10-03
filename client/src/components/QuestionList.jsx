@@ -7,18 +7,17 @@ import Question from './Question';
 import SubmitButton from './SubmitButton.jsx';
 
 // eslint-disable-next-line react/prop-types
-const QuestionList = ({qList, isHelpfulQ, isHelpfulA, getProductQs, productName, getId}) => {
+const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getProductQs}) => {
   const [load, setLoad] = useState(true);
   // const [productName, setProductName] = useState('');
 
   const mappedList = qList.map((question, i) => <Question
     question={question}
-    getProductQs={getProductQs}
     key={i}
     isHelpfulQ={isHelpfulQ}
     isHelpfulA={isHelpfulA}
-    productName={productName}
     getId={getId}
+    getProductQs={getProductQs}
   />);
 
   return (
@@ -52,9 +51,9 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, getProductQs, productName,
       <><br></br>
         <div>
           <SubmitButton
-            // qList={qList}
-            productName= {productName}
+            productName={productName}
             getId={getId}
+            getProductQs={getProductQs}
           />
         </div>
       </>}

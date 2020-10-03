@@ -6,7 +6,6 @@ import query from './routes';
 import Container from 'react-bootstrap/Container';
 import QuestionList from '../components/QuestionList.jsx';
 import SearchBar from '../components/SearchBar.jsx';
-// import SubmitButton from '../components/SubmitButton.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,14 +14,15 @@ class App extends React.Component {
       qList: [],
       searchInput: '',
       productName: '',
-      // id: Math.floor(Math.random() * 1000),
+      // getId: Math.floor(Math.random() * 1000),
       getId: 56,
-      // id: 6, 12;
+      // getId: 6, 12;
     };
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.productName = this.productName.bind(this);
+    this.getProductQs = this.getProductQs.bind(this);
   }
   componentDidMount() {
     this.getProductQs();
@@ -116,8 +116,8 @@ class App extends React.Component {
               isHelpfulA={this.isHelpfulA}
               productName={productName}
               getId={getId}
+              getProductQs={this.getProductQs}
             />
-            {/* <SubmitButton/> */}
           </div>
         </Container>
       </div>
