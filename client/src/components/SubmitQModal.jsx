@@ -1,12 +1,11 @@
 import React from 'react';
-import {Modal, Button, Form} from 'react-bootstrap';
+import {Modal} from 'react-bootstrap';
 import SubmitQForm from './SubmitQForm.jsx';
 
-const SubmitQModal = ({show, question, onHide}) => {
+const SubmitQModal = ({show, question, onHide, productName}) => {
   return (
     <div>
       <Modal closeButton
-        // aria-labelledby="contained-modal-title-vcenter"
         centered
         show={show}
         onHide={onHide}
@@ -18,7 +17,9 @@ const SubmitQModal = ({show, question, onHide}) => {
         </Modal.Header>
 
         <Modal.Body>
-        ...about the [product name - via product detail get req?]
+        ...about the
+          {/* {productName} */}
+          {/* useEffect && axios.get(`http://52.26.193.201:3000/products/5`) */}
           <SubmitQForm/>
         </Modal.Body>
       </Modal>
@@ -26,4 +27,5 @@ const SubmitQModal = ({show, question, onHide}) => {
   );
 };
 
-export default SubmitQModal;
+// export default SubmitQModal;
+

@@ -15,7 +15,6 @@ const HelpfulBtn = ({clickFunc, id, currentCount}) => {
     <span>Helpful? {' '}
       <a
         className="helpful-click"
-        disabled={disabled}
         onClick={!disabled ? handleClick : null}
       >Yes{`(${count}) `}
       </a>

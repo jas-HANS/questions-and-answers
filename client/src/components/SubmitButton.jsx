@@ -1,8 +1,13 @@
 import React, {useState} from 'react';
-import Button from 'react-bootstrap/Button'
-import SubmitQModal from './SubmitQModal.jsx';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+// import SubmitQModal from './SubmitQModal.jsx';
+import SubmitQForm from './SubmitQForm.jsx';
+// import QuestionList from './QuestionList.jsx';
 
-const SubmitButton = ({question}) => {
+
+const SubmitButton = ({question, productName}) => {
+  // console.log(qList);
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -11,14 +16,27 @@ const SubmitButton = ({question}) => {
     <div>
       <Button id="addq-btn"variant="secondary" size="md"
         onClick={handleShow}
+        question={question}
       >ADD A QUESTION
       </Button>
 
-      <SubmitQModal
-        show={show}
+      <Modal
+        // productName={productName}
+        centered
         question={question}
-        onHide={handleClose}
-      />
+        show={show}
+        onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">
+             Ask Your Question
+          </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+        ...about the {productName}
+          <SubmitQForm/>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };
