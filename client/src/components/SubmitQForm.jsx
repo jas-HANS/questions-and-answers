@@ -10,7 +10,7 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const SubmitQForm = ({question, getProductQs, getId}) => {
+const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
   // const [validated, setValidated] = useState(false);
   const [state, setqForm] = useState({
     body: '',
@@ -30,8 +30,11 @@ const SubmitQForm = ({question, getProductQs, getId}) => {
     axios.post(`http://52.26.193.201:3000/qa/${getId}`, {...state})
         .then((res) => {
           console.log(res);
-          getProductQs();
+          onHide();
+          getProductQs(getId);
         })
+        // .then()
+        // reset the questions to include this Q
         .catch((err) => console.error(err));
   };
 
@@ -47,8 +50,8 @@ const SubmitQForm = ({question, getProductQs, getId}) => {
 
   return (
     <Form style={{borderRadius: '12px', marginBottom: '0px'}}
-      // onSubmit={handleSubmitQ}
-      onSubmit={(e)=> handleSubmitQ(e)}
+      onSubmit={handleSubmitQ}
+      // onSubmit={(e)=> handleSubmitQ(e)}
       // noValidate validated={validated}
     >
       <Form.Group controlId="form.TextAreaValidation">
@@ -57,7 +60,8 @@ const SubmitQForm = ({question, getProductQs, getId}) => {
           maxLength="1000"
           name="body"
           value={state.body}
-          onChange={(e)=> handleChange(e)}
+          onChange={handleChange}
+          // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter your question before submitting.
@@ -70,7 +74,8 @@ const SubmitQForm = ({question, getProductQs, getId}) => {
           maxLength="60"
           name="name"
           value={state.name}
-          onChange={(e)=> handleChange(e)}
+          onChange={handleChange}
+          // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter a nickname..
@@ -87,7 +92,8 @@ const SubmitQForm = ({question, getProductQs, getId}) => {
           placeholder="Why did you like the product or not?"
           name="email"
           value={state.email}
-          onChange={(e)=> handleChange(e)}
+          onChange={handleChange}
+          // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter your email address..
