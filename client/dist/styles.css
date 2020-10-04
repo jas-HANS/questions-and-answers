@@ -79,6 +79,9 @@ h1 {
   padding-right: 1%;
   margin-right: 2%;
 }
+/* .answer-btn:visited {
+  text-decoration: underline !important;
+} */
 .q-btn {
   color: #B5C7D3;
   font-size: 16px;

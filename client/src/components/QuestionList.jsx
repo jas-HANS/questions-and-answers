@@ -18,7 +18,7 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
     isHelpfulA={isHelpfulA}
     getId={getId}
     productName={productName}
-    // getProductQs={getProductQs}
+    getProductQs={getProductQs}
   />);
 
   return (

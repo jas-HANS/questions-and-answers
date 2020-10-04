@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 // import AnswerList from './AnswerList.jsx';
 import AddAnsForm from './AddAnsForm.jsx';
 
-const AddABtn = ({question, productName}) => {
+const AddABtn = ({question, productName, getId, getProductQs}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -31,9 +31,10 @@ const AddABtn = ({question, productName}) => {
         <Modal.Body>
           {productName}: {question.question_body}”
           <AddAnsForm
-            // getId={getId}
-            // getProductQs={getProductQs}
+            getId={getId}
+            getProductQs={getProductQs}
             onHide={handleClose}
+            question={question}
           />
         </Modal.Body>
       </Modal>
