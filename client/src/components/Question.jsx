@@ -5,7 +5,7 @@ import AnswerList from './AnswerList.jsx';
 import HelpfulBtn from './HelpfulBtn.jsx';
 import AddAnswerBtnM from './AddAnswerBtnM.jsx';
 
-const Question = ({question, isHelpfulA, isHelpfulQ, getId}) => {
+const Question = ({question, isHelpfulA, isHelpfulQ, getId, productName}) => {
   return (
     <div>
       <Row className="question">Q:
@@ -16,7 +16,9 @@ const Question = ({question, isHelpfulA, isHelpfulQ, getId}) => {
             id={question.question_id}
             currentCount={question.question_helpfulness}
             clickFunc={isHelpfulQ}/>
-          <AddAnswerBtnM/>
+          <AddAnswerBtnM
+            productName={productName}
+            question={question}/>
         </Col>
       </Row>
 

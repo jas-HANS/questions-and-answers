@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
@@ -17,6 +17,7 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
     isHelpfulQ={isHelpfulQ}
     isHelpfulA={isHelpfulA}
     getId={getId}
+    productName={productName}
     // getProductQs={getProductQs}
   />);
 
