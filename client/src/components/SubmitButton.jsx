@@ -20,7 +20,8 @@ const SubmitButton = ({question, productName, getId, getProductQs
       <Modal
         centered
         show={show}
-        onHide={handleClose}>
+        onHide={handleClose}
+      >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
              Ask Your Question
@@ -32,6 +33,7 @@ const SubmitButton = ({question, productName, getId, getProductQs
           <SubmitQForm
             getId={getId}
             getProductQs={getProductQs}
+            onHide={handleClose}
           />
         </Modal.Body>
       </Modal>
