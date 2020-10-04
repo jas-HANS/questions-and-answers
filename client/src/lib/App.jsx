@@ -15,8 +15,7 @@ class App extends React.Component {
       searchInput: '',
       productName: '',
       // getId: Math.floor(Math.random() * 1000),
-      getId: 56,
-      // getId: 6, 12;
+      getId: 200,
     };
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
@@ -115,6 +114,7 @@ class App extends React.Component {
               isHelpfulQ={this.isHelpfulQ}
               isHelpfulA={this.isHelpfulA}
               productName={productName}
+
               getId={getId}
               getProductQs={this.getProductQs}
             />

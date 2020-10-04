@@ -1,9 +1,9 @@
 import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Alert from 'react-bootstrap/Alert';
 import AnswerList from './AnswerList.jsx';
 import HelpfulBtn from './HelpfulBtn.jsx';
+import AddAnswerBtnM from './AddAnswerBtnM.jsx';
 
 const Question = ({question, isHelpfulA, isHelpfulQ, getId}) => {
   return (
@@ -16,13 +16,7 @@ const Question = ({question, isHelpfulA, isHelpfulQ, getId}) => {
             id={question.question_id}
             currentCount={question.question_helpfulness}
             clickFunc={isHelpfulQ}/>
-          <Alert.Link
-            className="add-answer"
-            variant="dark"
-            size="sm"
-          //  onClick={()=>setAnswer()}
-          >Add Answer
-          </Alert.Link>
+          <AddAnswerBtnM/>
         </Col>
       </Row>
 

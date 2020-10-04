@@ -20,7 +20,7 @@ h1 {
 }
 .question {
   display: flex;
-  border-radius: 8px;
+  border-radius: 6px;
   justify-content: flex-end;
   background-color: #373838;
   color: #f1eee6;
