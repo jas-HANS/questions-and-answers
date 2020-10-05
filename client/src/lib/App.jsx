@@ -15,7 +15,7 @@ class App extends React.Component {
       searchInput: '',
       productName: '',
       // getId: Math.floor(Math.random() * 100),
-      getId: 15,
+      getId: 5,
     };
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
@@ -91,10 +91,12 @@ class App extends React.Component {
 
   render() {
     const {qList, searchInput, productName, getId} = this.state;
-    let filteredQuestions = qList;
-    if (searchInput.length >= 3) {
-      filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
-    }
+    // let filteredQuestions = qList;
+    // if (searchInput.length >= 3) {
+    //   filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
+    // }
+    searchInput.length >= 3 ?
+       qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase())) : qList;
     return (
       <div>
         <Container>
@@ -110,7 +112,8 @@ class App extends React.Component {
             </div>
             <br></br>
             <QuestionList
-              qList={filteredQuestions}
+              // qList={filteredQuestions}
+              qList={qList}
               isHelpfulQ={this.isHelpfulQ}
               isHelpfulA={this.isHelpfulA}
               productName={productName}

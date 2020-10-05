@@ -98,9 +98,8 @@ const AddAnsForm = ({onHide,
           // feedback={errors.file}
           // feedbackTooltip
         />
-        <Form.File.Input multiple="5"/>
+        <Form.File.Input multiple/>
       </Form.Group>
-
 
       <Button variant="dark" type="submit">
        Submit

@@ -9,6 +9,8 @@ import SubmitButton from './SubmitButton.jsx';
 const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getProductQs}) => {
   const [load, setLoad] = useState(true);
   // const [productName, setProductName] = useState('');
+  // const [listLength, setLength] = useState(4);
+  // onclick, increase by two
 
   const mappedList = qList.map((question, i) => <Question
     question={question}
@@ -24,6 +26,7 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
     <div>
       <div className="question-list">
         {mappedList.slice(0, 4)}
+        {/* slice through x, as long as x isnt >.length */}
         {mappedList.length > 3 &&
       <Accordion>
         <Accordion.Collapse
