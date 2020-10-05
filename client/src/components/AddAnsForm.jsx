@@ -4,15 +4,14 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 const AddAnsForm = ({onHide,
-  question, getProductQs,
-  answers
+  question, getProductQs, answers,
   // getId,
 }) => {
   const [state, setAForm] = useState({
     body: '',
     name: '',
     email: '',
-    // photos: [],
+    photos: [],
   });
 
   const handleChange = (e) => {
@@ -31,8 +30,6 @@ const AddAnsForm = ({onHide,
           answers;
           // getProductQs(question.question_id);
         })
-        // .then()
-        // reset the questions to include this Q
         .catch((err) => console.error(err));
   };
 
@@ -90,6 +87,21 @@ const AddAnsForm = ({onHide,
           For authentication reasons, you will not be emailed.
         </Form.Text>
       </Form.Group>
+
+      <Form.Group>
+        <Form.File id="exampleFormControlFile1" label="Submit photo(s)"
+          className="position-relative"
+          name="photos"
+          value={state.photos}
+          onChange={handleChange}
+          // isInvalid={!!errors.file}
+          // feedback={errors.file}
+          // feedbackTooltip
+        />
+        <Form.File.Input multiple="5"/>
+      </Form.Group>
+
+
       <Button variant="dark" type="submit">
        Submit
       </Button>

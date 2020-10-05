@@ -103,20 +103,3 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
 };
 
 export default SubmitQForm;
-
-// <Form.Group>
-// <Form.File id="exampleFormControlFile1" label="Submit photo(s)"
-//   className="position-relative"
-//   name="photos"
-//   // value={state.photos}
-//   // onChange={handleChange}
-//   // isInvalid={!!errors.file}
-//   // feedback={errors.file}
-//   // feedbackTooltip
-// />
-// <Form.File.Input multiple />
-// </Form.Group>
-
-// <Button variant="dark" type="submit">
-// Submit
-// </Button>
