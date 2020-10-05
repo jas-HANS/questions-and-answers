@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
-import {Form, FormFile} from 'react-bootstrap/Form';
+import Form from 'react-bootstrap/Form';
 
-const AddAnsForm = ({onHide, question,
-  getId, getProductQs
+const AddAnsForm = ({onHide,
+  question, getProductQs,
+  answers
+  // getId,
 }) => {
   const [state, setAForm] = useState({
     body: '',
@@ -26,22 +28,13 @@ const AddAnsForm = ({onHide, question,
         .then((res) => {
           console.log(res);
           onHide();
-          getProductQs(getId);
+          answers;
+          // getProductQs(question.question_id);
         })
         // .then()
         // reset the questions to include this Q
         .catch((err) => console.error(err));
   };
-
-
-  // POST /qa/:question_id/answers
-
-  // Parameter, type, description
-  // body / text / Text of question being asked
-  // name / text / Username for question asker
-  // email / text / Email address for question asker
-  // photos / [text] / An array of urls corresponding to images to display
-
 
   return (
     <Form style={{borderRadius: '12px', marginBottom: '0px'}}
@@ -59,13 +52,13 @@ const AddAnsForm = ({onHide, question,
           // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
-         Your Answer*
+          Please enter your question before submitting.*
         </Form.Control.Feedback>
       </Form.Group>
 
 
       <Form.Group controlId="NicknameValidation">Nickname*
-        <Form.Control required type="text" placeholder="Example:jack543!"
+        <Form.Control required type="text" placeholder="Example:jackson11!"
           maxLength="60"
           name="name"
           value={state.name}
@@ -73,7 +66,7 @@ const AddAnsForm = ({onHide, question,
           // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
-          Please enter a nickname..
+          Please enter a nickname.*
         </Form.Control.Feedback>
 
         <Form.Text className="text-muted">
@@ -97,19 +90,6 @@ const AddAnsForm = ({onHide, question,
           For authentication reasons, you will not be emailed.
         </Form.Text>
       </Form.Group>
-
-      {/* <Form.Group>
-        <Form.File id="exampleFormControlFile1" label="Submit photo(s)"
-          className="position-relative"
-          name="photos"
-          // value={state.photos}
-          // onChange={handleChange}
-          // isInvalid={!!errors.file}
-          // feedback={errors.file}
-          // feedbackTooltip
-        />
-        <FormFile.Input multiple />
-      </Form.Group> */}
       <Button variant="dark" type="submit">
        Submit
       </Button>

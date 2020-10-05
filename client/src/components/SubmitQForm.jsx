@@ -1,10 +1,3 @@
-// useEffect(() => {
-//   setTimeout(() => {
-//     setqForm([{body: '', nickname: '', email: ''}]);
-//     console.log(state);
-//   }, 1000);
-// }, []);
-
 import React, {useState} from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
@@ -64,12 +57,12 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
           // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
-          Please enter your question before submitting.
+          Please enter your question before submitting.*
         </Form.Control.Feedback>
       </Form.Group>
 
 
-      <Form.Group controlId="NicknameValidation">Nickname
+      <Form.Group controlId="NicknameValidation">Nickname*
         <Form.Control required type="text" placeholder="Example:jackson11!"
           maxLength="60"
           name="name"
@@ -78,7 +71,7 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
           // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
-          Please enter a nickname..
+          Please enter a nickname.*
         </Form.Control.Feedback>
 
         <Form.Text className="text-muted">
@@ -87,9 +80,9 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
       </Form.Group>
 
       <Form.Group controlId="EmailValidation">
-        Email address
+        Email address*
         <Form.Control required type="email" maxLength="60"
-          placeholder="Why did you like the product or not?"
+          placeholder="Example: jack@email.com"
           name="email"
           value={state.email}
           onChange={handleChange}
@@ -110,3 +103,20 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
 };
 
 export default SubmitQForm;
+
+// <Form.Group>
+// <Form.File id="exampleFormControlFile1" label="Submit photo(s)"
+//   className="position-relative"
+//   name="photos"
+//   // value={state.photos}
+//   // onChange={handleChange}
+//   // isInvalid={!!errors.file}
+//   // feedback={errors.file}
+//   // feedbackTooltip
+// />
+// <Form.File.Input multiple />
+// </Form.Group>
+
+// <Button variant="dark" type="submit">
+// Submit
+// </Button>

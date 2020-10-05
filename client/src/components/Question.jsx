@@ -5,7 +5,11 @@ import AnswerList from './AnswerList.jsx';
 import HelpfulBtn from './HelpfulBtn.jsx';
 import AddAnswerBtnM from './AddAnswerBtnM.jsx';
 
-const Question = ({question, isHelpfulA, isHelpfulQ, getId, productName, getProductQs}) => {
+const Question = ({question, isHelpfulA, isHelpfulQ,
+  // getId,
+  productName,
+  getProductQs
+}) => {
   return (
     <div>
       <Row className="question">Q:
@@ -19,8 +23,10 @@ const Question = ({question, isHelpfulA, isHelpfulQ, getId, productName, getProd
           <AddAnswerBtnM
             productName={productName}
             question={question}
-            getId={getId}
-            getProductQs={getProductQs}/>
+            // getId={getId}
+            // getProductQs={getProductQs}
+            answers={Object.values(question.answers)}
+          />
         </Col>
       </Row>
 

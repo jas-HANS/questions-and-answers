@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import React, {useState} from 'react';
-import axios from 'axios';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Question from './Question';
@@ -16,7 +15,7 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
     key={i}
     isHelpfulQ={isHelpfulQ}
     isHelpfulA={isHelpfulA}
-    getId={getId}
+    // getId={getId}
     productName={productName}
     getProductQs={getProductQs}
   />);
@@ -48,7 +47,8 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
       <SubmitButton className="addq-btn-solo"
         productName={productName}
         getId={getId}
-        getProductQs={getProductQs}/>}
+        getProductQs={getProductQs}
+      />}
       </div>
       <div>
         {mappedList.length > 0 &&
