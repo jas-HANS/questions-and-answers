@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, {useState, useRef} from 'react';
+import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import HelpfulBtn from './HelpfulBtn.jsx';
@@ -7,6 +8,7 @@ import AnswerPhoto from './AnswerPhoto.jsx';
 
 const Answer = ({answer, isHelpfulA}) => {
   // eslint-disable-next-line max-len
+  console.log(answer);
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const d = new Date(answer.date);
   const year = d.getUTCFullYear();
@@ -16,15 +18,26 @@ const Answer = ({answer, isHelpfulA}) => {
   month = month.slice(0, 3);
   const newDate = `${month} ${day}, ${year}`;
 
-  const [report, setReport] = useState(true);
-  const btnRef = useRef();
+  const [report, setReport] = useState(false);
+  // const btnRef = useRef();
 
-  const onBtnClick = (e) => {
-    if (btnRef.current) {
-      btnRef.current.setAttribute('disabled', 'disabled');
-      setReport(false);
-    }
+  const reportAns = (e) => {
+    e.preventDefault();
+    axios.put(`http://52.26.193.201:3000/qa/answer/${answer.id}/helpful`)
+        .then((res) => {
+          setReport(!report);
+          console.log(res);
+        })
+        .catch((err) => console.error(err));
   };
+
+  // const onBtnClick = (e) => {
+  //   if (btnRef.current) {
+  //     btnRef.current.setAttribute('disabled', 'disabled');
+  //     setReport(false);
+  //     // reportAns();
+  //   }
+  // };
 
   return (
     <div className="one-answer">
@@ -46,9 +59,9 @@ const Answer = ({answer, isHelpfulA}) => {
           />
           <div
             className="report"
-            ref={btnRef}
-            onClick={onBtnClick}
-          >{report && '  ' + 'Report'}{!report && '  ' + 'Reported'}
+            // ref={btnRef}
+            onClick={!report ? reportAns : null}
+          >{report && '  ' + 'Reported'}{!report && '  ' + 'Report'}
           </div>
         </Col>
       </Row>
