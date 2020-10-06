@@ -80,23 +80,15 @@ class App extends React.Component {
     // });
   }
 
-  reportAnswer(answerID) {
-    // pass to individual answer (isHelpfulA)
-    console.log('reportANSW:', answerID);
-  }
-
   handleSearchChange(e) {
     this.setState({searchInput: e.target.value.toLowerCase()});
   }
 
   render() {
     const {qList, searchInput, productName, getId} = this.state;
-    // let filteredQuestions = qList;
-    // if (searchInput.length >= 3) {
-    //   filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase()));
-    // }
+    let filteredQuestions;
     searchInput.length >= 3 ?
-       qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase())) : qList;
+       filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase())) : filteredQuestions = qList;
     return (
       <div>
         <Container>
@@ -112,8 +104,7 @@ class App extends React.Component {
             </div>
             <br></br>
             <QuestionList
-              // qList={filteredQuestions}
-              qList={qList}
+              qList={filteredQuestions}
               isHelpfulQ={this.isHelpfulQ}
               isHelpfulA={this.isHelpfulA}
               productName={productName}

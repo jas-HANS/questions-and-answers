@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -8,7 +8,6 @@ import AnswerPhoto from './AnswerPhoto.jsx';
 
 const Answer = ({answer, isHelpfulA}) => {
   // eslint-disable-next-line max-len
-  console.log(answer);
   const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   const d = new Date(answer.date);
   const year = d.getUTCFullYear();
@@ -19,7 +18,15 @@ const Answer = ({answer, isHelpfulA}) => {
   const newDate = `${month} ${day}, ${year}`;
 
   const [report, setReport] = useState(false);
-  // const btnRef = useRef();
+  // Keeping useRef comments for future reference //
+  // const btnRef = useRef(); // useRef
+  // const onBtnClick = (e) => {
+  //   if (btnRef.current) {
+  //     btnRef.current.setAttribute('disabled', 'disabled');
+  //     setReport(false);
+  //     // reportAns();
+  //   }
+  // };
 
   const reportAns = (e) => {
     e.preventDefault();
@@ -30,14 +37,6 @@ const Answer = ({answer, isHelpfulA}) => {
         })
         .catch((err) => console.error(err));
   };
-
-  // const onBtnClick = (e) => {
-  //   if (btnRef.current) {
-  //     btnRef.current.setAttribute('disabled', 'disabled');
-  //     setReport(false);
-  //     // reportAns();
-  //   }
-  // };
 
   return (
     <div className="one-answer">
