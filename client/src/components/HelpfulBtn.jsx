@@ -23,10 +23,3 @@ const HelpfulBtn = ({clickFunc, id, currentCount}) => {
 };
 
 export default HelpfulBtn;
-
-// STRETCH GOAL, one click votes helpful,
-// additional click removes helpful
-// const handleXtraClick = () => {
-//   setCount(count - 1);
-//   setDisabled(!disabled);
-// };
