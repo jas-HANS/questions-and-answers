@@ -14,8 +14,8 @@ class App extends React.Component {
       qList: [],
       searchInput: '',
       productName: '',
-      // getId: Math.floor(Math.random() * 100),
-      getId: 5,
+      // getId: Math.floor(Math.random() * 100), 5/6
+      getId: 1300,
     };
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
@@ -51,7 +51,8 @@ class App extends React.Component {
   isHelpfulQ(questID) {
     axios.put(`http://52.26.193.201:3000/qa/question/${questID}/helpful`)
         .then((res) => {
-          this.setState({});
+          console.log(res);
+          this.setState();
         })
         .catch((err) => console.error(err));
     console.log('questionID:', questID);
