@@ -18,15 +18,6 @@ const Answer = ({answer, isHelpfulA}) => {
   const newDate = `${month} ${day}, ${year}`;
 
   const [report, setReport] = useState(false);
-  // Keeping useRef comments for future reference //
-  // const btnRef = useRef(); // useRef
-  // const onBtnClick = (e) => {
-  //   if (btnRef.current) {
-  //     btnRef.current.setAttribute('disabled', 'disabled');
-  //     setReport(false);
-  //     // reportAns();
-  //   }
-  // };
 
   const reportAns = (e) => {
     e.preventDefault();
@@ -74,3 +65,13 @@ const Answer = ({answer, isHelpfulA}) => {
 };
 
 export default Answer;
+
+// Keeping useRef comments for future reference //
+// const btnRef = useRef(); // useRef
+// const onBtnClick = (e) => {
+//   if (btnRef.current) {
+//     btnRef.current.setAttribute('disabled', 'disabled');
+//     setReport(false);
+//     // reportAns();
+//   }
+// };
