@@ -8,16 +8,12 @@ import SubmitButton from './SubmitButton.jsx';
 // eslint-disable-next-line react/prop-types
 const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getProductQs}) => {
   const [load, setLoad] = useState(true);
-  // const [productName, setProductName] = useState('');
-  // const [listLength, setLength] = useState(4);
-  // onclick, increase by two
 
   const mappedList = qList.map((question, i) => <Question
     question={question}
     key={i}
     isHelpfulQ={isHelpfulQ}
     isHelpfulA={isHelpfulA}
-    // getId={getId}
     productName={productName}
     getProductQs={getProductQs}
   />);
@@ -94,5 +90,3 @@ export default QuestionList;
 //       </Accordion.Toggle>
 //     </Accordion>
 //     : mappedList}
-
-

@@ -26,8 +26,6 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
           onHide();
           getProductQs(getId);
         })
-        // .then()
-        // reset the questions to include this Q
         .catch((err) => console.error(err));
   };
 
@@ -44,7 +42,6 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
   return (
     <Form style={{borderRadius: '12px', marginBottom: '0px'}}
       onSubmit={handleSubmitQ}
-      // onSubmit={(e)=> handleSubmitQ(e)}
       // noValidate validated={validated}
     >
       <Form.Group controlId="form.TextAreaValidation">
@@ -54,13 +51,11 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
           name="body"
           value={state.body}
           onChange={handleChange}
-          // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter your question before submitting.*
         </Form.Control.Feedback>
       </Form.Group>
-
 
       <Form.Group controlId="NicknameValidation">Nickname*
         <Form.Control required type="text" placeholder="Example:jackson11!"
@@ -68,7 +63,6 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
           name="name"
           value={state.name}
           onChange={handleChange}
-          // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter a nickname.*
@@ -86,7 +80,6 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
           name="email"
           value={state.email}
           onChange={handleChange}
-          // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter your email address..

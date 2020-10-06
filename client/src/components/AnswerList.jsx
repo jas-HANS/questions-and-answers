@@ -11,14 +11,7 @@ const AnswerList = ({answers, isHelpfulA}) => {
   //   {filteredPerson}
   // ));
 
-  const sortedList = answers.sort((a, b) => {
-    if (b.answerer_name === 'SELLER' || b.answerer_name === 'Seller' || b.answerer_name === 'seller' ) {
-      return 1;
-    }
-    return b.helpfulness - a.helpfulness;
-  });
-
-  const mappedList = sortedList.map((answer, i) => <Answer
+  const mappedList = answers.map((answer, i) => <Answer
     answer={answer}
     key={i}
     isHelpfulA={isHelpfulA}/>);
