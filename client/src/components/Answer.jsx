@@ -30,17 +30,17 @@ const Answer = ({answer, isHelpfulA}) => {
   };
 
   return (
-    <div className="one-answer">
+    <div className="q-a-one-answer">
       <Row>A:
         <Col>{answer.body}</Col>
       </Row>
-      <Row className="comment-data">by:
+      <Row className="qa-comment-data">by:
         {answer.answerer_name === 'Seller' || answer.answerer_name === 'seller'?
         <Col className="seller" style={{paddingTop: '4px'}}>
           {`${answer.answerer_name.toUpperCase()} ${' | '} ${newDate}`}</Col> : <Col>{`${answer.answerer_name} ${' | '} ${newDate}`}
           </Col>
         }
-        <Col md="auto" className="answer-btn">
+        <Col md="auto" className="qa-answer-btn">
           <HelpfulBtn
             className="a-btn"
             id={answer.id}

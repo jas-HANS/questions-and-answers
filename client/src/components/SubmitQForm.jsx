@@ -96,3 +96,15 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
 };
 
 export default SubmitQForm;
+
+
+
+// const [image, setImage] = useState({preview: '', raw: ''});
+// const handleChange = (e) => {
+//   if (e.target.photos.length) {
+//     setImage({
+//       preview: URL.createObjectURL(e.target.files[0]),
+//       raw: e.target.files[0],
+//     });
+//   }
+// };

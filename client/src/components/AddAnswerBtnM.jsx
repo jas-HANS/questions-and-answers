@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Modal from 'react-bootstrap/Modal';
-// import AnswerList from './AnswerList.jsx';
 import AddAnsForm from './AddAnsForm.jsx';
 
 const AddABtn = ({question, productName, answers, getProductQs}) => {

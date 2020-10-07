@@ -19,7 +19,7 @@ const Question = ({question, isHelpfulA, isHelpfulQ, productName, getProductQs})
 
   return (
     <div>
-      <Row className="question">Q:
+      <Row className="qa-question">Q:
         <Col>{question.question_body}</Col>
         <Col md="auto">
           <HelpfulBtn

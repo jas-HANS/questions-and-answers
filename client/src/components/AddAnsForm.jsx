@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Figure from 'react-bootstrap/Figure';
+import Image from 'react-bootstrap/Figure';
 
 const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
   const [state, setAForm] = useState({
@@ -23,7 +23,9 @@ const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
   };
 
   const fileSelectedHandler = (e) => {
-    setAForm({photos: [...e.target.files]});
+    e.preventDefault();
+    const files = e.target.files;
+    setAForm({...state, photos: [...files]});
   };
   // {photos: [...state.photos, ...e.target.files]}
   // .photos or .value
@@ -103,26 +105,13 @@ const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
           // feedback={errors.file}
           // feedbackTooltip
         />
-        {console.log(state.photos)}
-        {/* {state.photos.length ? state.photos.map((photo, i) => <Figure key={i}>
-          <Figure.Image
-            width={100}
-            height={100}
-            alt="your img thumbnail"
-            src={state.photo}
-          />
-        </Figure>) : ''
-        // DONT MIND ME :D
-        } */}
-        {/* // const [image, setImage] = useState({preview: '', raw: ''});
-        // const handleChange = (e) => {
-//   if (e.target.photos.length) {
-//     setImage({
-//       preview: URL.createObjectURL(e.target.files[0]),
-//       raw: e.target.files[0],
-//     });
-//   }
-// }; */}
+        {/* {console.log(state.photos)} */}
+        {/* {state.photos.length ? state.photos.map((photo, i) => <Image key={i}
+        // thumbnail
+          alt="your img thumbnail"
+          src={state.photo}>
+          <Image/>
+        </Image>) : []} */}
       </Form.Group>
 
       <Button variant="dark" type="submit">
@@ -135,21 +124,12 @@ const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
 export default AddAnsForm;
 
 
-// const handleSubmitA = (e) => {
-//   e.preventDefault();
-//   axios.post(`http://52.26.193.201:3000/qa/${question.question_id}/answers`, {...state})
-//       .then((res) => {
-//         console.log(res.data);
-//         onHide();
-//         answers;
-//       })
-//       .then(answers.sort((a, b) => {
-//         if (b.answerer_name === 'SELLER' || b.answerer_name === 'Seller' || b.answerer_name === 'seller' ) {
-//           return 1;
-//         }
-//         return b.helpfulness - a.helpfulness;
-//       }))
-//       .then(answers)
-//       // .then(axios.get(`http://52.26.193.201:3000/qa/${question.question_id}/answers`))
-//       .catch((err) => console.error(err));
+// const [image, setImage] = useState({preview: '', raw: ''});
+// const handleChange = (e) => {
+//   if (e.target.photos.length) {
+//     setImage({
+//       preview: URL.createObjectURL(e.target.files[0]),
+//       raw: e.target.files[0],
+//     });
+//   }
 // };

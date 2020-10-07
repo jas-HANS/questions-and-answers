@@ -18,6 +18,14 @@ const reqProductQs = (id, cb) => {
 // .catch((err) => console.error(err));
 // }
 
+// getAnswers(answerID) {
+//   axios.get(`http://52.26.193.201:3000/qa/${answerID}/answers`)
+//       .then((res) => {
+//         this.setState(aList: []);
+//       })
+//       .catch((err) => console.error(err));
+// }
+
 // // mark a question as helpful
 const reqIsHelpfulQ = (questID, cb) => {
   axios.put(`http://52.26.193.201:3000/qa/question/${questID}/helpful`)
