@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import React, {useState} from 'react';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
 import Answer from './Answer.jsx';
-import {Accordion, Button, Card} from 'react-bootstrap';
 
 const AnswerList = ({answers, isHelpfulA}) => {
   // abstracts seller; may be helpful later?
@@ -10,14 +11,7 @@ const AnswerList = ({answers, isHelpfulA}) => {
   //   {filteredPerson}
   // ));
 
-  const sortedList = answers.sort((a, b) => {
-    if (b.answerer_name === 'SELLER' || b.answerer_name === 'Seller') {
-      return 1;
-    }
-    return b.helpfulness - a.helpfulness;
-  });
-
-  const mappedList = sortedList.map((answer, i) => <Answer
+  const mappedList = answers.map((answer, i) => <Answer
     answer={answer}
     key={i}
     isHelpfulA={isHelpfulA}/>);

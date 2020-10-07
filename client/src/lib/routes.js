@@ -1,19 +1,53 @@
 import axios from 'axios';
 
 // gets all Qs for one product
-const getProductQs = (cb) => {
-  const id = Math.floor(Math.random() * 1000);
-  axios.get(`http://52.26.193.201:3000/qa/${id}`)
+const reqProductQs = (id, cb) => {
+  // const id = Math.floor(Math.random() * 1000);
+  axios.get(`http://52.26.193.201:3000/qa/${id}`, {params: {count: 100}})
       .then((data) => cb(null, data))
       .catch((err) => cb(err, null));
 };
+// ::REFACTORED CODE FOR REFERENCE::
+// getProductQs() {
+// axios.get(`http://52.26.193.201:3000/qa/${id}`)
+// .then((res) => {
+//   this.setState({
+//     qList: res.data.results,
+//   }, () => console.log('getProductQs qList:', this.state.qList));
+// })
+// .catch((err) => console.error(err));
+// }
 
 // // mark a question as helpful
-const qIsHelpful = (cb) => {
-  axios.put(`http://52.26.193.201:3000/qa/question/${id}/helpful`)
+const reqIsHelpfulQ = (questID, cb) => {
+  axios.put(`http://52.26.193.201:3000/qa/question/${questID}/helpful`)
       .then((data) => cb(null, data))
       .catch((err) => cb(err, null));
 };
+// isHelpfulQ(questID) {
+//   axios.put(`http://52.26.193.201:3000/qa/question/${questID}/helpful`)
+//       .then((res) => {
+//         this.setState({});
+//       })
+//       .catch((err) => console.error(err));
+//   console.log('questionID:', questID);
+// }
+
+
+const reqIsHelpfulA = (answerID, cb) => {
+  axios.put(`http://52.26.193.201:3000/qa/answer/${answerID}/helpful`)
+      .then((data) => cb(null, data))
+      .catch((err) => cb(err, null));
+};
+// isHelpfulA(answerID) {
+//   axios.put(`http://52.26.193.201:3000/qa/answer/${answerID}/helpful`)
+//       .then((res) => {
+//         this.setState({});
+//       })
+//       .catch((err) => console.error(err));
+//   console.log('answerID:', answerID);
+//   }
+
 
 // // report a question
 // const reportQuestion = (cb) => {
@@ -64,4 +98,4 @@ const qIsHelpful = (cb) => {
 // };
 // helpful? selectively target the answer that was rated.
 
-export {getProductQs, qIsHelpful};
+export default {reqProductQs, reqIsHelpfulQ, reqIsHelpfulA};
