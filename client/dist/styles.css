@@ -1,24 +1,28 @@
+/* Button Color: #373838
+Button Text: #F1EEE6
+Button Color Hover: #0F4C81 */
+
 body {
   background-color: #f1eee6;
   font-family: 'Crimson Text', serif;
 }
-h1 {
+.q-a-h1 {
   color: #0f4c81;
   display: flex;
   margin-left: 1%;
   font-family: 'Kumbh Sans', sans-serif;
 }
-.jumbotron {
+.q-a-jumbotron {
   background-color: #f1eee6;
   height: 60vh;
 }
 
-.question-list {
+.qa-question-list {
   height: 44vh;
   overflow: scroll;
   border-radius: 10px;
 }
-.question {
+.qa-question {
   display: flex;
   border-radius: 6px;
   justify-content: flex-end;
@@ -30,10 +34,10 @@ h1 {
   margin: 1%;
 }
 
-.one-answer {
+.q-a-one-answer {
   margin-top: 1px;
 }
-.answer-list {
+.q-a-answer-list {
   background-color: #f1eee6;
   border-radius: 8px;
   color: #373838;
@@ -42,20 +46,24 @@ h1 {
   padding: 1%;
   margin-left: 3%;
 }
-.comment-data {
+.qa-comment-data {
   color: #6c6c6c;
   font-size: 14px;
 }
 
-.accordion-toggle {
-  margin-left: 1%;
-  margin-top: 2%;
+.qa-accordion-toggle {
+  margin-right: 2%;
   cursor: pointer;
+  /* background-color: #6c6c6c;
+  color: #f1eee6; */
+  display: flex;
+  justify-content: left;
 }
 
 #addq-btn {
-  margin-left: 2%;
+  margin-left: 5.7%;
 }
+
 .addq-btn-solo{
   margin-top: 2%;
   margin-left: 2%;
@@ -71,7 +79,7 @@ h1 {
   color: #f1eee6 !important;
   font-size: 16px;
 }
-.answer-btn {
+.qa-answer-btn {
   display: flex;
   border-radius: 5px;
   justify-content: flex-end;
@@ -96,7 +104,7 @@ h1 {
   font-size: 16px;
 }
 
-span {
+.qa-span {
   font-size: 16px;
 }
 a:hover {
@@ -113,7 +121,7 @@ a:hover {
   cursor: pointer;
 }
 .report:hover {
-  color: #b80909;
+  color: #e60f0f;
   font-size: 16px;
   margin-left: 2px;
   cursor: pointer;
@@ -121,6 +129,7 @@ a:hover {
 }
 
 .seller {
-  font-weight: bolder;
+  font-weight: 700;
+  color: #5c5a5a;
 }
 
