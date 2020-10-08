@@ -15,10 +15,11 @@ body {
 .q-a-jumbotron {
   background-color: #f1eee6;
   height: 60vh;
+  width: 100%;
 }
 
 .qa-question-list {
-  height: 44vh;
+  height: 50vh;
   overflow: scroll;
   border-radius: 10px;
 }
@@ -54,18 +55,16 @@ body {
 .qa-accordion-toggle {
   margin-right: 2%;
   cursor: pointer;
-  /* background-color: #6c6c6c;
-  color: #f1eee6; */
   display: flex;
   justify-content: left;
 }
 
 #addq-btn {
-  margin-left: 5.7%;
+  margin-left: 5.6%;
 }
 
 .addq-btn-solo{
-  margin-top: 2%;
+  margin-top: 4%;
   margin-left: 2%;
   size: 50px;
 }
@@ -79,6 +78,7 @@ body {
   color: #f1eee6 !important;
   font-size: 16px;
 }
+
 .qa-answer-btn {
   display: flex;
   border-radius: 5px;
@@ -87,15 +87,11 @@ body {
   padding-right: 1%;
   margin-right: 2%;
 }
-/* .answer-btn:visited {
-  text-decoration: underline !important;
-} */
 .q-btn {
   color: #B5C7D3;
   font-size: 16px;
 }
 .q-btn:hover {
-  /* color: #f1eee6 !important; */
   font-size: 16px;
   font-weight: bolder;
 }
@@ -107,29 +103,45 @@ body {
 .qa-span {
   font-size: 16px;
 }
+.qa-span:focus {
+  text-decoration: underline !important;
+}
 a:hover {
   cursor: pointer;
   text-decoration: underline !important;
-  font-weight: bolder;
   color: #B5C7D3 !important;
 }
-.report {
-  color: #980f0f;
+a:focus {
+  text-decoration: underline !important;
+}
+.qa-report {
+  color: #930505;
   font-size: 16px;
   margin-right: 18px;
   margin-left: 4px;
   cursor: pointer;
+  /* outline: 0 !important; */
+  border: none !important;
 }
-.report:hover {
+.qa-report:focus {
+  color: #930505 !important;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: underline !important;
+  outline: 0 !important;
+  border: none !important;
+}
+
+.qa-report:hover {
   color: #e60f0f;
   font-size: 16px;
-  margin-left: 2px;
   cursor: pointer;
   text-decoration: underline;
+  border: none !important;
 }
 
 .seller {
   font-weight: 700;
-  color: #5c5a5a;
+  color: #5c5a5a !important;
 }
 

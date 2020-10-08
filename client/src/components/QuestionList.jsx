@@ -24,7 +24,7 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
       <div className="qa-question-list">
         {/* {mappedList.slice(0, 4)} */}
         {mappedList.slice(0, 4 + questions)}
-        {mappedList.length > 3 &&
+        {mappedList.length > 4 &&
       <Accordion>
         <Accordion.Collapse
           eventKey="0">
@@ -42,8 +42,8 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
           // add2 more ; collapseqs
           onClick={() => {
             if (!load) {
-              setQuestions(questions + 3);
-              if (mappedList.length - 1 <= questions + 4) {
+              setQuestions(questions + 2);
+              if (mappedList.length - 1 <= questions + 5) {
                 setLoad(true);
               }
             } else {

@@ -7,7 +7,7 @@ import Answer from './Answer.jsx';
 
 const AnswerList = ({answers, isHelpfulA}) => {
   // abstracts seller; may be helpful later?
-  // const isSeller = answers.filter((person) => person.answerer_name === 'SELLER' || person.answerer_name === 'Seller');
+  // const isSeller = answers.filter((person) => person.answerer_name === 'SELLER');
   // .map((filteredPerson) => (
   //   {filteredPerson}
   // ));

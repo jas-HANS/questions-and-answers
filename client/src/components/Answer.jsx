@@ -47,12 +47,13 @@ const Answer = ({answer, isHelpfulA}) => {
             clickFunc={isHelpfulA}
             currentCount={answer.helpfulness}
           />
-          <div
-            className="report"
+          <button
+            className="qa-report"
+
             // ref={btnRef}
             onClick={!report ? reportAns : null}
           >{report && '  ' + 'Reported'}{!report && '  ' + 'Report'}
-          </div>
+          </button>
         </Col>
       </Row>
       <Row>
