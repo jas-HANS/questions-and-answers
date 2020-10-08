@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Row from 'react-bootstrap/Row';
+import Image from 'react-bootstrap/Image';
 import Figure from 'react-bootstrap/Figure';
 
 const AnswerPhoto = ({answer}) => {
@@ -16,10 +17,10 @@ const AnswerPhoto = ({answer}) => {
   const mappedPhotos = answer.photos.length ? answer.photos.map((photo, i) =>
     <div key={i}>
       <Figure>
-        <Figure.Image
+        <Image
           width={100}
           height={100}
-          style={{padding: '4px', borderRadius: '8px', cursor: 'pointer'}}
+          style={{paddingLeft: '5px', borderRadius: '8px', cursor: 'pointer'}}
           alt="user img of product"
           src={photo}
           onClick={() => handleShow(photo)}
@@ -30,7 +31,7 @@ const AnswerPhoto = ({answer}) => {
           onHide={handleClose}
           src={clicked}
         >
-          <Figure.Image
+          <Image
             width={500}
             height={400}
             // eslint-disable-next-line max-len

@@ -15,7 +15,7 @@ class App extends React.Component {
       searchInput: '',
       productName: '',
       getId: Math.floor(Math.random() * 100),
-      // getId: 8, 5/6, 1300
+      // getId: 5, 6, 8, 1300
     };
     this.isHelpfulQ = this.isHelpfulQ.bind(this);
     this.isHelpfulA = this.isHelpfulA.bind(this);
@@ -55,14 +55,6 @@ class App extends React.Component {
           this.setState();
         })
         .catch((err) => console.error(err));
-    console.log('questionID:', questID);
-    // query.reqIsHelpfulQ(questID, (err, data) => {
-    //   if (err) {
-    //     throw err;
-    //   } else {
-    //     this.setState({});
-    //   }
-    // });
   }
 
   isHelpfulA(answerID) {
@@ -71,14 +63,6 @@ class App extends React.Component {
           this.setState({});
         })
         .catch((err) => console.error(err));
-    console.log('answerID:', answerID);
-    // query.reqIsHelpfulA(answerID, (err, data) => {
-    //   if (err) {
-    //     throw err;
-    //   } else {
-    //     this.setState({});
-    //   }
-    // });
   }
 
   handleSearchChange(e) {
@@ -108,10 +92,9 @@ class App extends React.Component {
               qList={filteredQuestions}
               isHelpfulQ={this.isHelpfulQ}
               isHelpfulA={this.isHelpfulA}
-              productName={productName}
-
-              getId={getId}
               getProductQs={this.getProductQs}
+              productName={productName}
+              getId={getId}
             />
           </div>
         </Container>

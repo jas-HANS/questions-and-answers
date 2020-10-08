@@ -2,16 +2,9 @@
 import React, {useState} from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
-// import Card from 'react-bootstrap/Card';
 import Answer from './Answer.jsx';
 
 const AnswerList = ({answers, isHelpfulA}) => {
-  // abstracts seller; may be helpful later?
-  // const isSeller = answers.filter((person) => person.answerer_name === 'SELLER');
-  // .map((filteredPerson) => (
-  //   {filteredPerson}
-  // ));
-
   const mappedList = answers.map((answer, i) => <Answer
     answer={answer}
     key={i}

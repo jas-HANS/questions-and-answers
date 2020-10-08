@@ -115,12 +115,11 @@ a:focus {
   text-decoration: underline !important;
 }
 .qa-report {
-  color: #930505;
+  color: #980808;
   font-size: 16px;
   margin-right: 18px;
   margin-left: 4px;
   cursor: pointer;
-  /* outline: 0 !important; */
   border: none !important;
 }
 .qa-report:focus {

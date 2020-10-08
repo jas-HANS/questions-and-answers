@@ -35,16 +35,6 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
         .catch((err) => console.error(err));
   };
 
-  // const handleSubmit = (event) => {
-  //   const form = event.currentTarget;
-  //   if (form.checkValidity() === false) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //   }
-  //   setValidated(true);
-  //   // conditionally do this: handleSubmitQ();
-  // };
-
   return (
     <Form style={{borderRadius: '12px', marginBottom: '0px'}}
       onSubmit={handleSubmitQ}
@@ -102,15 +92,3 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
 };
 
 export default SubmitQForm;
-
-
-
-// const [image, setImage] = useState({preview: '', raw: ''});
-// const handleChange = (e) => {
-//   if (e.target.photos.length) {
-//     setImage({
-//       preview: URL.createObjectURL(e.target.files[0]),
-//       raw: e.target.files[0],
-//     });
-//   }
-// };

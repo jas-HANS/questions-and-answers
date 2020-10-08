@@ -38,8 +38,6 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
           variant="outline-dark"
           eventKey="0"
           // onClick={() => setLoad(!load)}
-
-          // add2 more ; collapseqs
           onClick={() => {
             if (!load) {
               setQuestions(questions + 2);

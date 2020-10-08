@@ -49,7 +49,6 @@ const Answer = ({answer, isHelpfulA}) => {
           />
           <button
             className="qa-report"
-
             // ref={btnRef}
             onClick={!report ? reportAns : null}
           >{report && '  ' + 'Reported'}{!report && '  ' + 'Report'}
@@ -66,13 +65,3 @@ const Answer = ({answer, isHelpfulA}) => {
 };
 
 export default Answer;
-
-// Keeping useRef comments for future reference //
-// const btnRef = useRef(); // useRef
-// const onBtnClick = (e) => {
-//   if (btnRef.current) {
-//     btnRef.current.setAttribute('disabled', 'disabled');
-//     setReport(false);
-//     // reportAns();
-//   }
-// };
