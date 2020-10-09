@@ -106,12 +106,12 @@ body {
 .qa-span:focus {
   text-decoration: underline !important;
 }
-a:hover {
+.helpful-click:hover {
   cursor: pointer;
   text-decoration: underline !important;
   color: #B5C7D3 !important;
 }
-a:focus {
+.helpful-click:focus {
   text-decoration: underline !important;
 }
 .qa-report {
