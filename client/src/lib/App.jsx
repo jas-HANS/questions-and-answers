@@ -6,6 +6,7 @@ import query from './routes';
 import Container from 'react-bootstrap/Container';
 import QuestionList from '../components/QuestionList.jsx';
 import SearchBar from '../components/SearchBar.jsx';
+import SubmitButton from '../components/SubmitButton.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -76,7 +77,7 @@ class App extends React.Component {
        filteredQuestions = qList.filter((q) => q.question_body.toLowerCase().includes(searchInput.toLowerCase())) : filteredQuestions = qList;
     return (
       <div>
-        <Container>
+        <Container className="qa-container">
           <br></br>
           <div className="q-a-jumbotron">
             <h1 className="q-a-h1">Questions and Answers</h1>
@@ -88,16 +89,23 @@ class App extends React.Component {
             <div>
             </div>
             <br></br>
-            <QuestionList
+            {qList.length ? <QuestionList
               qList={filteredQuestions}
               isHelpfulQ={this.isHelpfulQ}
               isHelpfulA={this.isHelpfulA}
               getProductQs={this.getProductQs}
               productName={productName}
               getId={getId}
+            /> : ''}
+            <br></br>
+            <SubmitButton className="addq-btn-solo"
+              productName={productName}
+              getId={getId}
+              getProductQs={this.getProductQs}
             />
           </div>
         </Container>
+        <br></br><br></br>
       </div>
     );
   };
