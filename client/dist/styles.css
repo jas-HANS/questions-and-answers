@@ -61,12 +61,14 @@ body {
 
 #addq-btn {
   margin-left: 5.6%;
+  margin-bottom: 20px;
 }
 
 .addq-btn-solo{
   margin-top: 4%;
   margin-left: 2%;
   size: 50px;
+  margin-bottom: 20px;
 }
 
 .add-answer {
@@ -144,3 +146,7 @@ body {
   color: #5c5a5a !important;
 }
 
+.qa-container {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}

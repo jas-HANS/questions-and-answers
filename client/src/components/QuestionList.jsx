@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Question from './Question';
-import SubmitButton from './SubmitButton.jsx';
 
 // eslint-disable-next-line react/prop-types
 const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getProductQs}) => {
@@ -54,7 +53,7 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
         </Accordion.Toggle>
       </Accordion>}
 
-        {mappedList.length < 1 &&
+        {/* {mappedList.length < 1 &&
       <SubmitButton className="addq-btn-solo"
         productName={productName}
         getId={getId}
@@ -72,7 +71,7 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
           getProductQs={getProductQs}
         />
       </div>
-    </>}
+    </>} */}
       </div>
     </div>
   );
