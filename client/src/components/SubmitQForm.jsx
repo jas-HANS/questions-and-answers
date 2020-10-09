@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
-  // const [validated, setValidated] = useState(false);
+  const [validated, setValidated] = useState(false);
   const [state, setqForm] = useState({
     body: '',
     name: '',
@@ -19,6 +19,12 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
   };
 
   const handleSubmitQ = (e) => {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setValidated(true);
     e.preventDefault();
     axios.post(`http://52.26.193.201:3000/qa/${getId}`, {...state})
         .then((res) => {
@@ -29,20 +35,10 @@ const SubmitQForm = ({question, getProductQs, getId, onHide}) => {
         .catch((err) => console.error(err));
   };
 
-  // const handleSubmit = (event) => {
-  //   const form = event.currentTarget;
-  //   if (form.checkValidity() === false) {
-  //     event.preventDefault();
-  //     event.stopPropagation();
-  //   }
-  //   setValidated(true);
-  //   // conditionally do this: handleSubmitQ();
-  // };
-
   return (
     <Form style={{borderRadius: '12px', marginBottom: '0px'}}
       onSubmit={handleSubmitQ}
-      // noValidate validated={validated}
+      noValidate validated={validated}
     >
       <Form.Group controlId="form.TextAreaValidation">
         <Form.Label></Form.Label>

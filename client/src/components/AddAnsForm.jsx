@@ -3,17 +3,17 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Figure from 'react-bootstrap/Figure';
+import Image from 'react-bootstrap/Figure';
 
 const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
+  const [validated, setValidated] = useState(false);
   const [state, setAForm] = useState({
     body: '',
     name: '',
     email: '',
-    photos: [],
+    // photos: [],
   });
 
-  // STILL A BIT OF WORK TO DO HERE, NEED TO GET MY "SUBMIT MUTLIPLE PHOTOS" SECTION OF MY FORM SORTED
   const handleChange = (e) => {
     // console.log('HC', e.target);
     setAForm({
@@ -22,13 +22,13 @@ const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
     });
   };
 
-  const fileSelectedHandler = (e) => {
-    setAForm({photos: [...e.target.files]});
-  };
-  // {photos: [...state.photos, ...e.target.files]}
-  // .photos or .value
-
   const handleSubmitA = (e) => {
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setValidated(true);
     e.preventDefault();
     axios.post(`http://52.26.193.201:3000/qa/${question.question_id}/answers`, {...state})
         .then((res) => {
@@ -42,7 +42,7 @@ const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
   return (
     <Form style={{borderRadius: '12px', marginBottom: '0px'}}
       onSubmit={handleSubmitA}
-      // noValidate validated={validated}
+      noValidate validated={validated}
     >
       <Form.Group controlId="form.TextAreaValidation">
         <Form.Label></Form.Label>
@@ -51,7 +51,6 @@ const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
           name="body"
           value={state.body}
           onChange={handleChange}
-          // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter your question before submitting.*
@@ -64,7 +63,6 @@ const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
           name="name"
           value={state.name}
           onChange={handleChange}
-          // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter a nickname.*
@@ -82,7 +80,6 @@ const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
           name="email"
           value={state.email}
           onChange={handleChange}
-          // onChange={(e)=> handleChange(e)}
         />
         <Form.Control.Feedback type="invalid">
           Please enter your email address..
@@ -92,38 +89,19 @@ const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
         </Form.Text>
       </Form.Group>
 
-      <Form.Group>
+      {/* <Form.Group>
         <Form.File id="exampleFormControlFile1" label="Submit photo(s)"
           className="position-relative"
           name="photos"
           multiple
-          value={state.photos}
-          onChange={fileSelectedHandler}
+          // value={state.photos}
+          // onChange={fileSelectedHandler}
           // isInvalid={!!errors.file}
           // feedback={errors.file}
           // feedbackTooltip
         />
-        {console.log(state.photos)}
-        {/* {state.photos.length ? state.photos.map((photo, i) => <Figure key={i}>
-          <Figure.Image
-            width={100}
-            height={100}
-            alt="your img thumbnail"
-            src={state.photo}
-          />
-        </Figure>) : ''
-        // DONT MIND ME :D
-        } */}
-        {/* // const [image, setImage] = useState({preview: '', raw: ''});
-        // const handleChange = (e) => {
-//   if (e.target.photos.length) {
-//     setImage({
-//       preview: URL.createObjectURL(e.target.files[0]),
-//       raw: e.target.files[0],
-//     });
-//   }
-// }; */}
-      </Form.Group>
+      </Form.Group> */}
+
 
       <Button variant="dark" type="submit">
        Submit
@@ -133,23 +111,3 @@ const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
 };
 
 export default AddAnsForm;
-
-
-// const handleSubmitA = (e) => {
-//   e.preventDefault();
-//   axios.post(`http://52.26.193.201:3000/qa/${question.question_id}/answers`, {...state})
-//       .then((res) => {
-//         console.log(res.data);
-//         onHide();
-//         answers;
-//       })
-//       .then(answers.sort((a, b) => {
-//         if (b.answerer_name === 'SELLER' || b.answerer_name === 'Seller' || b.answerer_name === 'seller' ) {
-//           return 1;
-//         }
-//         return b.helpfulness - a.helpfulness;
-//       }))
-//       .then(answers)
-//       // .then(axios.get(`http://52.26.193.201:3000/qa/${question.question_id}/answers`))
-//       .catch((err) => console.error(err));
-// };

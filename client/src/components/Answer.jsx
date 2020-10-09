@@ -30,29 +30,29 @@ const Answer = ({answer, isHelpfulA}) => {
   };
 
   return (
-    <div className="one-answer">
+    <div className="q-a-one-answer">
       <Row>A:
         <Col>{answer.body}</Col>
       </Row>
-      <Row className="comment-data">by:
+      <Row className="qa-comment-data">by:
         {answer.answerer_name === 'Seller' || answer.answerer_name === 'seller'?
         <Col className="seller" style={{paddingTop: '4px'}}>
           {`${answer.answerer_name.toUpperCase()} ${' | '} ${newDate}`}</Col> : <Col>{`${answer.answerer_name} ${' | '} ${newDate}`}
           </Col>
         }
-        <Col md="auto" className="answer-btn">
+        <Col md="auto" className="qa-answer-btn">
           <HelpfulBtn
             className="a-btn"
             id={answer.id}
             clickFunc={isHelpfulA}
             currentCount={answer.helpfulness}
           />
-          <div
-            className="report"
+          <button
+            className="qa-report"
             // ref={btnRef}
             onClick={!report ? reportAns : null}
           >{report && '  ' + 'Reported'}{!report && '  ' + 'Report'}
-          </div>
+          </button>
         </Col>
       </Row>
       <Row>
@@ -65,13 +65,3 @@ const Answer = ({answer, isHelpfulA}) => {
 };
 
 export default Answer;
-
-// Keeping useRef comments for future reference //
-// const btnRef = useRef(); // useRef
-// const onBtnClick = (e) => {
-//   if (btnRef.current) {
-//     btnRef.current.setAttribute('disabled', 'disabled');
-//     setReport(false);
-//     // reportAns();
-//   }
-// };

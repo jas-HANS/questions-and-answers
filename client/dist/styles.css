@@ -1,24 +1,29 @@
+/* Button Color: #373838
+Button Text: #F1EEE6
+Button Color Hover: #0F4C81 */
+
 body {
   background-color: #f1eee6;
   font-family: 'Crimson Text', serif;
 }
-h1 {
+.q-a-h1 {
   color: #0f4c81;
   display: flex;
   margin-left: 1%;
   font-family: 'Kumbh Sans', sans-serif;
 }
-.jumbotron {
+.q-a-jumbotron {
   background-color: #f1eee6;
   height: 60vh;
+  width: 100%;
 }
 
-.question-list {
-  height: 44vh;
+.qa-question-list {
+  height: 50vh;
   overflow: scroll;
   border-radius: 10px;
 }
-.question {
+.qa-question {
   display: flex;
   border-radius: 6px;
   justify-content: flex-end;
@@ -30,10 +35,10 @@ h1 {
   margin: 1%;
 }
 
-.one-answer {
+.q-a-one-answer {
   margin-top: 1px;
 }
-.answer-list {
+.q-a-answer-list {
   background-color: #f1eee6;
   border-radius: 8px;
   color: #373838;
@@ -42,22 +47,24 @@ h1 {
   padding: 1%;
   margin-left: 3%;
 }
-.comment-data {
+.qa-comment-data {
   color: #6c6c6c;
   font-size: 14px;
 }
 
-.accordion-toggle {
-  margin-left: 1%;
-  margin-top: 2%;
+.qa-accordion-toggle {
+  margin-right: 2%;
   cursor: pointer;
+  display: flex;
+  justify-content: left;
 }
 
 #addq-btn {
-  margin-left: 2%;
+  margin-left: 5.6%;
 }
+
 .addq-btn-solo{
-  margin-top: 2%;
+  margin-top: 4%;
   margin-left: 2%;
   size: 50px;
 }
@@ -71,7 +78,8 @@ h1 {
   color: #f1eee6 !important;
   font-size: 16px;
 }
-.answer-btn {
+
+.qa-answer-btn {
   display: flex;
   border-radius: 5px;
   justify-content: flex-end;
@@ -79,15 +87,11 @@ h1 {
   padding-right: 1%;
   margin-right: 2%;
 }
-/* .answer-btn:visited {
-  text-decoration: underline !important;
-} */
 .q-btn {
   color: #B5C7D3;
   font-size: 16px;
 }
 .q-btn:hover {
-  /* color: #f1eee6 !important; */
   font-size: 16px;
   font-weight: bolder;
 }
@@ -96,31 +100,47 @@ h1 {
   font-size: 16px;
 }
 
-span {
+.qa-span {
   font-size: 16px;
 }
-a:hover {
+.qa-span:focus {
+  text-decoration: underline !important;
+}
+.helpful-click:hover {
   cursor: pointer;
   text-decoration: underline !important;
-  font-weight: bolder;
   color: #B5C7D3 !important;
 }
-.report {
-  color: #980f0f;
+.helpful-click:focus {
+  text-decoration: underline !important;
+}
+.qa-report {
+  color: #980808;
   font-size: 16px;
   margin-right: 18px;
   margin-left: 4px;
   cursor: pointer;
+  border: none !important;
 }
-.report:hover {
-  color: #b80909;
+.qa-report:focus {
+  color: #930505 !important;
   font-size: 16px;
-  margin-left: 2px;
+  cursor: pointer;
+  text-decoration: underline !important;
+  outline: 0 !important;
+  border: none !important;
+}
+
+.qa-report:hover {
+  color: #e60f0f;
+  font-size: 16px;
   cursor: pointer;
   text-decoration: underline;
+  border: none !important;
 }
 
 .seller {
-  font-weight: bolder;
+  font-weight: 700;
+  color: #5c5a5a !important;
 }
 

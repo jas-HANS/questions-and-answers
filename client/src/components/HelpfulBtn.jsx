@@ -12,7 +12,7 @@ const HelpfulBtn = ({clickFunc, id, currentCount}) => {
   };
 
   return (
-    <span>Helpful? {' '}
+    <span className="qa-span">Helpful? {' '}
       <a
         className="helpful-click"
         onClick={!disabled ? handleClick : null}

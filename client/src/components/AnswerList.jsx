@@ -1,16 +1,10 @@
 /* eslint-disable max-len */
 import React, {useState} from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import Answer from './Answer.jsx';
 
 const AnswerList = ({answers, isHelpfulA}) => {
-  // abstracts seller; may be helpful later?
-  // const isSeller = answers.filter((person) => person.answerer_name === 'SELLER' || person.answerer_name === 'Seller');
-  // .map((filteredPerson) => (
-  //   {filteredPerson}
-  // ));
-
   const mappedList = answers.map((answer, i) => <Answer
     answer={answer}
     key={i}
@@ -19,7 +13,7 @@ const AnswerList = ({answers, isHelpfulA}) => {
   const [load, setLoad] = useState(true);
 
   return (
-    <div className="answer-list">
+    <div className="q-a-answer-list">
       {mappedList.slice(0, 2)}
       {mappedList.length > 2 &&
         <Accordion>
@@ -30,9 +24,10 @@ const AnswerList = ({answers, isHelpfulA}) => {
             </div>
           </Accordion.Collapse>
           <Accordion.Toggle
-            className="accordion-toggle"
-            as={Card.Header}
-            variant="link"
+            className="qa-accordion-toggle"
+            as={Button}
+            style={{marginLeft: '1.6%'}}
+            variant="outline-dark"
             eventKey="0"
             onClick={() => setLoad(!load)}
           >

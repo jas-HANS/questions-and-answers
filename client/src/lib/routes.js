@@ -18,6 +18,14 @@ const reqProductQs = (id, cb) => {
 // .catch((err) => console.error(err));
 // }
 
+// getAnswers(answerID) {
+//   axios.get(`http://52.26.193.201:3000/qa/${answerID}/answers`)
+//       .then((res) => {
+//         this.setState(aList: []);
+//       })
+//       .catch((err) => console.error(err));
+// }
+
 // // mark a question as helpful
 const reqIsHelpfulQ = (questID, cb) => {
   axios.put(`http://52.26.193.201:3000/qa/question/${questID}/helpful`)
@@ -48,15 +56,6 @@ const reqIsHelpfulA = (answerID, cb) => {
 //   console.log('answerID:', answerID);
 //   }
 
-
-// // report a question
-// const reportQuestion = (cb) => {
-//   let id = 5;
-//   axios.put(`http://52.26.193.201:3000/qa/question/${id}/report`)
-//   .then(data => cb(null, data))
-//   .catch(err => cb(err, null))
-// }
-
 // add a question for one product
 // const addOneQ = (cb, id) => {
 //   axios.post(`http://52.26.193.201:3000/qa/${id}`)
@@ -79,23 +78,11 @@ const reqIsHelpfulA = (answerID, cb) => {
 // }
 
 // // report an answer
-// const reportAnswer = (cb) => {
+// const reportAnswer = (id, cb) => {
 //   let id = 5;
 //   axios.put(`http://52.26.193.201:3000/qa/question/${id}/report`)
 //   .then(data => cb(null, data))
 //   .catch(err => cb(err, null))
 // }
-
-// getAllAsForOneQ() {
-//   const id = 35556;
-//   axios.get(`http://52.26.193.201:3000/qa/${id}/answers`)
-//       .then((res) => {
-//         this.setState({
-//           allAsForOneQ: res.data,
-//         });
-//       })
-//       .catch((err) => console.error(err));
-// };
-// helpful? selectively target the answer that was rated.
 
 export default {reqProductQs, reqIsHelpfulQ, reqIsHelpfulA};

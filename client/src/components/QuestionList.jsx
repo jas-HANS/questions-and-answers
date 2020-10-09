@@ -1,13 +1,14 @@
 /* eslint-disable max-len */
 import React, {useState} from 'react';
 import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import Question from './Question';
 import SubmitButton from './SubmitButton.jsx';
 
 // eslint-disable-next-line react/prop-types
 const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getProductQs}) => {
-  const [load, setLoad] = useState(true);
+  const [load, setLoad] = useState(false);
+  const [questions, setQuestions] = useState(0);
 
   const mappedList = qList.map((question, i) => <Question
     question={question}
@@ -20,25 +21,36 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
 
   return (
     <div>
-      <div className="question-list">
-        {mappedList.slice(0, 4)}
-        {/* slice through x, as long as x isnt >.length */}
-        {mappedList.length > 3 &&
+      <div className="qa-question-list">
+        {/* {mappedList.slice(0, 4)} */}
+        {mappedList.slice(0, 4 + questions)}
+        {mappedList.length > 4 &&
       <Accordion>
         <Accordion.Collapse
           eventKey="0">
           <div>
-            {mappedList.slice(4)}
+            {/* {mappedList.slice(4 + questions)} */}
           </div>
         </Accordion.Collapse>
         <Accordion.Toggle
-          as={Card.Header}
-          style={{margin: '10px'}}
-          variant="link"
+          as={Button}
+          style={{marginLeft: '5.5%'}}
+          variant="outline-dark"
           eventKey="0"
-          onClick={() => setLoad(!load)}
+          // onClick={() => setLoad(!load)}
+          onClick={() => {
+            if (!load) {
+              setQuestions(questions + 2);
+              if (mappedList.length - 1 <= questions + 5) {
+                setLoad(true);
+              }
+            } else {
+              setQuestions(0);
+              setLoad(false);
+            }
+          }}
         >
-          {load && 'LOAD MORE QUESTIONS'}{!load && 'COLLAPSE QUESTIONS'}
+          {!load && 'LOAD MORE QUESTIONS'}{load && 'COLLAPSE QUESTIONS'}
         </Accordion.Toggle>
       </Accordion>}
 
@@ -54,6 +66,7 @@ const QuestionList = ({qList, isHelpfulQ, isHelpfulA, productName, getId, getPro
     <><br></br>
       <div>
         <SubmitButton
+          className="addq-btn-list"
           productName={productName}
           getId={getId}
           getProductQs={getProductQs}
