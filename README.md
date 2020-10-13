@@ -1,8 +1,12 @@
 # Questions and Answers API
-### List Questions
+
+All pathways routed using Express.js 
+Build this project using the following scripts: "npm run build" will start Webpack "npm start" will boot up the server
+
+### List Questions and Answers
 
 `GET /qa/:product_id`
-Retrieves a list of questions for a particular product.  This list *does not* include any reported questions.
+Retrieves a list of questions for a particular product given the product ID.  This list *does not* include any reported questions.
 
 Parameters
 
@@ -31,7 +35,7 @@ Response
             "id": 68,
             "body": "You weren't man enough!",
             "date": "2018-08-18T00:00:00.000Z",
-            "answerer_name": "Seller",
+            "answerer_name": "Zak007",
             "helpfulness": 4,
             "photos": []
             // ...
@@ -99,7 +103,7 @@ Response
       "answer_id": 8,
       "body": "What a dumb question!",
       "date": "2018-01-04T00:00:00.000Z",
-      "answerer_name": "metslover",
+      "answerer_name": "kgraas12",
       "helpfulness": 8,
       "photos": [],
     },
