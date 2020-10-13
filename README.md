@@ -1,7 +1,14 @@
 # Questions and Answers API
 
+### Initial Setup
+
 All pathways routed using Express.js 
-Build this project using the following scripts: "npm run build" will start Webpack "npm start" will boot up the server
+
+From the root directory run "npm run build" to start Webpack 
+
+Run "npm start" to start the server
+
+
 
 ### List Questions and Answers
 
