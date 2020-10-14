@@ -1,39 +1,56 @@
 const mongoose = require('mongoose');
 
-//Set up default mongoose connection
 const mongoDB = 'mongodb://127.0.0.1/qaDatabase';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-
-//Get the default connection
 const db = mongoose.connection;
 
-//====================
-//===== QUERIES ======
-//====================
+//==========================================
+//============== QUERIES ===================
+//==========================================
 
 const Schema = mongoose.Schema;
 
-// QUESTIONS
+//===================
+//==== QUESTIONS ====
+//===================
 
 const questionSchema = new Schema({
-
+    product_id: Number,
+    results: [{
+        question_id: Number,
+        question_body: String,
+        question_date: Date,
+        asker_name: String,
+        question_helpfulness: Number,
+        reported: Number,
+        answers: {
+            type: Schema.Types.ObjectId,
+            ref: 'Answers'
+        }
+    }]
 });
 
-const Question = mongoose.model("Question", questionSchema);
+const Questions = mongoose.model("Question", questionSchema);
 
-// ANSWERS
+//===================
+//===== ANSWERS =====
+//===================
 
 const answerSchema = new Schema({
-
 });
 
-const Answer = mongoose.model("Answer", answerSchema);
+const Answers = mongoose.model("Answer", answerSchema);
 
 
-//Bind connection to error event (to get notification of connection errors)
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 module.exports = {
-    Question,
-    Answer
+    Questions,
+    Answers,
+    /*     addQuestion,
+        markQAsHelpful,
+        reportQuestion,
+        addAnswer,
+        markAnsAsHelpful,
+        reportAnswer */
 }
