@@ -1,20 +1,27 @@
+const mongoose = require('mongoose');
+
+const mongoDB = 'mongodb://127.0.0.1/qaDatabase';
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+const db = mongoose.connection;
+const { ProductController } = require('../database/controllers/ProductController.js');
+const { QuestionController } = require('../database/controllers/QuestionController.js');
+
 const express = require('express');
 const app = express();
 const PORT = 3001;
 const bodyParser = require('body-parser');
-const { Questions } = require('../database/queries.js');
 const jsonParser = bodyParser.json();
 
 app.use(express.static('../client/dist'));
 
 //==========================
-//=====QUESTION ROUTES======
+//==== QUESTION ROUTES =====
 //==========================
 
 app.get('/qa/:product_id', (req, res) => {
-  Questions.find({product_id: req.params.product_id}, (err, data) => {
+  ProductController.getAllQuestions({product_id: req.params.product_id}, (err, data) => {
     if (err) {
-      console.log('😅 There was an error getting the questions for this product');
+      console.log('😅 Soooo, There was an error getting the questions for this product', err);
       res.send();
     } else {
       console.log("Here're the questions you asked for");
@@ -111,6 +118,8 @@ app.put('/qa/answer/:answer_id/report', (req, res) => {
   });
 });
  */
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.listen(PORT, () => {
   console.log(`Server running and listening on port: ${PORT}`);
