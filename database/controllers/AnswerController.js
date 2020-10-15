@@ -8,7 +8,7 @@ const AnswerController = {
             } else {
                 callback(null, data);
             }
-        }).populate('answers');
+        });
     }
 }
 
