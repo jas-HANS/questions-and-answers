@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Questions = require('./QuestionModel.js')
 
 const Schema = mongoose.Schema;
 
