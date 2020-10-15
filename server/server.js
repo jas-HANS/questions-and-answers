@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const mongoDB = 'mongodb://127.0.0.1/qaDatabase';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
-const { ProductController } = require('../database/controllers/ProductController.js');
 const { QuestionController } = require('../database/controllers/QuestionController.js');
 
 const express = require('express');
@@ -19,7 +18,7 @@ app.use(express.static('../client/dist'));
 //==========================
 
 app.get('/qa/:product_id', (req, res) => {
-  ProductController.getAllQuestions({product_id: req.params.product_id}, (err, data) => {
+  QuestionController.getAllQuestions({product_id: req.params.product_id}, (err, data) => {
     if (err) {
       console.log('😅 Soooo, There was an error getting the questions for this product', err);
       res.send();
