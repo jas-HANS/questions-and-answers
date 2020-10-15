@@ -2,7 +2,8 @@ const { Question } = require('../models/QuestionModel.js');
 
 const QuestionController = {
     getAllQuestions: (product, callback) => {
-        Question.find({product_id: product.product_id}, (err, data) => {
+        const id = product.product_id;
+        Question.find({product_id: id}, (err, data) => {
             if (err) {
                 callback(err, null)
             } else {
@@ -10,9 +11,9 @@ const QuestionController = {
             }
         });
     },
-    create: (product, body, callback) => {
-        const newQuestion = new Question(body);
-        newQuestion.save((err, data) => {
+    create: (id, body, callback) => {
+        const newQuestion = new Question();
+        newQuestion.save({product_id: id, results: body}, (err, data) => {
             if (err) {
                 callback(err, null)
             } else {

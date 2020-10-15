@@ -9,7 +9,9 @@ const express = require('express');
 const app = express();
 const PORT = 3001;
 const bodyParser = require('body-parser');
+var cors = require('cors');
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('../client/dist'));
@@ -31,7 +33,8 @@ app.get('/qa/:product_id', (req, res) => {
 });
 
 app.post('/qa/:product_id', (req, res) => {
-  QuestionController.create(req.params.product_id, (err, data) => {
+  console.log(req.params.product_id, req.body)
+  QuestionController.create(req.params.product_id, req.body, (err, data) => {
     if (err) {
       console.log('There was an error adding a question');
       res.send();
