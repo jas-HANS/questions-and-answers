@@ -9,6 +9,16 @@ const QuestionController = {
                 callback(null, data);
             }
         });
+    },
+    create: (product, body, callback) => {
+        const newQuestion = new Question(body);
+        newQuestion.save((err, data) => {
+            if (err) {
+                callback(err, null)
+            } else {
+                callback(null, data)
+            }
+        });
     }
 }
 
