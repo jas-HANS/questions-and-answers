@@ -3,20 +3,24 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const answerSchema = new Schema({
-    answer_id: Number,
-    body: String,
-    date: Date,
-    answerer_name: String,
-    helpfulness: Number,
-    photos: [{
-        id: Number,
-        url: String
-    }],
+    question: Number,
+    page: Number,
+    count: Number,
+    results: {
+        answer_id: Number,
+        body: String,
+        date: Date,
+        answerer_name: String,
+        helpfulness: Number,
+        photos: [{
+            id: Number,
+            url: String
+        }],
+    }
 });
 
-const Answers = mongoose.model("Answers", answerSchema);
-
+const Answer = mongoose.model("Answer", answerSchema);
 
 module.exports = {
-    Answers
+    Answer
 }
