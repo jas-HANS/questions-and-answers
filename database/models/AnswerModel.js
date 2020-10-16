@@ -19,7 +19,7 @@ const answerSchema = new Schema({
     }
 });
 
-const Answer = mongoose.model("Answer", answerSchema);
+const Answer = mongoose.model("Answer", answerSchema, 'answers');
 
 module.exports = {
     Answer

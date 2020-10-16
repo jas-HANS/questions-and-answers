@@ -9,8 +9,11 @@ const express = require('express');
 const app = express();
 const PORT = 3001;
 const bodyParser = require('body-parser');
-const jsonParser = bodyParser.json();
+var cors = require('cors');
 
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('../client/dist'));
 
 //==========================
@@ -29,8 +32,9 @@ app.get('/qa/:product_id', (req, res) => {
   });
 });
 
-/* app.post('/qa/:product_id', (req, res) => {
-  queries.addQuestion(req.params.product_id, (err, data) => {
+app.post('/qa/:product_id', (req, res) => {
+  console.log(req.params.product_id, req.body)
+  QuestionController.create(req.params.product_id, req.body, (err, data) => {
     if (err) {
       console.log('There was an error adding a question');
       res.send();
@@ -41,6 +45,7 @@ app.get('/qa/:product_id', (req, res) => {
   });
 });
 
+/* 
 app.put('/qa/question/:question_id/helpful', (req, res) => {
   queries.markQAsHelpful(req.params.question_id, (err, data) => {
     if (err) {
