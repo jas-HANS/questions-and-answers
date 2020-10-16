@@ -12,8 +12,8 @@ const QuestionController = {
         });
     },
     create: (id, body, callback) => {
-        const newQuestion = new Question();
-        newQuestion.save({product_id: id, results: body}, (err, data) => {
+        const newQuestion = new Question({product_id: id, results: body});
+        newQuestion.save((err, data) => {
             if (err) {
                 callback(err, null)
             } else {
