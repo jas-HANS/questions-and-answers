@@ -8,7 +8,8 @@
     "react-dev": "webpack -d --watch",
     "start": "cd client/dist && live-server",
     "server": "cd server && node server.js --watch",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "seed": "cd database && node seed.js && mongoimport --db qaDatabase --collection questions --file ./entries.json"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   "dependencies": {
     "@babel/plugin-syntax-jsx": "^7.10.4",
     "@babel/polyfill": "^7.11.5",
+    "assert": "^2.0.0",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "chokidar": "^3.4.2",
@@ -51,9 +53,12 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.21.2",
     "eslint-plugin-react-hooks": "^4.1.2",
+    "faker": "^5.1.0",
     "jest": "^26.4.2",
     "jest-environment-enzyme": "^7.1.2",
     "jest-enzyme": "^7.1.2",
-    "jest-nyan-reporter": "^1.0.2"
+    "jest-nyan-reporter": "^1.0.2",
+    "lodash": "^4.17.20",
+    "mongodb": "^3.6.2"
   }
 }
