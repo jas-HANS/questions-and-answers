@@ -1,4 +1,5 @@
 const { Question } = require('../models/QuestionModel.js');
+const formatters = require('../helpers/formatters.js');
 
 const QuestionController = {
     getAllQuestions: (product, callback) => {
@@ -12,9 +13,11 @@ const QuestionController = {
         });
     },
     create: (id, body, callback) => {
+        body = formatters.questionFormatter(body);
+        console.log(body);
         Question.update(
-            { _id: id },
-            { $push: { results: { question_id: 2 } } },
+            { "_id": id },
+            { $push: { "results": body } },
             (err, data) => {
                 if (err) {
                     callback(err, null)
