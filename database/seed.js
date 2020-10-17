@@ -6,10 +6,10 @@ writeEntries.write('', 'utf8');
 
 function writeTenMillionUsers(writer, encoding, callback) {
     let time = 0;
-    let i = 1000;
+    let i = 10000000;
     let id = 0;
+    const start = new Date().getTime();
     function write() {
-        const start = new Date().getTime();
         let ok = true;
         do {
             i -= 1;
