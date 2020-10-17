@@ -7,8 +7,11 @@ const { QuestionController } = require('../database/controllers/QuestionControll
 
 const express = require('express');
 const app = express();
+module.exports.app = app;
+
 const PORT = 3001;
 const bodyParser = require('body-parser');
+
 var cors = require('cors');
 
 app.use(cors());
@@ -20,7 +23,7 @@ app.use(express.static('../client/dist'));
 //==== QUESTION ROUTES =====
 //==========================
 
-app.get('/qa/:product_id', (req, res) => {
+app.get('/qa/:product_id', (req, res, next) => {
   QuestionController.getAllQuestions({product_id: req.params.product_id}, (err, data) => {
     if (err) {
       console.log('😅 Soooo, There was an error getting the questions for this product', err);
@@ -128,3 +131,5 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.listen(PORT, () => {
   console.log(`Server running and listening on port: ${PORT}`);
 });
+
+module.exports = app;

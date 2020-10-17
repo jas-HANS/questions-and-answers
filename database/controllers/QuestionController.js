@@ -3,7 +3,7 @@ const { Question } = require('../models/QuestionModel.js');
 const QuestionController = {
     getAllQuestions: (product, callback) => {
         const id = product.product_id;
-        Question.find({"_id" : id}, (err, data) => {
+        Question.find({ "_id": id }, (err, data) => {
             if (err) {
                 callback(err, null)
             } else {
@@ -12,14 +12,16 @@ const QuestionController = {
         });
     },
     create: (id, body, callback) => {
-        const newQuestion = new Question({product_id: id, results: body});
-        newQuestion.save((err, data) => {
-            if (err) {
-                callback(err, null)
-            } else {
-                callback(null, data)
-            }
-        });
+        Question.update(
+            { _id: id },
+            { $push: { results: { question_id: 2 } } },
+            (err, data) => {
+                if (err) {
+                    callback(err, null)
+                } else {
+                    callback(null, data)
+                }
+            });
     }
 }
 
