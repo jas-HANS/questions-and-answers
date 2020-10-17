@@ -5,10 +5,11 @@ const writeEntries = fs.createWriteStream('entries.json');
 writeEntries.write('', 'utf8');
 
 function writeTenMillionUsers(writer, encoding, callback) {
-    const start = new Date().getTime();
+    let time = 0;
     let i = 1000;
     let id = 0;
     function write() {
+        const start = new Date().getTime();
         let ok = true;
         do {
             i -= 1;
@@ -53,12 +54,13 @@ function writeTenMillionUsers(writer, encoding, callback) {
             // write some more once it drains
             writer.once('drain', write);
         }
+        const stop = new Date().getTime();
+        time = stop - start;
     }
     write()
-    const stop = new Date().getTime();
-    console.log(`Seeding took ${stop - start} milliseconds.`);
+    console.log(`Seeding took ${time} milliseconds.`);
 }
 
 writeTenMillionUsers(writeEntries, 'utf-8', () => {
     writeEntries.end();
-  });
+});

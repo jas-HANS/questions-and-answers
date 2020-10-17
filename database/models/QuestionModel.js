@@ -10,7 +10,7 @@ const questionSchema = new Schema({
         asker_name: String,
         question_helpfulness: Number,
         reported: Number,
-        answers: {
+        answers: [{
             id: Number,
             body: String,
             date: Date,
@@ -20,7 +20,7 @@ const questionSchema = new Schema({
                 id: Number,
                 url: String
             }]
-        }
+        }]
     }]
 });
 
