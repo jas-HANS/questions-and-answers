@@ -12,10 +12,51 @@ function writeTenMillionUsers(writer, encoding, callback) {
     function write() {
         let ok = true;
         do {
-            i -= 1;
-            id += 1;
-            let newEntry = JSON.stringify({
-                results: [
+            let answers = [];
+            let questions = [];
+            let photos = [];
+
+            //==================================
+            // GENERATE RANDOM NUMBER OF PHOTOS
+            //==================================
+            for (let p = 0; p < Math.floor(Math.random() * Math.floor(5)); p++) {
+                i -= 1;
+                id += 1;
+                photos.push(
+                    {
+                        id: faker.random.number(),
+                        url: faker.image.avatar(),
+                    }
+                );
+            }
+
+            //==================================
+            // GENERATE RANDOM NUMBER OF ANSWERS
+            //==================================
+
+            for (let k = 0; k < Math.floor(Math.random() * Math.floor(15)); k++) {
+                i -= 1;
+                id += 1;
+                answers.push(
+                    {
+                        id: faker.random.number(),
+                        body: faker.lorem.sentence(),
+                        date: faker.date.recent(),
+                        answerer_name: faker.name.firstName(),
+                        helpfulness: faker.random.number(),
+                        photos: photos
+                    }
+                );
+            }
+
+            //====================================
+            // GENERATE RANDOM NUMBER OF QUESTIONS
+            //====================================
+
+            for (let j = 0; j < Math.floor(Math.random() * Math.floor(15)); j++) {
+                i -= 1;
+                id += 1;
+                questions.push(
                     {
                         question_id: faker.random.number(),
                         question_body: faker.lorem.sentence(),
@@ -23,24 +64,14 @@ function writeTenMillionUsers(writer, encoding, callback) {
                         asker_name: faker.name.firstName(),
                         question_helpfulness: faker.random.number(),
                         reported: faker.random.number(),
-                        answers: [
-                            {
-                                id: faker.random.number(),
-                                body: faker.lorem.sentence(),
-                                date: faker.date.recent(),
-                                answerer_name: faker.name.firstName(),
-                                helpfulness: faker.random.number(),
-                                photos: [
-                                    {
-                                        id: faker.random.number(),
-                                        url: faker.image.avatar(),
-                                    }
-                                ]
-                            }
-                        ],
-                    }
-                ]
+                        answers: answers
+                    });
+            }
+
+            let newEntry = JSON.stringify({
+                results: questions
             });
+
             if (i === 0) {
                 writer.write(newEntry, encoding, callback);
             } else {
