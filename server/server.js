@@ -78,7 +78,7 @@ app.put('/qa/question/:question_id/report', (req, res) => {
 //==========================
 
 app.get('/qa/:question_id/answers', (req, res) => {
-  AnswerController.getAllAnswers(req.params.question_id, (err, data) => {
+  AnswerController.getAllAnswers(req.params, req.query, (err, data) => {
     if (err) {
       console.log('😅 There was an error getting the answers for this question');
       res.send();
