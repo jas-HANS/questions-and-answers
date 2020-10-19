@@ -4,6 +4,7 @@ const mongoDB = 'mongodb://127.0.0.1/qaDatabase';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 const { QuestionController } = require('../database/controllers/QuestionController.js');
+const { AnswerController } = require('../database/controllers/AnswerController.js');
 
 const express = require('express');
 const app = express();
@@ -47,8 +48,8 @@ app.post('/qa/:product_id', (req, res) => {
   });
 });
 
-/* 
-app.put('/qa/question/:question_id/helpful', (req, res) => {
+
+/* app.put('/qa/question/:question_id/helpful', (req, res) => {
   queries.markQAsHelpful(req.params.question_id, (err, data) => {
     if (err) {
       console.log('There was an error marking this question as helpful');
@@ -70,14 +71,14 @@ app.put('/qa/question/:question_id/report', (req, res) => {
       res.status(204).send(data);
     }
   });
-});
+}); */
 
 //==========================
 //======ANSWER ROUTES=======
 //==========================
 
 app.get('/qa/:question_id/answers', (req, res) => {
-  queries.Answers(req.params.question_id, (err, data) => {
+  AnswerController.getAllAnswers(req.params.question_id, (err, data) => {
     if (err) {
       console.log('😅 There was an error getting the answers for this question');
       res.send();
@@ -88,7 +89,7 @@ app.get('/qa/:question_id/answers', (req, res) => {
   });
 });
 
-app.post('/qa/:question_id/answers', (req, res) => {
+/* app.post('/qa/:question_id/answers', (req, res) => {
   queries.addAnswer(req.params.question_id, (err, data) => {
     if (err) {
       console.log('There was an error adding a answer');
@@ -98,9 +99,9 @@ app.post('/qa/:question_id/answers', (req, res) => {
       res.status(201).send(data);
     }
   });
-});
+}); */
 
-app.put('/qa/answer/:answer_id/helpful', (req, res) => {
+/* app.put('/qa/answer/:answer_id/helpful', (req, res) => {
   queries.markAnsAsHelpful(req.params.question_id, (err, data) => {
     if (err) {
       console.log('There was an error marking this answer as helpful');
@@ -122,8 +123,8 @@ app.put('/qa/answer/:answer_id/report', (req, res) => {
       res.status(204).send(data);
     }
   });
-});
- */
+}); */
+
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 

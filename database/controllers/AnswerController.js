@@ -3,7 +3,7 @@ const formatters = require('../helpers/formatters.js');
 
 const AnswerController = {
     getAllAnswers: (question, callback) => {
-        Question.find({question_id: question.question_id}, (err, data) => {
+        Question.find({"results._id": question}, {'results.$': true}, (err, data) => {
             if (err) {
                 callback(err, null)
             } else {
