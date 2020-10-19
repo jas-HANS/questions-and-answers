@@ -36,7 +36,6 @@ app.get('/qa/:product_id', (req, res, next) => {
 });
 
 app.post('/qa/:product_id', (req, res) => {
-  console.log(req.params.product_id, req.body)
   QuestionController.create(req.params.product_id, req.body, (err, data) => {
     if (err) {
       console.log('There was an error adding a question');
