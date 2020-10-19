@@ -30,7 +30,7 @@ app.get('/qa/:product_id', (req, res, next) => {
       res.send();
     } else {
       console.log("Here're the questions you asked for");
-      res.status(200).send(data);
+      res.status(200).send(data[0]);
     }
   });
 });

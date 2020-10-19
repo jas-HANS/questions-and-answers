@@ -1,4 +1,5 @@
 const faker = require('faker');
+const mongoose = require('mongoose');
 const fs = require('fs');
 
 const writeEntries = fs.createWriteStream('entries.json');
@@ -6,7 +7,7 @@ writeEntries.write('', 'utf8');
 
 function writeTenMillionUsers(writer, encoding, callback) {
     let time = 0;
-    let i = 10000000;
+    let i = 1000000;
     let id = 0;
     const start = new Date().getTime();
     function write() {
@@ -24,7 +25,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
                 id += 1;
                 photos.push(
                     {
-                        id: faker.random.number(),
+                        _id: {$oid: mongoose.Types.ObjectId()},
                         url: faker.image.avatar(),
                     }
                 );
@@ -39,7 +40,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
                 id += 1;
                 answers.push(
                     {
-                        id: faker.random.number(),
+                        _id: {$oid: mongoose.Types.ObjectId()},
                         body: faker.lorem.sentence(),
                         date: faker.date.recent(),
                         answerer_name: faker.name.firstName(),
@@ -58,7 +59,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
                 id += 1;
                 questions.push(
                     {
-                        question_id: faker.random.number(),
+                        _id: {$oid: mongoose.Types.ObjectId()},
                         question_body: faker.lorem.sentence(),
                         question_date: faker.date.recent(),
                         asker_name: faker.name.firstName(),
@@ -69,6 +70,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
             }
 
             let newEntry = JSON.stringify({
+                _id: {$oid: mongoose.Types.ObjectId()},
                 results: questions
             });
 
