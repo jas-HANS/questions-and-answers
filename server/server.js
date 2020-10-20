@@ -89,17 +89,18 @@ app.get('/qa/:question_id/answers', (req, res) => {
   });
 });
 
-/* app.post('/qa/:question_id/answers', (req, res) => {
-  queries.addAnswer(req.params.question_id, (err, data) => {
+app.post('/qa/:question_id/answers', (req, res) => {
+  AnswerController.create(req.params.question_id, req.body, (err, data) => {
     if (err) {
-      console.log('There was an error adding a answer');
+      console.log('There was an error adding a question: ', err);
       res.send();
     } else {
-      console.log('Answer posted');
+      console.log('Question posted');
       res.status(201).send(data);
     }
   });
-}); */
+});
+
 
 /* app.put('/qa/answer/:answer_id/helpful', (req, res) => {
   queries.markAnsAsHelpful(req.params.question_id, (err, data) => {
