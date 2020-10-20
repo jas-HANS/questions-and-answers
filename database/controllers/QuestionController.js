@@ -25,6 +25,19 @@ const QuestionController = {
                     callback(null, data)
                 }
             });
+    },
+    markQAsHelpful: (questionId, callback) => {
+        Question.update(
+            { "results._id": questionId },
+            { $inc: { "results.0.question_helpfulness": 1 } },
+            (err, data) => {
+                if (err) {
+                    callback(err, null);
+                } else {
+                    callback(null, data);
+                }
+            }
+        );
     }
 }
 

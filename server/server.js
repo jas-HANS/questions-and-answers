@@ -49,8 +49,8 @@ app.post('/qa/:product_id', (req, res) => {
 });
 
 
-/* app.put('/qa/question/:question_id/helpful', (req, res) => {
-  queries.markQAsHelpful(req.params.question_id, (err, data) => {
+app.put('/qa/question/:question_id/helpful', (req, res) => {
+  QuestionController.markQAsHelpful(req.params.question_id, (err, data) => {
     if (err) {
       console.log('There was an error marking this question as helpful');
       res.send();
@@ -61,6 +61,7 @@ app.post('/qa/:product_id', (req, res) => {
   });
 });
 
+/* 
 app.put('/qa/question/:question_id/report', (req, res) => {
   queries.reportQuestion(req.params.question_id, (err, data) => {
     if (err) {
