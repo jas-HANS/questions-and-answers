@@ -102,10 +102,10 @@ app.post('/qa/:question_id/answers', (req, res) => {
 });
 
 
-/* app.put('/qa/answer/:answer_id/helpful', (req, res) => {
-  queries.markAnsAsHelpful(req.params.question_id, (err, data) => {
+app.put('/qa/answer/:answer_id/helpful', (req, res) => {
+  AnswerController.markAnsAsHelpful(req.params.answer_id, (err, data) => {
     if (err) {
-      console.log('There was an error marking this answer as helpful');
+      console.log('There was an error marking this answer as helpful', err);
       res.send();
     } else {
       console.log('answer marked as helpful');
@@ -115,7 +115,7 @@ app.post('/qa/:question_id/answers', (req, res) => {
 });
 
 app.put('/qa/answer/:answer_id/report', (req, res) => {
-  queries.reportAnswer(req.params.question_id, (err, data) => {
+  AnswerController.reportAnswer(req.params.answer_id, (err, data) => {
     if (err) {
       console.log('There was an error reporting this answer');
       res.send();
@@ -124,7 +124,7 @@ app.put('/qa/answer/:answer_id/report', (req, res) => {
       res.status(204).send(data);
     }
   });
-}); */
+});
 
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));

@@ -1,4 +1,3 @@
-const { createPhoto, createAnswer, createQuestion, createProduct } = require('./fake_data');
 const fs = require('fs');
 
 //======================

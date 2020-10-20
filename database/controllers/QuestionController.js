@@ -27,9 +27,9 @@ const QuestionController = {
             });
     },
     markQAsHelpful: (questionId, callback) => {
-        Question.update(
+        Question.updateOne(
             { "results._id": questionId },
-            { $inc: { "results.0.question_helpfulness": 1 } },
+            { $inc: { "results.$.question_helpfulness": 1 } },
             (err, data) => {
                 if (err) {
                     callback(err, null);
@@ -42,7 +42,7 @@ const QuestionController = {
     reportQuestion: (questionId, callback) => {
         Question.update(
             { "results._id": questionId },
-            { $inc: { "results.0.reported": 1 } },
+            { $inc: { "results.$.reported": 1 } },
             (err, data) => {
                 if (err) {
                     callback(err, null);

@@ -25,6 +25,37 @@ const AnswerController = {
                     callback(null, data)
                 }
             });
+    },
+    markAnsAsHelpful: (answerId, callback) => {
+        Question.update(
+            { "results.answers._id": answerId },
+            { $inc: { "results.$.answers.$[i].helpfulness": 1 } },
+            {
+                arrayFilters: [{
+                    "i._id": answerId
+                }]
+            },
+            (err, data) => {
+                if (err) {
+                    callback(err, null);
+                } else {
+                    callback(null, data);
+                }
+            }
+        );
+    },
+    reportAnswer: (answerId, callback) => {
+        Question.update(
+            { "results.answers._id": answerId },
+            { $inc: { "answers.$.reported": 1 } },
+            (err, data) => {
+                if (err) {
+                    callback(err, null);
+                } else {
+                    callback(null, data);
+                }
+            }
+        );
     }
 }
 
