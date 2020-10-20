@@ -61,9 +61,8 @@ app.put('/qa/question/:question_id/helpful', (req, res) => {
   });
 });
 
-/* 
 app.put('/qa/question/:question_id/report', (req, res) => {
-  queries.reportQuestion(req.params.question_id, (err, data) => {
+  QuestionController.reportQuestion(req.params.question_id, (err, data) => {
     if (err) {
       console.log('There was an error reporting this question');
       res.send();
@@ -72,7 +71,7 @@ app.put('/qa/question/:question_id/report', (req, res) => {
       res.status(204).send(data);
     }
   });
-}); */
+});
 
 //==========================
 //======ANSWER ROUTES=======

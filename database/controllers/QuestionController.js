@@ -38,6 +38,19 @@ const QuestionController = {
                 }
             }
         );
+    },
+    reportQuestion: (questionId, callback) => {
+        Question.update(
+            { "results._id": questionId },
+            { $inc: { "results.0.reported": 1 } },
+            (err, data) => {
+                if (err) {
+                    callback(err, null);
+                } else {
+                    callback(null, data);
+                }
+            }
+        );
     }
 }
 
