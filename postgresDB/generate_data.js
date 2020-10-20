@@ -38,7 +38,7 @@ const generateQuestions = (callback) => {
         let questionsPerProductTotal = Math.random() * Math.floor(20);
         let qPerPCount = 0;
         while (i > 0 && status) {
-            i--; // Could need to be first
+            i--;
             if (qPerPCount === questionsPerProductTotal) {
                 if (currentProduct === 100000 || currentProduct === 99999) {
                     currentProduct = 1;
@@ -77,9 +77,8 @@ const generateAnswers = (callback) => {
         let answersPerQuestionsTotal = Math.random() * Math.floor(20);
         let aPerQCount = 0;
         while (i > 0 && status) {
-            i--; // Could need to be first
+            i--; 
             if (aPerQCount === answersPerQuestionsTotal) {
-                // In the event that there are multiple questions that get 0 answers, handle the max being hit
                 if (currentQuestion >= 100000) {
                     currentQuestion = 1;
                 } else {
@@ -117,9 +116,8 @@ const generatePhotos = (callback) => {
         let photosPerAnswerTotal = Math.random() * Math.floor(5);
         let pPerACount = 0;
         while (i > 0 && status) {
-            i--; // Could need to be first
+            i--; 
             if (pPerACount === photosPerAnswerTotal) {
-                // In the event that there are multiple answers that get 0 photos, handle the max being hit
                 if (currentAnswer === 100000 || currentAnswer === 99999) {
                     currentAnswer = 1;
                 } else {
