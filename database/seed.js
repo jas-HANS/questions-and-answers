@@ -6,20 +6,20 @@ const writeEntries = fs.createWriteStream('entries.json');
 writeEntries.write('', 'utf8');
 
 function writeTenMillionUsers(writer, encoding, callback) {
-    let i = 1000000;
-    let id = 0;
+    console.time('Mongo Generation')
+    let i = 100000;
+    var id = 0;
     function write() {
         let ok = true;
         do {
-
+            i -= 1;
+            id += 1;
             //==================================
             // GENERATE RANDOM NUMBER OF PHOTOS
             //==================================
             const generatePhotos = () => {
                 let photos = [];
                 for (let p = 0; p < Math.floor(Math.random() * Math.floor(5)); p++) {
-                    i -= 1;
-                    id += 1;
                     photos.push(
                         {
                             _id: { $oid: mongoose.Types.ObjectId() },
@@ -35,9 +35,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
             //==================================
             const generateAnswers = () => {
                 let answers = [];
-                for (let k = 0; k < Math.floor(Math.random() * Math.floor(15)); k++) {
-                    i -= 1;
-                    id += 1;
+                for (let k = 0; k < Math.floor(Math.random() * Math.floor(5)); k++) {
                     answers.push(
                         {
                             _id: { $oid: mongoose.Types.ObjectId() },
@@ -57,9 +55,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
             //====================================
             const generateQuestions = () => {
                 let questions = [];
-                for (let j = 0; j < Math.floor(Math.random() * Math.floor(15)); j++) {
-                    i -= 1;
-                    id += 1;
+                for (let j = 0; j < Math.floor(Math.random() * Math.floor(5)); j++) {
                     questions.push(
                         {
                             _id: { $oid: mongoose.Types.ObjectId() },
@@ -80,6 +76,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
             });
 
             if (i === 0) {
+                console.timeEnd('Mongo Generation');
                 writer.write(newEntry, encoding, callback);
             } else {
                 // see if we should continue, or wait
@@ -97,7 +94,5 @@ function writeTenMillionUsers(writer, encoding, callback) {
 }
 
 writeTenMillionUsers(writeEntries, 'utf-8', () => {
-    console.time('Starting...')
     writeEntries.end();
-    console.timeEnd('Seeded')
 });

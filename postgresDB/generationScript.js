@@ -5,18 +5,12 @@ const { generateProducts, generateQuestions, generateAnswers, generatePhotos } =
 //==========================
 
 const generateOneMillionRecords = () => {
-    console.time("Product Generation")
+    console.time("Total Generation");
     generateProducts(() => {
-        console.timeEnd("Product Generation");
-        console.time("Question Generation");
         generateQuestions(() => {
-            console.timeEnd("Question Generation");
-            console.time("Answer Generation");
             generateAnswers(() => {
-                console.timeEnd("Answer Generation");
-                console.time("Photo Generation");
                 generatePhotos(() => {
-                    console.timeEnd("Photo Generation");
+                    console.timeEnd("Total Generation");
                 });
             });
         });

@@ -1,11 +1,12 @@
 const fs = require('fs');
+const {createProduct, createAnswer, createPhoto, createQuestion} = require('./faker_data.js');
 
 //======================
 //==== PRODUCT GEN =====
 //======================
 
 const generateProducts = (callback) => {
-    const writeProductStream = fs.createWriteStream('server/db/data/productData.csv');
+    const writeProductStream = fs.createWriteStream('productData.csv');
     let i = 100000;
     const write = () => {
         let status = true;
@@ -30,7 +31,7 @@ const generateProducts = (callback) => {
 //======================
 
 const generateQuestions = (callback) => {
-    const writeQuestionStream = fs.createWriteStream('server/db/data/questionData.csv');
+    const writeQuestionStream = fs.createWriteStream('questionData.csv');
     let i = 100000;
     const write = () => {
         let status = true;
@@ -69,7 +70,7 @@ const generateQuestions = (callback) => {
 //======================
 
 const generateAnswers = (callback) => {
-    const writeAnswersStream = fs.createWriteStream('server/db/data/answersData.csv');
+    const writeAnswersStream = fs.createWriteStream('answersData.csv');
     let i = 100000;
     const write = () => {
         let status = true;
@@ -108,7 +109,7 @@ const generateAnswers = (callback) => {
 //======================
 
 const generatePhotos = (callback) => {
-    const writePhotosStream = fs.createWriteStream('server/db/data/photosData.csv');
+    const writePhotosStream = fs.createWriteStream('photosData.csv');
     let i = 100000;
     const write = () => {
         let status = true;
