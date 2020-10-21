@@ -1,17 +1,18 @@
-DROP DATABASE IF EXISTS postgres
+DROP DATABASE IF EXISTS postgres;
 
-CREATE TABLE public.products
+\c postgres;
+
+CREATE TABLE "products"
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1 ),
     name text COLLATE pg_catalog."default",
     CONSTRAINT products_pkey PRIMARY KEY (id)
-)
-
+);
 
 -- ALTER TABLE public.products
 --     OWNER to postgres;
 
-CREATE TABLE public.questions
+CREATE TABLE "questions"
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1 ),
     question_body text COLLATE pg_catalog."default",
@@ -26,12 +27,12 @@ CREATE TABLE public.questions
         REFERENCES public.products (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-)
+);
 
 -- ALTER TABLE public.questions
 --     OWNER to postgres;
 
-CREATE TABLE public.answers
+CREATE TABLE "answers"
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1 ),
     body text COLLATE pg_catalog."default",
@@ -44,12 +45,12 @@ CREATE TABLE public.answers
         REFERENCES public.questions (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-)
+);
 
 -- ALTER TABLE public.answers
 --     OWNER to postgres;
 
-CREATE TABLE public.photos
+CREATE TABLE "photos"
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 999999 CACHE 1 ),
     url text COLLATE pg_catalog."default",
@@ -59,7 +60,12 @@ CREATE TABLE public.photos
         REFERENCES public.answers (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-)
+);
 
 -- ALTER TABLE public.photos
 --     OWNER to postgres;
+
+\copy products (name) FROM './productData.csv' DELIMITER ',' CSV HEADER;
+\copy questions (question_body, question_date, asker_name, question_helpfulness, reported, email, product_id) FROM './questionData.csv' DELIMITER ',' CSV HEADER;
+\copy answers (body, date, answerer_name, helpfulness, question_id) FROM './answersData.csv' DELIMITER ',' CSV HEADER;
+\copy photos (url, answer_id) FROM './photosData.csv' DELIMITER ',' CSV HEADER;

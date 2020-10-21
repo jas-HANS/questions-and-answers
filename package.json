@@ -10,7 +10,8 @@
     "start": "cd client/dist && live-server",
     "server": "cd server && node server.js --watch",
     "build": "webpack -p",
-    "seed": "cd database && node seed.js && mongoimport --db qaDatabase --collection questions --file ./entries.json"
+    "seed": "cd database && node seed.js && mongoimport --db qaDatabase --collection questions --file ./entries.json",
+    "seed-posty": "cd postgresDB && node generationScript.js && psql postgres -U zak < schema.sql"
   },
   "repository": {
     "type": "git",
