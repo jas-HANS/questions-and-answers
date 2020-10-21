@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS postgres;
 
 \c postgres;
+\timing;
 
 CREATE TABLE "products"
 (

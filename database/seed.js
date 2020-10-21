@@ -7,7 +7,7 @@ writeEntries.write('', 'utf8');
 
 function writeTenMillionUsers(writer, encoding, callback) {
     console.time('Mongo Generation')
-    let i = 100000;
+    let i = 1000000;
     var id = 0;
     function write() {
         let ok = true;

@@ -7,7 +7,7 @@ const {createProduct, createAnswer, createPhoto, createQuestion} = require('./fa
 
 const generateProducts = (callback) => {
     const writeProductStream = fs.createWriteStream('productData.csv');
-    let i = 100000;
+    let i = 1000000;
     const write = () => {
         let status = true;
         while (i > 0 && status) {
@@ -32,7 +32,7 @@ const generateProducts = (callback) => {
 
 const generateQuestions = (callback) => {
     const writeQuestionStream = fs.createWriteStream('questionData.csv');
-    let i = 100000;
+    let i = 1000000;
     const write = () => {
         let status = true;
         let currentProduct = 1;
@@ -71,7 +71,7 @@ const generateQuestions = (callback) => {
 
 const generateAnswers = (callback) => {
     const writeAnswersStream = fs.createWriteStream('answersData.csv');
-    let i = 100000;
+    let i = 1000000;
     const write = () => {
         let status = true;
         let currentQuestion = 1;
@@ -110,7 +110,7 @@ const generateAnswers = (callback) => {
 
 const generatePhotos = (callback) => {
     const writePhotosStream = fs.createWriteStream('photosData.csv');
-    let i = 100000;
+    let i = 1000000;
     const write = () => {
         let status = true;
         let currentAnswer = 1;
