@@ -1,17 +1,17 @@
 config:
     target: "http://localhost:3001/qa"
-    processor: "./data-generator.js"
     phases:
       - duration: 60
-        arrivalRate: 5
+        arrivalRate: 10
         name: Warm up
-      - duration: 120
+      - duration: 60
         arrivalRate: 5
         rampTo: 50
         name: Ramp up load
-      - duration: 600
+      - duration: 60
         arrivalRate: 50
         name: Sustained load
+    processor: "./data-generator.js"
     #payload:
      # path: "keywords.csv"
       #fields:
@@ -19,18 +19,18 @@ config:
 scenarios:
     - name: "Get questions for a product"
       flow:
+        - function: "generateRandomData"
         - get:
             url: "/5f8f944c20589457f17fc02c"
         # Pause for 3 seconds:
         - think: 3
         # Mark a question as helpful
         - put:
-            url: "/question/5f8f944c20589457f17fc02d/helpful"
-        - function: "generateQuestion"
+            url: "/question/5f8f944c20589457f17fc006/helpful"
         # add a question
         - post:
-            url: "/5f8f944c20589457f17fc02c"
+            url: "/5f8f944c20589457f17fbffd"
             json:
-              body: ""
-              name: ""
+              body: "{{ body }}"
+              name: "{{ name }}"
               
