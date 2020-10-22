@@ -1,0 +1,27 @@
+config:
+    target: "http://localhost:3001/qa"
+    phases:
+      - duration: 60
+        arrivalRate: 5
+        name: Warm up
+      - duration: 120
+        arrivalRate: 5
+        rampTo: 50
+        name: Ramp up load
+      - duration: 600
+        arrivalRate: 50
+        name: Sustained load
+    #payload:
+     # path: "keywords.csv"
+      #fields:
+       # - "keywords"
+scenarios:
+    - name: "Get questions for a product"
+      flow:
+        - get:
+            url: "/5f8b37a24cdb94ac89e32826"
+        # Pause for 3 seconds:
+        - think: 3
+        # Mark a question as helpful
+        - put:
+            url: "/question/5f8dfdceb95dd913fc1183d1/helpful"
