@@ -1,5 +1,6 @@
 config:
     target: "http://localhost:3001/qa"
+    processor: "./data-generator.js"
     phases:
       - duration: 60
         arrivalRate: 5
@@ -19,9 +20,17 @@ scenarios:
     - name: "Get questions for a product"
       flow:
         - get:
-            url: "/5f8b37a24cdb94ac89e32826"
+            url: "/5f8f944c20589457f17fc02c"
         # Pause for 3 seconds:
         - think: 3
         # Mark a question as helpful
         - put:
-            url: "/question/5f8dfdceb95dd913fc1183d1/helpful"
+            url: "/question/5f8f944c20589457f17fc02d/helpful"
+        - function: "generateQuestion"
+        # add a question
+        - post:
+            url: "/5f8f944c20589457f17fc02c"
+            json:
+              body: ""
+              name: ""
+              
