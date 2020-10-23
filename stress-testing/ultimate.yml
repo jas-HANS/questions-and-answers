@@ -21,15 +21,15 @@ scenarios:
       flow:
         - function: "generateRandomData"
         - get:
-            url: "/5f8f944c20589457f17fc02c"
+            url: "/{{ product }}"
         # Pause for 3 seconds:
         - think: 3
         # Mark a question as helpful
         - put:
-            url: "/question/5f8f944c20589457f17fc006/helpful"
+            url: "/question/{{ question }}/helpful"
         # add a question
         - post:
-            url: "/5f8f944c20589457f17fbffd"
+            url: "/{{ product }}"
             json:
               body: "{{ body }}"
               name: "{{ name }}"

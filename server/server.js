@@ -1,3 +1,8 @@
+require('newrelic');
+
+var cluster = require('cluster');
+var numCPUs = require('os').cpus().length;
+
 const mongoose = require('mongoose');
 
 const mongoDB = 'mongodb://127.0.0.1/qaDatabase';
@@ -20,9 +25,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('../client/dist'));
 
+//===========================
+//===== CREATE CLUSTER ======
+//===========================
+
+if (cluster.isMaster) {
+  for (var i = 0; i < numCPUs; i++) {
+      cluster.fork();
+  }
+} else {
+
 //==========================
 //==== QUESTION ROUTES =====
 //==========================
+
 
 app.get('/qa/:product_id', (req, res, next) => {
   QuestionController.getAllQuestions({product_id: req.params.product_id}, (err, data) => {
@@ -134,3 +150,5 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
+
+}

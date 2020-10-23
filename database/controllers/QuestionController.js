@@ -14,7 +14,6 @@ const QuestionController = {
     },
     create: (id, body, callback) => {
         body = formatters.questionFormatter(body);
-        console.log(body);
         Question.update(
             { "_id": id },
             { $push: { "results": body } },
