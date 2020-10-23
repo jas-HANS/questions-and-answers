@@ -18,11 +18,11 @@ function generateRandomData(userContext, events, done) {
 
     ];
     const products = [
-        '5f92210cfb1ec0244e2fe22d',
-        '5f92210cfb1ec0244e2fe22c',
-        '5f92210cfb1ec0244e2fe21a',
-        '5f92210cfb1ec0244e2fe210',
-        '5f92210cfb1ec0244e2fe1fe'
+        '5f92210cfb1ec0244e2fe186',
+        '5f92210cfb1ec0244e2fe192',
+        '5f92210cfb1ec0244e2fe194',
+        '5f92210cfb1ec0244e2fe17f',
+        '5f92210cfb1ec0244e2fe188'
     ];
 
     const generator = (array) => {
