@@ -5,7 +5,7 @@ var numCPUs = require('os').cpus().length;
 
 const mongoose = require('mongoose');
 
-const mongoDB = 'mongodb://127.0.0.1/qaDatabase';
+const mongoDB = 'mongodb://13.57.206.195:27017/qaDatabase';
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 const { QuestionController } = require('../database/controllers/QuestionController.js');
