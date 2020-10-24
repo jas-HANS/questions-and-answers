@@ -5,7 +5,7 @@ config:
       arrivalRate: 10
       name: Warm up
     - duration: 60
-      arrivalRate: 5
+      arrivalRate: 50
       rampTo: 100
       name: Ramp up load
     - duration: 300
@@ -22,27 +22,13 @@ scenarios:
       - function: "generateRandomData"
       - loop:
         - get:
-            url: "/{{ product }}"
+            url: "/{{$randomNumber(1,2000000)}}"
         # Mark a question as helpful
         - put:
             url: "/question/{{ question }}/helpful"
         # add a question
         - post:
-            url: "/{{ product }}"
-            json:
-              body: "{{ body }}"
-              name: "{{ name }}"
-        count: 10
-  - name: 'get answers mark as helpful post answer'
-    flow:
-      - function: "generateRandomData"
-      - loop:
-        - get:
-            url: '/{{ question }}/answers'
-        - put:
-            url: "/answer/{{ answer }}/helpful"
-        - post:
-            url: "/{{ question }}/answers"
+            url: "/{{$randomNumber(1,2000000)}}"
             json:
               body: "{{ body }}"
               name: "{{ name }}"

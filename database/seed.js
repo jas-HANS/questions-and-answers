@@ -37,7 +37,6 @@ function writeTenMillionUsers(writer, encoding, callback) {
                 let answers = [];
                 for (let k = 0; k < Math.floor(Math.random() * Math.floor(5)); k++) {
                     i -= 1;
-                    id++;
                     answers.push(
                         {
                             _id: { $oid: mongoose.Types.ObjectId() },
@@ -59,7 +58,6 @@ function writeTenMillionUsers(writer, encoding, callback) {
                 let questions = [];
                 for (let j = 0; j < Math.floor(Math.random() * Math.floor(5)); j++) {
                     i -= 1;
-                    id++;
                     questions.push(
                         {
                             _id: { $oid: mongoose.Types.ObjectId() },
@@ -78,7 +76,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
             // ======= GENERATE PRODUCTS =========
             //====================================
             let newEntry = JSON.stringify({
-                _id: { $oid: mongoose.Types.ObjectId() },
+                _id: id,
                 results: generateQuestions()
             });
 

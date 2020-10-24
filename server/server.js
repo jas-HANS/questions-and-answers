@@ -1,4 +1,4 @@
-/* require('newrelic'); */
+require('newrelic');
 
 var cluster = require('cluster');
 var numCPUs = require('os').cpus().length;
@@ -41,7 +41,8 @@ if (cluster.isMaster) {
 
 
 app.get('/qa/:product_id', (req, res, next) => {
-  QuestionController.getAllQuestions({product_id: req.params.product_id}, (err, data) => {
+  const id = req.params.product_id;
+  QuestionController.getAllQuestions({product_id: id}, (err, data) => {
     if (err) {
       console.log('😅 Soooo, There was an error getting the questions for this product', err);
       res.send();
