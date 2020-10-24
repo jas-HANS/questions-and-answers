@@ -1,0 +1,36 @@
+config:
+  target: "http://localhost:3001/qa"
+  phases:
+    - duration: 30
+      arrivalRate: 10
+      name: Warm up
+    - duration: 60
+      arrivalRate: 50
+      rampTo: 100
+      name: Ramp up load
+    - duration: 300
+      arrivalRate: 100
+      name: Sustained load
+  processor: "./data-generator.js"
+  #payload:
+  # path: "keywords.csv"
+  #fields:
+  # - "keywords"
+scenarios:
+  - name: "Get questions then post a question and mark as helpful"
+    flow:
+      - function: "generateRandomData"
+      - loop:
+        - get:
+            url: "/{{$randomNumber(1,2000000)}}"
+        # Mark a question as helpful
+        - put:
+            url: "/question/{{ question }}/helpful"
+        # add a question
+        - post:
+            url: "/{{$randomNumber(1,2000000)}}"
+            json:
+              body: "{{ body }}"
+              name: "{{ name }}"
+        count: 10
+

@@ -10,7 +10,7 @@
     "start": "cd client/dist && live-server",
     "server": "cd server && node server.js --watch",
     "build": "webpack -p",
-    "seed": "cd database && node seed.js && mongoimport --db qaDatabase --collection questions --file ./entries.json",
+    "seed": "cd database && node seed.js && mongoimport --host 13.57.206.195:27017 --db qaDatabase --collection questions --file ./entries.json",
     "seed-posty": "cd postgresDB && node generationScript.js && psql postgres -U zak < schema.sql"
   },
   "repository": {
@@ -37,6 +37,7 @@
     "express": "^4.17.1",
     "mocha": "^8.2.0",
     "mongoose": "^5.10.9",
+    "newrelic": "^6.13.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.3.0",
     "react-dom": "^16.13.1",

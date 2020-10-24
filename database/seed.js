@@ -7,7 +7,7 @@ writeEntries.write('', 'utf8');
 
 function writeTenMillionUsers(writer, encoding, callback) {
     console.time('Mongo Generation')
-    let i = 1000000;
+    let i = 10000000;
     var id = 0;
     function write() {
         let ok = true;
@@ -33,9 +33,10 @@ function writeTenMillionUsers(writer, encoding, callback) {
             //==================================
             // GENERATE RANDOM NUMBER OF ANSWERS
             //==================================
-            const generateAnswers = () => {
+            const generateAnswers = () => { 
                 let answers = [];
                 for (let k = 0; k < Math.floor(Math.random() * Math.floor(5)); k++) {
+                    i -= 1;
                     answers.push(
                         {
                             _id: { $oid: mongoose.Types.ObjectId() },
@@ -56,6 +57,7 @@ function writeTenMillionUsers(writer, encoding, callback) {
             const generateQuestions = () => {
                 let questions = [];
                 for (let j = 0; j < Math.floor(Math.random() * Math.floor(5)); j++) {
+                    i -= 1;
                     questions.push(
                         {
                             _id: { $oid: mongoose.Types.ObjectId() },
@@ -70,8 +72,11 @@ function writeTenMillionUsers(writer, encoding, callback) {
                 return questions;
             }
 
+            //====================================
+            // ======= GENERATE PRODUCTS =========
+            //====================================
             let newEntry = JSON.stringify({
-                _id: { $oid: mongoose.Types.ObjectId() },
+                _id: id,
                 results: generateQuestions()
             });
 
