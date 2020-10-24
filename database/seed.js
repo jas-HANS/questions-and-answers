@@ -14,9 +14,9 @@ function writeTenMillionUsers(writer, encoding, callback) {
         do {
             i -= 1;
             id += 1;
-            //==================================
+            //===================================
             // GENERATE RANDOM NUMBER OF PHOTOS
-            //==================================
+            //===================================
             const generatePhotos = () => {
                 let photos = [];
                 for (let p = 0; p < Math.floor(Math.random() * Math.floor(5)); p++) {
