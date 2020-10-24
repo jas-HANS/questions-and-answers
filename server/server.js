@@ -1,7 +1,7 @@
 require('newrelic');
 
-var cluster = require('cluster');
-var numCPUs = require('os').cpus().length;
+/* var cluster = require('cluster');
+var numCPUs = require('os').cpus().length; */
 
 const mongoose = require('mongoose');
 
@@ -29,11 +29,11 @@ app.use(express.static('../client/dist'));
 //===== CREATE CLUSTER ======
 //===========================
 
-if (cluster.isMaster) {
+/* if (cluster.isMaster) {
   for (var i = 0; i < numCPUs; i++) {
       cluster.fork();
   }
-} else {
+} else { */
 
 //==========================
 //==== QUESTION ROUTES =====
@@ -152,4 +152,4 @@ app.listen(PORT, () => {
 
 module.exports = app;
 
-}
+/* } */

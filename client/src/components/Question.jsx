@@ -24,7 +24,7 @@ const Question = ({question, isHelpfulA, isHelpfulQ, productName, getProductQs})
         <Col md="auto">
           <HelpfulBtn
             className="q-btn"
-            id={question.question_id}
+            id={question._id}
             currentCount={question.question_helpfulness}
             clickFunc={isHelpfulQ}/>
           <AddAnswerBtnM

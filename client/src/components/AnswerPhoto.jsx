@@ -22,8 +22,8 @@ const AnswerPhoto = ({answer}) => {
           height={100}
           style={{paddingLeft: '5px', borderRadius: '8px', cursor: 'pointer'}}
           alt="user img of product"
-          src={photo}
-          onClick={() => handleShow(photo)}
+          src={photo.url}
+          onClick={() => handleShow(photo.url)}
         />
         <Modal
           centered

@@ -35,7 +35,10 @@ const formatters = {
   },
 
   answerFormatter: (body) => {
-    const photos = photoParser(body.photos);
+    let photos = [];
+    if(body.photos) {
+      photos = photoParser(body.photos);
+    }
     return {
       body: body.body,
       date: new Date(),
