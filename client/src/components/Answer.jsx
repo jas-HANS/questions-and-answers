@@ -21,7 +21,7 @@ const Answer = ({answer, isHelpfulA}) => {
 
   const reportAns = (e) => {
     e.preventDefault();
-    axios.put(`http://localhost:3001/qa/answer/${answer._id}/helpful`)
+    axios.put(`http://ec2-54-151-88-60.us-west-1.compute.amazonaws.com:3001/qa/answer/${answer._id}/helpful`)
         .then((res) => {
           setReport(!report);
           console.log(res);

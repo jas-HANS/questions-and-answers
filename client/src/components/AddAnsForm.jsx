@@ -30,7 +30,7 @@ const AddAnsForm = ({onHide, question, getProductQs, answers}) => {
     }
     setValidated(true);
     e.preventDefault();
-    axios.post(`http://localhost:3001/qa/${question._id}/answers`, {...state})
+    axios.post(`http://ec2-54-151-88-60.us-west-1.compute.amazonaws.com:3001/qa/${question._id}/answers`, {...state})
         .then((res) => {
           // console.log(res.config.data);
           onHide();
