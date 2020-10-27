@@ -25,6 +25,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('../client/dist'));
 
+// ==========================
+// ======= LOADER.IO ========
+// ==========================
+
+app.get('/loaderio-60a26c983c9800b8398e0a9fa09f45cc', (req, res) => {
+  res.send('loaderio-60a26c983c9800b8398e0a9fa09f45cc');
+});
+
+
 //===========================
 //===== CREATE CLUSTER ======
 //===========================
