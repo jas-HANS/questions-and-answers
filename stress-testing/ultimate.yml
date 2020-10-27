@@ -1,5 +1,5 @@
 config:
-  target: "http://ec2-54-151-88-60.us-west-1.compute.amazonaws.com:3001/qa"
+  target: "http://54.176.69.184:3001/qa"
   phases:
     - duration: 30
       arrivalRate: 10

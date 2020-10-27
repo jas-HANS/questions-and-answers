@@ -3,7 +3,7 @@ import axios from 'axios';
 // gets all Qs for one product
 const reqProductQs = (id, cb) => {
   // const id = Math.floor(Math.random() * 1000);
-  axios.get(`http://ec2-54-151-88-60.us-west-1.compute.amazonaws.com:3001/qa/${id}`, {params: {count: 100}})
+  axios.get(`http://54.176.69.184:3001/qa/${id}`, {params: {count: 100}})
       .then((data) => cb(null, data))
       .catch((err) => cb(err, null));
 };
@@ -28,7 +28,7 @@ const reqProductQs = (id, cb) => {
 
 // // mark a question as helpful
 const reqIsHelpfulQ = (questID, cb) => {
-  axios.put(`http://ec2-54-151-88-60.us-west-1.compute.amazonaws.com:3001/qa/question/${questID}/helpful`)
+  axios.put(`http://54.176.69.184:3001/qa/question/${questID}/helpful`)
       .then((data) => cb(null, data))
       .catch((err) => cb(err, null));
 };
@@ -43,7 +43,7 @@ const reqIsHelpfulQ = (questID, cb) => {
 
 
 const reqIsHelpfulA = (answerID, cb) => {
-  axios.put(`http://ec2-54-151-88-60.us-west-1.compute.amazonaws.com:3001/qa/answer/${answerID}/helpful`)
+  axios.put(`http://54.176.69.184:3001/qa/answer/${answerID}/helpful`)
       .then((data) => cb(null, data))
       .catch((err) => cb(err, null));
 };
